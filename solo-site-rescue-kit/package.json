@@ -1,0 +1,27 @@
+{
+  "name": "@agentwiseai/solo-site-rescue-kit",
+  "version": "1.0.0",
+  "homepage": "https://aaronwiseai.com/",
+  "description": "Self-contained offline-first tool to rescue a no-code builder site export: ingests exported builder data (HTML, contact/newsletter submissions, CSV of image links), rescues missing image assets from URLs, and produces a clean static site or Next.js project committed to a local git repo.",
+  "type": "module",
+  "main": "src/cli.js",
+  "bin": {
+    "solo-rescue": "./bin/solo-rescue.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "PLAN.md",
+    "smoke-check.js"
+  ],
+  "scripts": {
+    "smoke": "node smoke-check.js",
+    "cli": "node bin/solo-rescue.js"
+  },
+  "keywords": ["site-rescue", "builder-export", "static-site", "migration", "offline-first"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

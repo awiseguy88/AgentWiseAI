@@ -1,0 +1,26 @@
+{
+  "fix-off-by-one": {
+    "output": "function sum(n) {\n  let s = 0;\n  for (let i = 1; i <= n; i++) {\n    s += i;\n  }\n  return s;\n}",
+    "tokens_in": 120,
+    "tokens_out": 48,
+    "latency_ms": 600
+  },
+  "implement-factorial": {
+    "output": "function factorial(n) {\n  return n > 1 ? n * factorial(n - 1) : 1;\n}",
+    "tokens_in": 60,
+    "tokens_out": 26,
+    "latency_ms": 700
+  },
+  "refactor-async": {
+    "output": "async function fetchData(url) {\n  try {\n    const r = await fetch(url);\n    return await r.json();\n  } catch (e) {\n    throw e;\n  }\n}",
+    "tokens_in": 90,
+    "tokens_out": 42,
+    "latency_ms": 650
+  },
+  "sample-repo-calculator.test.js": {
+    "output": "function add(a, b) { return a + b; }",
+    "tokens_in": 110,
+    "tokens_out": 30,
+    "latency_ms": 600
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "local-model-fit-checker",
+  "version": "0.1.0",
+  "description": "Offline-first CLI that runs a small coding task suite against local and cloud models and emits a local-vs-API routing report.",
+  "private": true,
+  "bin": {
+    "local-model-fit-checker": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/smoke.js",
+    "smoke": "node test/smoke.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT"
+}

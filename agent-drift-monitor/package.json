@@ -1,0 +1,17 @@
+{
+  "name": "agent-drift-monitor",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Offline-first parser for agent session/trace formats: step timing, token attribution, drift/loop detection, and HTML/JSON reports.",
+  "type": "module",
+  "bin": {
+    "agent-drift-monitor": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test",
+    "smoke": "node src/cli.js --input examples/sample-trace.json --out reports/smoke --json --html"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

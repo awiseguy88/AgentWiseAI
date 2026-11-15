@@ -1,0 +1,19 @@
+{
+  "name": "pr-review-cost-guard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local CLI that wraps AI PR-review agent runs: cheap first-pass scan of every PR diff, only flagged hunks go to a pricier reviewer, monthly spend caps block runs over budget, and a single HTML/JSON cost report is emitted per run. Offline-first, no per-review metering by default.",
+  "homepage": "https://aaronwiseai.com/",
+  "bin": {
+    "pr-review-cost-guard": "bin/pr-review-cost-guard.js"
+  },
+  "main": "src/cli.js",
+  "scripts": {
+    "start": "node bin/pr-review-cost-guard.js",
+    "test": "node --test test/smoke.test.js",
+    "scan": "node bin/pr-review-cost-guard.js scan"
+  },
+  "keywords": ["cli", "pr-review", "cost", "budget", "guard"],
+  "author": "awiseguy88",
+  "license": "Private"
+}

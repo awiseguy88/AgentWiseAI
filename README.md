@@ -18,6 +18,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Glide Classic Escape Kit | [`glide-classic-escape-kit/`](glide-classic-escape-kit/) | Inventories Glide Classic CSV exports and app notes into an offline rebuild report, checklists, and a rough cost worksheet. | Merged in [PR #26](https://github.com/awiseguy88/AgentWiseAI/pull/26) |
 | Solo Site Rescue Kit | [`solo-site-rescue-kit/`](solo-site-rescue-kit/) | Helps solo operators diagnose and rebuild fragile sites. | Merged in [PR #18](https://github.com/awiseguy88/AgentWiseAI/pull/18) |
 | Model API Watch | [`model-api-watch/`](model-api-watch/) | Scans projects for hard-coded model IDs and reports affected models with change dates, replacements, and cost impact. | Merged in [PR #27](https://github.com/awiseguy88/AgentWiseAI/pull/27) |
+| PR Review Cost Guard | [`pr-review-cost-guard/`](pr-review-cost-guard/) | Wraps agent runs with a cheap first-pass scan, monthly spend caps, and HTML/JSON cost reports. | Open [PR #29](https://github.com/awiseguy88/AgentWiseAI/pull/29) |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

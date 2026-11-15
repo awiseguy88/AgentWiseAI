@@ -1,0 +1,66 @@
+diff --git a/src/services/legacy.js b/src/services/legacy.js
+index 7777777..8888888 100644
+--- a/src/services/legacy.js
++++ b/src/services/legacy.js
+@@ -100,3 +100,83 @@ function oldHelper() {
+   return result;
+ }
++
++function newPipeline(input) {
++  const step1 = input.map(x => x.trim());
++  const step2 = step1.filter(x => x.length > 0);
++  const step3 = step2.map(x => x.toLowerCase());
++  const step4 = step3.map(x => x.replace(/[^a-z0-9]/g, '-'));
++  const step5 = step4.filter((x, i, self) => self.indexOf(x) === i);
++  const step6 = step5.sort();
++  const step7 = step6.slice(0, 50);
++  const step8 = step7.join(',');
++  const step9 = step8.split(',');
++  const step10 = step9.map(x => ({ value: x, len: x.length }));
++  const step11 = step10.filter(x => x.len > 2);
++  const step12 = step11.map(x => x.value);
++  const step13 = step12.map(x => 'tag-' + x);
++  const step14 = step13.filter((x, i) => i % 2 === 0);
++  const step15 = step14.map(x => x.toUpperCase());
++  const step16 = step15.join('|');
++  const step17 = step16.split('|');
++  const step18 = step17.map(x => x.padStart(8));
++  const step19 = step18.map(x => x.trim());
++  const step20 = step19.filter(Boolean);
++  const step21 = step20.map((x, i) => i + ':' + x);
++  const step22 = step21.join(';');
++  const step23 = step22.split(';');
++  const step24 = step23.map(s => s.split(':'));
++  const step25 = step24.filter(a => a.length === 2);
++  const step26 = step25.map(a => ({ id: a[0], val: a[1] }));
++  const step27 = step26.sort((a, b) => a.id.localeCompare(b.id));
++  const step28 = step27.map(o => o.val);
++  const step29 = step28.map(x => x.replace(/\s+/g, ''));
++  const step30 = step29.join('');
++  const step31 = step30.match(/.{1,4}/g) || [];
++  const step32 = step31.map(x => x.split(''));
++  const step33 = step32.map(a => a.join(''));
++  const step34 = step33.map(x => parseInt(x, 36) || 0);
++  const step35 = step34.filter(n => n > 0);
++  const step36 = step35.map(n => n.toString(16));
++  const step37 = step36.map(x => x.padStart(4, '0'));
++  const step38 = step37.join(' ');
++  const step39 = step38.split(' ');
++  const step40 = step39.filter(x => x !== '0000');
++  const step41 = step40.map((x, i) => ({ key: i, value: x }));
++  const step42 = step41.filter(o => o.value.length === 4);
++  const step43 = step42.map(o => o.value);
++  const step44 = step43.reduce((acc, v) => acc.concat(v), []);
++  const step45 = step44.map(v => v.charCodeAt(0) || 0);
++  const step46 = step45.map(n => n % 256);
++  const step47 = step46.map(n => String.fromCharCode(n));
++  const step48 = step47.join('');
++  const step49 = step48.split('');
++  const step50 = step49.filter((x, i) => x !== step49[i - 1]);
++  const step51 = step50.join('');
++  const step52 = step51.split('').reverse().join('');
++  const step53 = step52.split('').sort().join('');
++  const step54 = step53.split('').map((x, i) => (i % 2 ? x.toUpperCase() : x)).join('');
++  const step55 = step54.replace(/[^a-z0-9]/gi, '');
++  return step55;
++}

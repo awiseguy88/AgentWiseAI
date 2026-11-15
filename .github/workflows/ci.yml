@@ -54,6 +54,10 @@ jobs:
         working-directory: solo-site-rescue-kit
         run: npm run smoke
 
+      - name: Install Tool Launcher dependencies
+        working-directory: tool-launcher
+        run: npm ci
+
       - name: Tool Launcher
         working-directory: tool-launcher
         run: npm test

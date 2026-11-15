@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tool Launcher</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: #f3f4f6; color: #111827; }
+    header { background: linear-gradient(120deg, #111827, #1f2937); color: #fff; padding: 28px 24px; }
+    header h1 { margin: 0 0 6px; font-size: 28px; }
+    header p { margin: 0; color: #d1d5db; }
+    main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+    .status { margin-bottom: 16px; color: #374151; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card { background: #fff; border-radius: 12px; padding: 16px; box-shadow: 0 1px 3px rgba(0,0,0,.08); display: flex; flex-direction: column; }
+    .card h2 { margin: 0 0 4px; font-size: 18px; }
+    .folder { font-size: 12px; color: #6b7280; margin-bottom: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .summary { flex: 1; margin: 0 0 14px; color: #374151; line-height: 1.45; }
+    .actions a { display: inline-block; background: #2563eb; color: #fff; text-decoration: none; padding: 8px 12px; border-radius: 8px; font-weight: 600; }
+    .actions a:hover { background: #1d4ed8; }
+    .empty { background: #fff; border-radius: 12px; padding: 20px; color: #374151; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Tool Launcher</h1>
+    <p>Scans workspace folders, reads each README, and launches available built tools in a new tab.</p>
+  </header>
+  <main>
+    <div id="status" class="status">Loading tools…</div>
+    <div id="tools" class="grid" aria-live="polite"></div>
+  </main>
+  <script>
+    async function loadTools() {
+      const status = document.getElementById('status');
+      const container = document.getElementById('tools');
+      try {
+        const res = await fetch('/api/tools');
+        if (!res.ok) throw new Error('Failed to load tools');
+        const data = await res.json();
+        const tools = data.tools || [];
+        status.textContent = `Found ${tools.length} tool${tools.length === 1 ? '' : 's'} in ${data.workspaceRoot || 'workspace'}.`;
+        if (!tools.length) {
+          container.innerHTML = '<div class="empty">No tools with a <code>README.md</code> were found.</div>';
+          return;
+        }
+        container.innerHTML = tools.map(tool => `
+          <article class="card">
+            <h2>${escapeHtml(tool.title)}</h2>
+            <div class="folder">${escapeHtml(tool.folder)}/</div>
+            <p class="summary">${escapeHtml(tool.summary)}</p>
+            <div class="actions">
+              <a href="${tool.launchUrl}" target="_blank" rel="noopener noreferrer">Launch in new tab</a>
+            </div>
+          </article>
+        `).join('');
+      } catch (err) {
+        status.textContent = 'Could not load tools. Make sure the Tool Launcher server is running.';
+        container.innerHTML = '<div class="empty">Error loading tools.</div>';
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    loadTools();
+  </script>
+</body>
+</html>

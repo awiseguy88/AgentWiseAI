@@ -1,0 +1,26 @@
+{
+  "name": "@local/dsh-reddit-suite",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reddit suite plugin: session-cookie and OAuth access, automated login with CAPTCHA/challenge hooks, full recursive comment expansion, gated write/moderation actions, and a local SQLite database of fetched and written data.",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./lib/*.js": "./lib/*.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "lib/*.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "agentwiseai": {
+      "command": "node",
+      "args": [
+        "<ABSOLUTE_PATH>/AgentWiseAI/mcp-lemonade-server/dist/server.js"
+      ],
+      "env": {
+        "LEMONADE_BASE_URL": "http://192.168.12.174:13305",
+        "OUTPUT_DIR": "<ABSOLUTE_PATH>/AgentWiseAI/mcp-lemonade-server/outputs",
+        "SOCIAL_DRY_RUN_DEFAULT": "true"
+      }
+    }
+  }
+}

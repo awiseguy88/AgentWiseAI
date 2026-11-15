@@ -2,4 +2,6 @@
 
 Repository managed by the WiseAI GitHub Agent.
 
-This repository starts empty so the agent can build it incrementally from issues and pull requests.
+Currently contains the **Lemonade MCP server** — an MCP server that connects to a local Lemonade image-generation server and prepares/publishes social media posts.
+
+See [mcp-lemonade-server/README.md](mcp-lemonade-server/README.md) for setup and usage.

@@ -1,8 +1,8 @@
 # AgentWiseAI
 
-**AaronWiseAI builds practical, offline-first tools for AI agents and developers. Visit [https://aaronwiseai.com/](https://aaronwiseai.com/).**
+**AaronWiseAI builds practical, open-source tools for AI agents and developers, online and offline. Visit [https://aaronwiseai.com/](https://aaronwiseai.com/).**
 
-This repository collects focused tools that run locally, keep data on your machine, and remove repetitive work for AI engineers and agent builders.
+This repository collects focused open-source tools that help AI engineers and agent builders get real work done, whether they run locally or online.
 
 ## Tools built by the GitHub Agent
 

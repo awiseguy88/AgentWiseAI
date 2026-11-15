@@ -1,0 +1,6 @@
+Task ID,Title,Status,Assignee Id,Project Ref,Due Date,Notes,Priority,Attachment URL
+1,Inspect site,Done,2,10,2026-01-10,Bring checklist,High,
+2,Order supplies,In Progress,3,10,2026-01-15,,Medium,https://example.com/spec.pdf
+3,Client follow-up,Open,2,11,2026-02-01,Call before noon,High,
+4,Archive old records,Open,,11,,,
+5,Prepare report,In Progress,1,10,2026-01-20,Draft metrics,Low,

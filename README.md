@@ -1,8 +1,8 @@
 # AgentWiseAI
 
-Practical software built and maintained by the AaronWiseAI GitHub Agent.
+**AaronWiseAI builds practical, open-source tools for AI agents and developers, online and offline. Visit [https://aaronwiseai.com/](https://aaronwiseai.com/).**
 
-This repository collects small, useful tools that save time, replace bloated paid software, or make everyday work easier.
+This repository collects focused open-source tools that help AI engineers and agent builders get real work done, whether they run locally or online.
 
 ## Tools built by the GitHub Agent
 
@@ -13,10 +13,12 @@ This repository collects small, useful tools that save time, replace bloated pai
 | Tool Launcher | [`tool-launcher/`](tool-launcher/) | Lists built tools in the workspace, reads their READMEs, and launches them. | Merged in [PR #6](https://github.com/awiseguy88/AgentWiseAI/pull/6) |
 | Agent Reliability Logbook | [`agent-reliability-logbook/`](agent-reliability-logbook/) | Tracks agent claims versus verified outcomes and reliability over time. | Merged in [PR #8](https://github.com/awiseguy88/AgentWiseAI/pull/8) |
 | Vibe-Coded App Doctor | [`vibe-coded-app-doctor/`](vibe-coded-app-doctor/) | Scans AI-generated apps for common security, configuration, and reliability mistakes. | Merged in [PR #15](https://github.com/awiseguy88/AgentWiseAI/pull/15) |
-| AI Feature Usage Auditor | [`ai-feature-usage-auditor/`](https://github.com/awiseguy88/AgentWiseAI/pull/16) | Audits where AI features are used and what they cost. | Open [PR #16](https://github.com/awiseguy88/AgentWiseAI/pull/16) |
-| Agent Drift & Step-Level Monitor | [`agent-drift-monitor/`](https://github.com/awiseguy88/AgentWiseAI/pull/17) | Monitors agents for drift and step-level failures. | Open [PR #17](https://github.com/awiseguy88/AgentWiseAI/pull/17) |
-| Solo Site Rescue Kit | `solo-site-rescue-kit/` | Helps solo operators diagnose and rebuild fragile sites. | Building |
+| AI Feature Usage Auditor | [`ai-feature-usage-auditor/`](ai-feature-usage-auditor/) | Audits where AI features are used and what they cost. | Merged in [PR #16](https://github.com/awiseguy88/AgentWiseAI/pull/16) |
 | Agent Done Claim Verifier | [`agent-done-claim-verifier/`](agent-done-claim-verifier/) | Parses local agent transcripts to verify completion claims against command results and emit HTML/JSON reports with hook-policy snippets. | Open [PR #28](https://github.com/awiseguy88/AgentWiseAI/pull/28) |
+| Agent Drift & Step-Level Monitor | [`agent-drift-monitor/`](agent-drift-monitor/) | Monitors agents for drift and step-level failures. | Merged in [PR #17](https://github.com/awiseguy88/AgentWiseAI/pull/17) |
+| Glide Classic Escape Kit | [`glide-classic-escape-kit/`](glide-classic-escape-kit/) | Inventories Glide Classic CSV exports and app notes into an offline rebuild report, checklists, and a rough cost worksheet. | Merged in [PR #26](https://github.com/awiseguy88/AgentWiseAI/pull/26) |
+| Solo Site Rescue Kit | [`solo-site-rescue-kit/`](solo-site-rescue-kit/) | Helps solo operators diagnose and rebuild fragile sites. | Merged in [PR #18](https://github.com/awiseguy88/AgentWiseAI/pull/18) |
+| Model API Watch | [`model-api-watch/`](model-api-watch/) | Scans projects for hard-coded model IDs and reports affected models with change dates, replacements, and cost impact. | Merged in [PR #27](https://github.com/awiseguy88/AgentWiseAI/pull/27) |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

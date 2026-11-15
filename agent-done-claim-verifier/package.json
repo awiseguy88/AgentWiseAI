@@ -1,0 +1,15 @@
+{
+  "name": "agent-done-claim-verifier",
+  "version": "0.1.0",
+  "description": "Offline-first parser that verifies agent completion claims against nearby command results.",
+  "private": true,
+  "bin": {
+    "agent-done-claim-verifier": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/smoke.js",
+    "smoke": "node test/smoke.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT"
+}

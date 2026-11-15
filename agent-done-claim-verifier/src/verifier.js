@@ -1,7 +1,7 @@
 'use strict';
 
 const CLAIM_PATTERNS = [
-  { re: /\b(all\s+)?tests?\s+(pass(ed|ing)?|are\s+green|succeed(ed)?|succeeded)\b/i, type: 'tests_pass' },
+  { re: /\b(all\s+)?tests?\s+(are\s+)?(pass(ed|ing)?|green|succeed(ed)?|succeeded)\b/i, type: 'tests_pass' },
   { re: /\bbuild\s+(pass(ed|ing)?|succeed(ed|s)?|successful(ly)?|completed?)\b/i, type: 'build_succeeded' },
   { re: /\b(successfully\s+)?(built|compiled)\b/i, type: 'built' },
   { re: /\b(fix(ed)?|resolved|implemented|completed|done|finished|working now|should work now)\b/i, type: 'done' }
@@ -130,13 +130,14 @@ function evaluateClaim(claim, assistantEvent, events, commands, results) {
 
 function relevantResultsForClaim(claim, nearbyCommands, nearbyResults, windowEvents) {
   const keywords = claimKeywords(claim);
+  // A generic "done" claim has no check keyword. Never treat an unrelated
+  // nearby result (for example `git status`) as evidence for it.
+  if (keywords.length === 0) return [];
   const enriched = nearbyResults.map(r => ({ ...r, command: r.command || findCommandBefore(r, windowEvents) || '' }));
-  const filtered = enriched.filter(r => {
+  return enriched.filter(r => {
     const hay = `${r.command} ${r.output || ''}`.toLowerCase();
-    if (keywords.length === 0) return true;
     return keywords.some(k => hay.includes(k));
   });
-  return filtered.length > 0 ? filtered : enriched;
 }
 
 function findCommandBefore(resultEvent, windowEvents) {

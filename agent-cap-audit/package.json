@@ -1,0 +1,15 @@
+{
+  "name": "agent-cap-audit",
+  "version": "0.1.0",
+  "description": "Offline-first local CLI to audit agent tool/connector capabilities against per-role policies.",
+  "private": true,
+  "bin": {
+    "agent-cap-audit": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/smoke.js",
+    "smoke": "node test/smoke.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT"
+}

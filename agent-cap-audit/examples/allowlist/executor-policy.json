@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "roles": {
+    "executor": {
+      "deny": ["impersonate-user", "external-post", "write"],
+      "allow": ["read"]
+    }
+  }
+}

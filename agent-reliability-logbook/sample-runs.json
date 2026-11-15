@@ -1,0 +1,10 @@
+[
+  {"id":"r1","date":"2026-11-02","task":"Classify support ticket","outcome":"success","duration":12.4,"retries":0,"humanOverride":false,"errorType":"","confidence":0.94,"notes":"Auto-routed correctly"},
+  {"id":"r2","date":"2026-11-03","task":"Draft follow-up email","outcome":"success","duration":18.1,"retries":1,"humanOverride":false,"errorType":"","confidence":0.88,"notes":"Needed one retry for tone"},
+  {"id":"r3","date":"2026-11-04","task":"Extract invoice fields","outcome":"failure","duration":9.7,"retries":2,"humanOverride":true,"errorType":"parse_error","confidence":0.41,"notes":"Table layout ambiguous"},
+  {"id":"r4","date":"2026-11-05","task":"Sync CRM note","outcome":"failure","duration":30.0,"retries":3,"humanOverride":true,"errorType":"timeout","confidence":0.2,"notes":"Upstream API slow"},
+  {"id":"r5","date":"2026-11-09","task":"Summarize call transcript","outcome":"success","duration":22.5,"retries":0,"humanOverride":false,"errorType":"","confidence":0.91,"notes":""},
+  {"id":"r6","date":"2026-11-10","task":"Classify support ticket","outcome":"partial","duration":14.0,"retries":1,"humanOverride":true,"errorType":"low_confidence","confidence":0.55,"notes":"Human adjusted priority"},
+  {"id":"r7","date":"2026-11-11","task":"Extract invoice fields","outcome":"failure","duration":11.2,"retries":1,"humanOverride":true,"errorType":"parse_error","confidence":0.38,"notes":"Handwritten note"},
+  {"id":"r8","date":"2026-11-12","task":"Draft follow-up email","outcome":"success","duration":16.8,"retries":0,"humanOverride":false,"errorType":"","confidence":0.93,"notes":""}
+]

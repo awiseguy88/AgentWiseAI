@@ -1,0 +1,15 @@
+{
+  "name": "tool-launcher",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local web page that lists built tools in the GitHub Agent workspace and launches them in a new tab.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/smoke.test.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "marked": "^12.0.2"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "vibe-coded-app-doctor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline CLI that scans AI-generated web app codebases for common mistakes and emits a prioritized single-file HTML report.",
+  "bin": {
+    "vibe-coded-app-doctor": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node tests/smoke.js",
+    "smoke": "node tests/smoke.js"
+  }
+}

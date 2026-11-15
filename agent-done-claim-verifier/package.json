@@ -7,8 +7,9 @@
     "agent-done-claim-verifier": "src/cli.js"
   },
   "scripts": {
-    "test": "node test/smoke.js",
-    "smoke": "node test/smoke.js"
+    "test": "node test/smoke.js && node test/false-positive.test.js",
+    "smoke": "node test/smoke.js",
+    "regression": "node test/false-positive.test.js"
   },
   "homepage": "https://aaronwiseai.com/",
   "license": "MIT"

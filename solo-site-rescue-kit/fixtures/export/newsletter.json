@@ -1,0 +1,14 @@
+[
+  {
+    "email": "taylor@example.com",
+    "name": "Taylor Rivera",
+    "topic": "newsletter",
+    "subscribed_at": "2026-11-10"
+  },
+  {
+    "email": "casey@example.com",
+    "name": "Casey Morgan",
+    "topic": "announcements",
+    "subscribed_at": "2026-11-12"
+  }
+]

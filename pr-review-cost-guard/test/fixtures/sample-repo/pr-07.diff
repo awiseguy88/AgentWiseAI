@@ -1,0 +1,13 @@
+diff --git a/test/app.test.js b/test/app.test.js
+index 1111111..2222222 100644
+--- a/test/app.test.js
++++ b/test/app.test.js
+@@ -5,3 +5,6 @@ test('index page loads', async () => {
+   const res = await fetch('/');
+   assert.equal(res.status, 200);
+ });
++
++test('health endpoint', async () => {
++  const res = await fetch('/health');
++  assert.equal(res.status, 200);
++});

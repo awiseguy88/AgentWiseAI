@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "approved-readonly-server": {
+      "command": "node",
+      "args": ["/path/to/local-readonly-mcp-server.js"],
+      "env": {}
+    }
+  }
+}

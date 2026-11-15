@@ -1,0 +1,17 @@
+diff --git a/src/routes/users.js b/src/routes/users.js
+index 4444444..5555555 100644
+--- a/src/routes/users.js
++++ b/src/routes/users.js
+@@ -2,6 +2,10 @@
+ const router = express.Router();
+ 
++const password = process.env.ADMIN_PASSWORD;
++
+ router.get('/', (req, res) => {
+   res.json(users);
+ });
++
++router.post('/reset', (req, res) => {
++  exec('rm -rf /tmp/cache');
++  res.send('ok');
++});

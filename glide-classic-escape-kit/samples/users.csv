@@ -1,0 +1,5 @@
+User ID,Name,Email,Role,Phone,Active,Last Login
+1,Ada Admin,ada@example.com,Admin,,true,2026-01-18
+2,Ben Builder,ben@example.com,Staff,555-0102,true,2026-01-19
+3,Cam Client,cam@example.com,Client,,false,
+4,Dee Viewer,dee@example.com,Viewer,555-0104,true,2025-12-30

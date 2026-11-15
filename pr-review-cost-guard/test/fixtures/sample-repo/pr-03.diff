@@ -1,0 +1,12 @@
+diff --git a/Dockerfile b/Dockerfile
+index 5555555..6666666 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -20,3 +20,6 @@ RUN npm ci --only=production
+ COPY . .
+ RUN npm run build
+ CMD ["node", "dist/server.js"]
++
++USER root
++RUN chmod 777 /app/data
++ENV DEBUG=*

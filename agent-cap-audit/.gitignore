@@ -1,0 +1,4 @@
+agent-cap-audit-report/
+*.log
+tmp/
+.DS_Store

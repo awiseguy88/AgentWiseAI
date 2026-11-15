@@ -1,0 +1,30 @@
+{
+  "appName": "Field Ops (Glide Classic)",
+  "description": "Operations tracking app for small field teams.",
+  "screens": [
+    {"name": "Dashboard", "notes": "Open tasks, overdue count"},
+    {"name": "Tasks list", "notes": "Filter by status and project"},
+    {"name": "Task detail", "notes": "Edit status, assignee, notes"},
+    {"name": "Projects list", "notes": "Active projects and owners"}
+  ],
+  "logic": [
+    {"name": "Assignment", "notes": "Only staff can be assigned tasks"},
+    {"name": "Visibility", "notes": "Clients see only their project tasks"},
+    {"name": "Notifications", "notes": "Email when task marked Done"}
+  ],
+  "roles": [
+    {"name": "Admin", "notes": "Manage users and all records"},
+    {"name": "Staff", "notes": "Create/update tasks"},
+    {"name": "Client", "notes": "View own project tasks"}
+  ],
+  "cost": {
+    "currency": "USD",
+    "assumptions": "5 users, light integrations, ~2 weeks internal rebuild effort estimate placeholder",
+    "classicMonthly": 60,
+    "glideOsMonthly": 99,
+    "rebuildMonthly": 25,
+    "rebuildMigration": "16-32 hrs",
+    "rebuildUi": "24-40 hrs",
+    "rebuildLogic": "16-32 hrs"
+  }
+}

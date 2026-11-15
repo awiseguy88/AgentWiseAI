@@ -1,0 +1,5 @@
+id,date,task,outcome,duration,retries,humanOverride,errorType,confidence,notes
+r1,2026-11-02,Classify support ticket,success,12.4,0,false,,0.94,Auto-routed correctly
+r2,2026-11-03,Draft follow-up email,success,18.1,1,false,,0.88,Needed one retry for tone
+r3,2026-11-04,Extract invoice fields,failure,9.7,2,true,parse_error,0.41,Table layout ambiguous
+r4,2026-11-05,Sync CRM note,failure,30.0,3,true,timeout,0.2,Upstream API slow

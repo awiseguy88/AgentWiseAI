@@ -6,3 +6,6 @@ outputs/*
 !outputs/.gitkeep
 *.log
 .DS_Store
+
+# Local tool state
+.local/

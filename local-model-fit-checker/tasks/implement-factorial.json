@@ -5,6 +5,7 @@
   "prompt": "Write a recursive function factorial(n) that returns n!. Return only the function.",
   "checker": {
     "contains": ["factorial"],
+    "containsAll": ["return"],
     "notContains": []
   }
 }

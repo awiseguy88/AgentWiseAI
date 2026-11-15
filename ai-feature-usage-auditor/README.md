@@ -1,6 +1,6 @@
 # AI Feature Usage Auditor
 
-A small, self-contained, offline-first local web app for auditing SaaS "AI tax" spend. Log the AI features you pay for, track which ones you actually use, and generate evidence for renewal negotiations.
+A small, self-contained, offline-first local web app for auditing SaaS "AI tax" spend. It helps small businesses and solopreneurs see what they pay for AI features versus what they actually use, so they can bring clear usage evidence to renewal negotiations.
 
 ## Features
 - Log SaaS tools with AI premium (per term), billing term, renewal date, and AI features.
@@ -29,3 +29,9 @@ The smoke check verifies required files/markers and validates core report/export
 - Estimated unused AI spend is calculated by allocating a tool's AI premium evenly across its listed AI features.
 - PDF export uses the browser print dialog; choose "Save as PDF" for a PDF file.
 - This tool is independent and does not modify other workspaces.
+
+## About AaronWiseAI
+
+https://aaronwiseai.com/
+
+Part of the AaronWiseAI tool collection — https://aaronwiseai.com/

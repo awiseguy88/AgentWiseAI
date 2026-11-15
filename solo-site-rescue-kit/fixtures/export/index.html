@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rescue Me Studio</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; color: #222; }
+    header { background: #0f766e; color: #fff; padding: 24px; }
+    header h1 { margin: 0 0 4px; }
+    header p { margin: 0; opacity: 0.9; }
+    main { max-width: 760px; margin: 0 auto; padding: 24px; }
+    .hero img { width: 100%; max-height: 340px; object-fit: cover; border-radius: 8px; }
+    .cta { display: inline-block; margin-top: 16px; padding: 12px 20px; background: #0f766e; color: #fff; border-radius: 6px; text-decoration: none; }
+    .cards { display: flex; gap: 16px; margin-top: 24px; flex-wrap: wrap; }
+    .card { flex: 1 1 220px; border: 1px solid #eee; border-radius: 8px; padding: 16px; }
+    .card img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Rescue Me Studio</h1>
+    <p>Branding &amp; design for solopreneurs</p>
+  </header>
+  <main>
+    <section class="hero">
+      <img src="images/hero.jpg" alt="Studio hero image">
+    </section>
+    <p>Welcome to Rescue Me Studio. We help small businesses look great online with thoughtful, affordable design.</p>
+    <a class="cta" href="#contact">Get in touch</a>
+    <div class="cards">
+      <div class="card">
+        <img src="images/service-1.jpg" alt="Brand identity">
+        <h3>Brand Identity</h3>
+        <p>Logos, color, and type that feel like you.</p>
+      </div>
+      <div class="card">
+        <img src="images/service-2.jpg" alt="Web design">
+        <h3>Web Design</h3>
+        <p>Fast, friendly sites for small businesses.</p>
+      </div>
+    </div>
+    <section id="contact" style="margin-top: 32px">
+      <h2>Contact</h2>
+      <form method="post" action="/submit">
+        <p><label>Name <input type="text" name="name"></label></p>
+        <p><label>Email <input type="email" name="email"></label></p>
+        <p><label>Message <textarea name="message"></textarea></label></p>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+</body>
+</html>

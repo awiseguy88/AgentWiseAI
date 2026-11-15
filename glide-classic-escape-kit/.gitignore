@@ -1,0 +1,5 @@
+node_modules/
+glide-escape-report/
+out/
+*.log
+.DS_Store

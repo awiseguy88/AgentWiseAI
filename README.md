@@ -20,7 +20,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Solo Site Rescue Kit | [`solo-site-rescue-kit/`](solo-site-rescue-kit/) | Helps solo operators diagnose and rebuild fragile sites. | Merged in [PR #18](https://github.com/awiseguy88/AgentWiseAI/pull/18) |
 | Model API Watch | [`model-api-watch/`](model-api-watch/) | Scans projects for hard-coded model IDs and reports affected models with change dates, replacements, and cost impact. | Merged in [PR #27](https://github.com/awiseguy88/AgentWiseAI/pull/27) |
 | PR Review Cost Guard | [`pr-review-cost-guard/`](pr-review-cost-guard/) | Wraps agent runs with a cheap first-pass scan, monthly spend caps, and HTML/JSON cost reports. | Open [PR #29](https://github.com/awiseguy88/AgentWiseAI/pull/29) |
-| Agent Capability Auditor | [`agent-cap-audit/`](agent-cap-audit/) | Scans agent configs/wrappers (Codex, Claude/Cursor MCP configs, mcp.json, scripts), classifies connector/tool risk, checks per-role policy, and emits HTML/JSON reports with fix snippets. | Open (pending PR) |
+| Agent Capability Auditor | [`agent-cap-audit/`](agent-cap-audit/) | Scans agent configs/wrappers (Codex, Claude/Cursor MCP configs, mcp.json, scripts), classifies connector/tool risk, checks per-role policy, and emits HTML/JSON reports with fix snippets. | Open [PR #38](https://github.com/awiseguy88/AgentWiseAI/pull/38) |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

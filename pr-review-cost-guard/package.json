@@ -15,5 +15,5 @@
   },
   "keywords": ["cli", "pr-review", "cost", "budget", "guard"],
   "author": "awiseguy88",
-  "license": "Private"
+  "license": "MIT"
 }

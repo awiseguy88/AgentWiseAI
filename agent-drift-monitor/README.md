@@ -1,6 +1,6 @@
 # Agent Drift & Step-Level Monitor
 
-Small, self-contained, **offline-first** tool that parses common agent session/trace formats and emits step-level HTML/JSON reports.
+**Tool for small teams and solo developers running long-running AI coding agents and autonomous workflows that need to catch silent drift before damage.** It is a small, self-contained, **offline-first** tool that parses common agent session/trace formats and emits step-level HTML/JSON reports with timing, token attribution, and drift/loop alerts.
 
 ## What it does
 - Parses local trace files (`.json` / `.jsonl`) in common shapes: generic step lists, span-style traces, and OpenAI/agent logs with `tool_calls`.
@@ -51,3 +51,10 @@ npm run smoke
 ## Limitations
 - Format detection is heuristic; unknown fields are preserved in raw step data but may not be timed/attributed.
 - Drift/loop detection is pattern-based over the provided trace (not a trained model).
+
+## About AaronWiseAI
+AaronWiseAI builds practical, offline-first tools for AI agents and developers. Visit [https://aaronwiseai.com/](https://aaronwiseai.com/).
+
+---
+
+Part of the AaronWiseAI tool collection — https://aaronwiseai.com/

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Offline-first parser for agent session/trace formats: step timing, token attribution, drift/loop detection, and HTML/JSON reports.",
+  "homepage": "https://aaronwiseai.com/",
   "type": "module",
   "bin": {
     "agent-drift-monitor": "./src/cli.js"

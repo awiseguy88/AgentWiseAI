@@ -1,0 +1,25 @@
+{
+  "name": "mcp-fault-injector",
+  "version": "0.1.0",
+  "description": "Offline CLI proxy that injects MCP fault modes (latency, timeouts, invalid JSON, missing fields, truncation) and reports silent-wrong vs clean failures.",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "mcp-fault-injector": "dist/cli.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "test": "npm run build && node test/smoke.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  }
+}

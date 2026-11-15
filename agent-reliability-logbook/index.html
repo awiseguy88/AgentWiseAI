@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agent Reliability Logbook</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Agent Reliability Logbook</h1>
+    <p class="sub">Offline-first local tracker for agent run completion, interventions, failures, and trends. Data stays in your browser unless you export it.</p>
+  </header>
+
+  <main>
+    <section class="panel actions">
+      <h2>Data</h2>
+      <div class="row">
+        <button id="load-sample" type="button">Load sample log</button>
+        <label class="file-label">Import JSON/CSV <input id="import-file" type="file" accept=".json,.csv,application/json,text/csv" /></label>
+        <button id="export-json" type="button">Export JSON</button>
+        <button id="export-csv" type="button">Export CSV</button>
+        <button id="clear-data" type="button" class="danger">Clear all</button>
+      </div>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="grid kpis">
+      <div class="card"><h3>Runs</h3><div id="kpi-total" class="kpi">0</div></div>
+      <div class="card"><h3>Completion rate</h3><div id="kpi-completion" class="kpi">0%</div></div>
+      <div class="card"><h3>Intervention rate</h3><div id="kpi-intervention" class="kpi">0%</div></div>
+      <div class="card"><h3>Avg duration (s)</h3><div id="kpi-duration" class="kpi">0</div></div>
+    </section>
+
+    <section class="grid charts">
+      <div class="panel">
+        <h2>Recurring failure categories</h2>
+        <div id="failure-chart" class="chart"></div>
+      </div>
+      <div class="panel">
+        <h2>Weekly reliability trends</h2>
+        <div id="trend-chart" class="chart"></div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2 id="form-title">Add run</h2>
+      <form id="run-form">
+        <input type="hidden" id="run-id" />
+        <div class="form-grid">
+          <label>Date <input id="date" type="date" required /></label>
+          <label>Task <input id="task" type="text" required placeholder="e.g. Classify support ticket" /></label>
+          <label>Outcome
+            <select id="outcome">
+              <option value="success">success</option>
+              <option value="failure">failure</option>
+              <option value="partial">partial</option>
+            </select>
+          </label>
+          <label>Duration (s) <input id="duration" type="number" min="0" step="0.1" value="0" /></label>
+          <label>Retries <input id="retries" type="number" min="0" step="1" value="0" /></label>
+          <label>Human override
+            <select id="humanOverride"><option value="false">no</option><option value="true">yes</option></select>
+          </label>
+          <label>Error type <input id="errorType" type="text" placeholder="e.g. timeout" /></label>
+          <label>Confidence (0-1) <input id="confidence" type="number" min="0" max="1" step="0.01" placeholder="optional" /></label>
+          <label class="wide">Notes <input id="notes" type="text" placeholder="optional" /></label>
+        </div>
+        <div class="row">
+          <button type="submit" id="save-btn">Save run</button>
+          <button type="button" id="cancel-edit" class="secondary" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Run records</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Date</th><th>Task</th><th>Outcome</th><th>Duration</th><th>Retries</th><th>Override</th><th>Error type</th><th>Confidence</th><th>Notes</th><th></th></tr>
+          </thead>
+          <tbody id="runs-body"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "name": "ai-code-disclosure-manifest",
+  "version": "1.0.0",
+  "description": "Offline-first CLI to scan repositories for AI-assist markers and generate disclosure manifests with notice templates.",
+  "main": "src/index.js",
+  "bin": {
+    "ai-disclose": "./bin/ai-disclose"
+  },
+  "scripts": {
+    "test": "node test/smoke.test.js",
+    "smoke": "node test/smoke.test.js"
+  },
+  "keywords": [
+    "ai",
+    "disclosure",
+    "code",
+    "manifest",
+    "attribution",
+    "github",
+    "copilot",
+    "claude",
+    "cli"
+  ],
+  "author": "AaronWiseAI GitHub Agent",
+  "license": "MIT",
+  "homepage": "https://aaronwiseai.com/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/awiseguy88/AgentWiseAI.git",
+    "directory": "ai-code-disclosure-manifest"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

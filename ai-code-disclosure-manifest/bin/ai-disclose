@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+/**
+ * AI Code Disclosure Manifest - CLI Entry Point
+ * Dependency-free offline-first tool for scanning AI-assist markers
+ */
+
+const { main } = require('../src/index.js');
+
+main(process.argv).then(code => process.exit(code)).catch(err => {
+  console.error(`Fatal error: ${err.message}`);
+  process.exit(1);
+});

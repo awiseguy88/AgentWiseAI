@@ -81,6 +81,6 @@ The smoke check validates parsing, claim detection, verified/unverified labeling
 
 ## About AaronWiseAI
 
-AaronWiseAI builds practical online and offline tools for AI agents and developers. Visit https://aaronwiseai.com/
+AaronWiseAI builds practical, open-source tools for AI agents and developers, online and offline. Visit https://aaronwiseai.com/
 
-Part of the AaronWiseAI tool collection — https://aaronwiseai.com/
+Part of the AaronWiseAI open-source tool collection — https://aaronwiseai.com/

@@ -22,6 +22,8 @@ New tools are added by the GitHub Agent in their own subfolders. The agent keeps
 
 ## About AaronWiseAI
 
-Built by [AaronWiseAI](https://aaronwiseai.com/) — practical software that saves people time.
+Built by [AaronWiseAI](https://aaronwiseai.com/).
 
-Part of the AaronWiseAI tool collection — https://aaronwiseai.com/
+AaronWiseAI builds practical, open-source tools for AI agents and developers, online and offline. Visit https://aaronwiseai.com/
+
+Part of the AaronWiseAI open-source tool collection — https://aaronwiseai.com/

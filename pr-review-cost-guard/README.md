@@ -60,6 +60,6 @@ Each run writes to `--out/`:
 
 ## About AaronWiseAI
 
-Built by [AaronWiseAI](https://aaronwiseai.com/) — practical, useful software that saves people time.
+AaronWiseAI builds practical online and offline tools for AI agents and developers. Visit https://aaronwiseai.com/
 
 Part of the AaronWiseAI tool collection — https://aaronwiseai.com/

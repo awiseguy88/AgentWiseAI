@@ -16,6 +16,7 @@ This repository collects small, useful tools that save time, replace bloated pai
 | AI Feature Usage Auditor | [`ai-feature-usage-auditor/`](https://github.com/awiseguy88/AgentWiseAI/pull/16) | Audits where AI features are used and what they cost. | Open [PR #16](https://github.com/awiseguy88/AgentWiseAI/pull/16) |
 | Agent Drift & Step-Level Monitor | [`agent-drift-monitor/`](https://github.com/awiseguy88/AgentWiseAI/pull/17) | Monitors agents for drift and step-level failures. | Open [PR #17](https://github.com/awiseguy88/AgentWiseAI/pull/17) |
 | Solo Site Rescue Kit | `solo-site-rescue-kit/` | Helps solo operators diagnose and rebuild fragile sites. | Building |
+| Agent Done Claim Verifier | [`agent-done-claim-verifier/`](agent-done-claim-verifier/) | Parses local agent transcripts to verify completion claims against command results and emit HTML/JSON reports with hook-policy snippets. | Open [PR #28](https://github.com/awiseguy88/AgentWiseAI/pull/28) |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

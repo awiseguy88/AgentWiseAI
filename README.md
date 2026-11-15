@@ -14,6 +14,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Agent Reliability Logbook | [`agent-reliability-logbook/`](agent-reliability-logbook/) | Tracks agent claims versus verified outcomes and reliability over time. | Merged in [PR #8](https://github.com/awiseguy88/AgentWiseAI/pull/8) |
 | Vibe-Coded App Doctor | [`vibe-coded-app-doctor/`](vibe-coded-app-doctor/) | Scans AI-generated apps for common security, configuration, and reliability mistakes. | Merged in [PR #15](https://github.com/awiseguy88/AgentWiseAI/pull/15) |
 | AI Feature Usage Auditor | [`ai-feature-usage-auditor/`](ai-feature-usage-auditor/) | Audits where AI features are used and what they cost. | Merged in [PR #16](https://github.com/awiseguy88/AgentWiseAI/pull/16) |
+| Agent Done Claim Verifier | [`agent-done-claim-verifier/`](agent-done-claim-verifier/) | Parses local agent transcripts to verify completion claims against command results and emit HTML/JSON reports with hook-policy snippets. | Open [PR #28](https://github.com/awiseguy88/AgentWiseAI/pull/28) |
 | Agent Drift & Step-Level Monitor | [`agent-drift-monitor/`](agent-drift-monitor/) | Monitors agents for drift and step-level failures. | Merged in [PR #17](https://github.com/awiseguy88/AgentWiseAI/pull/17) |
 | Glide Classic Escape Kit | [`glide-classic-escape-kit/`](glide-classic-escape-kit/) | Inventories Glide Classic CSV exports and app notes into an offline rebuild report, checklists, and a rough cost worksheet. | Merged in [PR #26](https://github.com/awiseguy88/AgentWiseAI/pull/26) |
 | Solo Site Rescue Kit | [`solo-site-rescue-kit/`](solo-site-rescue-kit/) | Helps solo operators diagnose and rebuild fragile sites. | Merged in [PR #18](https://github.com/awiseguy88/AgentWiseAI/pull/18) |
@@ -24,6 +25,8 @@ New tools are added by the GitHub Agent in their own subfolders. The agent keeps
 
 ## About AaronWiseAI
 
-Built by [AaronWiseAI](https://aaronwiseai.com/) — practical software that saves people time.
+Built by [AaronWiseAI](https://aaronwiseai.com/).
 
-Part of the AaronWiseAI tool collection — https://aaronwiseai.com/
+AaronWiseAI builds practical, open-source tools for AI agents and developers, online and offline. Visit https://aaronwiseai.com/
+
+Part of the AaronWiseAI open-source tool collection — https://aaronwiseai.com/

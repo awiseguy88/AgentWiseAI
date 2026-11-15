@@ -1,0 +1,17 @@
+{
+  "name": "model-api-watch",
+  "version": "1.0.0",
+  "description": "Offline CLI that scans a project for hard-coded model IDs and reports affected models with change dates, replacement recommendations, and cost impact.",
+  "main": "src/cli.js",
+  "bin": {
+    "model-api-watch": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node tests/smoke.js",
+    "smoke": "node tests/smoke.js"
+  },
+  "keywords": ["llm", "model", "cli", "offline", "deprecation", "pricing"],
+  "author": "awiseguy88 <18493653+awiseguy88@users.noreply.github.com>",
+  "license": "MIT",
+  "homepage": "https://aaronwiseai.com/"
+}

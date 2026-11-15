@@ -1,0 +1,14 @@
+{
+  "name": "glide-classic-escape-kit",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline CLI + single-file HTML report that inventories Glide Classic exports for rebuild planning.",
+  "bin": {
+    "glide-classic-escape-kit": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/smoke.js",
+    "smoke": "node test/smoke.js"
+  },
+  "homepage": "https://aaronwiseai.com/"
+}

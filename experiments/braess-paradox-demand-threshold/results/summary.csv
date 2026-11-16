@@ -1,0 +1,9 @@
+key,value
+standard_D_star,32.65979381443299
+standard_D_vanish,98.0
+standard_conv_fail,0
+max_rel_err_analytical_vs_numerical,8.39200036691741e-07
+agreement_within_5pct,True
+sens_ab,"[{'AB_b': 0.5, 'D_star': 33.0, 'D_vanish': 99.0, 'conv_fail': 0}, {'AB_b': 1.0, 'D_star': 32.65979381443299, 'D_vanish': 97.99999999999996, 'conv_fail': 0}, {'AB_b': 2.0, 'D_star': 32.0, 'D_vanish': 96.0, 'conv_fail': 0}, {'AB_b': 5.0, 'D_star': 30.0, 'D_vanish': 90.0, 'conv_fail': 0}]"
+sens_const,"[{'const_b': 30.0, 'D_star': 19.322033898305083, 'D_vanish': 59.0, 'conv_fail': 0}, {'const_b': 50.0, 'D_star': 32.65979381443299, 'D_vanish': 97.99999999999996, 'conv_fail': 0}, {'const_b': 70.0, 'D_star': 46.0, 'D_vanish': 138.0, 'conv_fail': 0}]"
+plot,/data/github-agent/repos/braess-paradox-threshold-a77643ebbc4e/experiments/braess-paradox-demand-threshold/results/cost_vs_demand.png

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Governance Control Plane</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Agent Governance Control Plane</h1>
+    <p class="subtitle">Runtime least-privilege for AI agents: policy-enforced tool calls, human approvals, tamper-evident audit log.</p>
+  </header>
+
+  <main>
+    <div class="grid-top">
+      <div class="card">
+        <h2>Policy</h2>
+        <pre id="policy" class="code"></pre>
+      </div>
+      <div class="card">
+        <h2>SDK Tool Call</h2>
+        <p>Simulate a tool call through the middleware.</p>
+        <form id="call-form">
+          <label>Agent ID <input name="agentId" value="fixture-agent-1" required></label>
+          <label>Tool <select name="tool">
+            <option value="SELECT">SELECT (read)</option>
+            <option value="INSERT">INSERT (write)</option>
+            <option value="UPDATE">UPDATE (write)</option>
+            <option value="DELETE">DELETE (delete)</option>
+          </select></label>
+          <label>Args (JSON) <input name="args" value='{"query":"SELECT * FROM users"}'></label>
+          <button type="submit">Submit tool call</button>
+        </form>
+        <div id="call-result" class="msg"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Pending Approvals</h2>
+      <div class="actions">
+        <button id="refresh-approvals">Refresh</button>
+        <label><input type="checkbox" id="show-all-statuses"> Show all statuses</label>
+      </div>
+      <table id="approvals-table">
+        <thead>
+          <tr><th>ID</th><th>Agent</th><th>Tool</th><th>Risk</th><th>Args</th><th>Status</th><th>Created</th><th>Actions</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="approvals-msg" class="msg"></div>
+    </div>
+
+    <div class="card">
+      <h2>Recent Decisions</h2>
+      <div class="actions">
+        <label>Filter agent <input id="filter-agent" placeholder="agent id"></label>
+        <label>Filter decision
+          <select id="filter-decision">
+            <option value="">all</option>
+            <option value="pass">pass</option>
+            <option value="block">block</option>
+            <option value="approval">approval</option>
+            <option value="approved">approved</option>
+            <option value="rejected">rejected</option>
+          </select>
+        </label>
+        <button id="refresh-decisions">Refresh</button>
+      </div>
+      <table id="decisions-table">
+        <thead>
+          <tr><th>ID</th><th>Agent</th><th>Tool</th><th>Risk</th><th>Decision</th><th>Reason</th><th>Created</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h2>Audit Verification</h2>
+      <button id="verify-audit">Verify audit chain</button>
+      <pre id="verify-result" class="code"></pre>
+    </div>
+  </main>
+
+  <footer>
+    <p><strong>About AaronWiseAI</strong> — AaronWiseAI builds practical, open-source tools for AI agents and developers, online and offline. Visit <a href="https://aaronwiseai.com/" target="_blank" rel="noopener">https://aaronwiseai.com/</a>.</p>
+    <p>Part of the AaronWiseAI open-source tool collection — <a href="https://aaronwiseai.com/" target="_blank" rel="noopener">https://aaronwiseai.com/</a></p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

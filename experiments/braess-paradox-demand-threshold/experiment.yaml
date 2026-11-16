@@ -1,0 +1,71 @@
+experiment: braess-paradox-demand-threshold
+name: Braess Paradox Demand Threshold Verification
+slug: braess-paradox-demand-threshold
+issue: 93
+source: private
+workflow: discovery
+createdAt: 2026-11-16T18:35:47.503Z
+
+# Signed hypothesis
+hypothesis: |
+  For the classic Braess traffic network with affine cost functions (S->A: f, A->T: 50,
+  S->B: 50, B->T: f, A->B: 1), there exists a critical demand D* such that:
+  - For D < D*, adding edge A->B reduces total travel cost at Wardrop equilibrium
+  - For D > D*, adding edge A->B increases total travel cost at Wardrop equilibrium (Braess paradox)
+  At D* = 98/3 ≈ 32.67, the total travel cost of both networks is equal.
+  At very high demand (D > 98), all users revert to the two original paths and the paradox vanishes.
+
+baseline: |
+  Braess network WITHOUT edge A->B. Wardrop equilibrium computed via Beckmann transformation
+  using projected gradient descent (Node.js). Total travel cost = sum_e flow_e * cost_e(flow_e).
+
+metric: total_travel_cost
+units: travel_time_units (arbitrary cost units consistent across both networks)
+threshold: |
+  - Pass: critical demand D* ≈ 32.67 within 5% numerical tolerance (|computed_D* - 32.67| / 32.67 < 0.05)
+  - Pass: for D > 98, total cost WITH edge equals total cost WITHOUT edge within 1% tolerance
+  - Fail: no demand D in [1, 150] where adding edge increases total cost (paradox absent)
+  - Fail: solver fails to converge for >10% of test cases
+stop_condition: |
+  Stop when either (a) all demand values from 1 to 150 have been tested, or
+  (b) solver fails to converge for >10% of test cases, or
+  (c) paradox is absent for all tested demands.
+
+# Assumptions
+assumptions:
+  - Wardrop (user) equilibrium: non-atomic selfish routing
+  - Affine cost functions: c_e(f) = a_e * f + b_e with a_e, b_e >= 0
+  - Standard Braess network topology (4 nodes S, A, B, T and 5 edges)
+  - Total demand D swept from 1 to 150 in steps of 1
+  - Uniqueness of equilibrium holds for affine costs (Beckmann transformation)
+
+# Failure mode
+most_likely_failure_mode: |
+  Numerical solver fails to converge at boundary demands (D near 49 or D near 98).
+  Mitigation: use exact analytical solutions as ground truth for the standard network.
+
+# Tools
+tools:
+  - node.js
+expected_runtime: "< 2 minutes"
+
+# Artifacts
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - run.cjs
+  - test_smoke.cjs
+  - results/braess_results.csv
+  - results/summary.json
+  - report.md
+  - run command: node experiments/braess-paradox-demand-threshold/run.cjs
+  - smoke test: node experiments/braess-paradox-demand-threshold/test_smoke.cjs
+
+# Result label
+result_label: calculated
+
+# Verdict
+verdict: supported
+critical_demand_computed: 32
+critical_demand_theoretical: 32.6667
+relative_error: 0.0204

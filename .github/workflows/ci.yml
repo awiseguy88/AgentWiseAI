@@ -101,3 +101,10 @@ jobs:
           npm ci
           npm run build
           npm test
+
+      - name: PixTrim Lab
+        working-directory: products/pixtrim-lab
+        run: |
+          npm ci
+          npm run build
+          npm test

@@ -1,0 +1,21 @@
+{
+  "valid": [
+    { "expression": "* * * * *", "label": "every minute" },
+    { "expression": "*/5 * * * *", "label": "every 5 minutes" },
+    { "expression": "0 * * * *", "label": "every hour" },
+    { "expression": "0 2 * * *", "label": "daily at 02:00" },
+    { "expression": "0 9 * * 1-5", "label": "weekdays at 09:00" },
+    { "expression": "0 0 1 * *", "label": "monthly on 1st" },
+    { "expression": "0 0 29 2 *", "label": "leap day Feb 29" },
+    { "expression": "30 4 1,15 * *", "label": "1st and 15th at 04:30" },
+    { "expression": "0 0 * * 7", "label": "Sunday midnight (7 normalized)" },
+    { "expression": "15 10 * JAN MON", "label": "Mondays in January at 10:15" }
+  ],
+  "invalid": [
+    { "expression": "60 * * * *", "reason": "minute out of range", "field": "minute" },
+    { "expression": "5-1 * * * *", "reason": "reversed range", "field": "minute" },
+    { "expression": "*/0 * * * *", "reason": "invalid step", "field": "minute" },
+    { "expression": "* * * *", "reason": "wrong field count", "field": "expression" },
+    { "expression": "* * * * FUNDAY", "reason": "unknown name", "field": "dayOfWeek" }
+  ]
+}

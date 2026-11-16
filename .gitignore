@@ -20,3 +20,6 @@ __pycache__/
 
 # experiment smoke outputs
 experiments/*/results_smoke/
+
+# test artifacts
+**/out-report.html

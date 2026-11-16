@@ -3,9 +3,7 @@ import fs from "fs";
 import path from "path";
 import http from "http";
 import net from "net";
-import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.resolve(__dirname, "../..");
 const SCENARIO_FILE = path.join(REPO_ROOT, "fixtures", "scenarios", "mixed-batch.json");
 const PORT = Number(process.env.DEMO_PORT || 3459);
@@ -24,7 +22,7 @@ async function main() {
   fs.mkdirSync(path.dirname(dbPath), { recursive: true });
   if (fs.existsSync(dbPath)) fs.unlinkSync(dbPath);
 
-  const { createApp } = await import("../../src/server.js");
+  const { createApp } = await import("../../src/server");
   const { app } = createApp(dbPath);
   const server = http.createServer(app);
   await new Promise<void>((resolve) => server.listen(PORT, "127.0.0.1", resolve));
@@ -96,11 +94,11 @@ async function main() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
     });
-    const data = await res.json();
+    const data: any = await res.json();
     console.log(`  ${item.id} -> item ${data.item?.id} ${data.deduped ? "(deduped/linked)" : ""}`);
   }
 
-  const queue = await (await fetch(`${BASE_URL}/api/inbox`)).json();
+  const queue: any = await (await fetch(`${BASE_URL}/api/inbox`)).json();
   const active = queue.items.filter((i: any) => ["pending", "snoozed", "needs-info"].includes(i.status));
   console.log("\n=== Numbered inbox ===");
   for (const it of active) {
@@ -117,7 +115,7 @@ async function main() {
     else response = { accepted: true, note: "Verified; close task." };
     return { id: it.id, response, responder: "demo-operator" };
   });
-  console.log("Resolving items:", resolutions.map((r) => r.id).join(", "));
+  console.log("Resolving items:", resolutions.map((r: any) => r.id).join(", "));
   const batchRes = await fetch(`${BASE_URL}/api/batch/resolve`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -134,11 +132,12 @@ async function main() {
     }
   }
   for (const [id, p] of socketResponses) {
-    const v = await Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 5000))]).catch((e) => ({ error: e.message }));
+    const v = await Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 5000))]).catch((e: any) => ({ error: e.message }));
     console.log(`  ${id} (socket):`, JSON.stringify(v).slice(0, 160));
   }
-  const cb = await Promise.race([callbackWait, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 5000))]).catch((e) => ({ error: e.message }));
+  const cb = await Promise.race([callbackWait, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 5000))]).catch((e: any) => ({ error: e.message }));
   console.log(`  approval (callback):`, JSON.stringify(cb).slice(0, 160));
+
   console.log("\n=== Export audit reports ===");
   const reportsDir = path.join(REPO_ROOT, "reports");
   fs.mkdirSync(reportsDir, { recursive: true });

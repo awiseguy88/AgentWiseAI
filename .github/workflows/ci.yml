@@ -108,3 +108,10 @@ jobs:
           npm ci
           npm run build
           npm test
+
+      - name: PicturaBox
+        working-directory: products/picturabox
+        run: |
+          npm ci
+          npm run build
+          npm test

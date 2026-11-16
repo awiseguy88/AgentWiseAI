@@ -35,7 +35,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | dsh-reddit-suite (DeepSeek Harness / Cordis host plugin) | [`dsh-reddit-suite/`](dsh-reddit-suite/) | A host plugin bundle for the DeepSeek Harness (DSH) that lets the agent use Reddit via **session cookie** and/or **OAuth**, with: | Merged |
 | AgentWiseAI — MCP server for local Lemonade image generation + social posts | [`mcp-lemonade-server/`](mcp-lemonade-server/) | An [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that: | Merged |
 | MCP Tool Discovery Gateway | [`mcp-tool-discovery-gateway/`](mcp-tool-discovery-gateway/) | Local Node.js gateway and CLI for searchable MCP tool discovery, on-demand schema fetching, and proxied invocation across configured stdio/HTTP servers. | Pending PR |
-| Agent Decision Triage | [`agent-decision-triage/`](agent-decision-triage/) | Local web app and CLI/webhook bridge for triaging decisions from parallel coding agents: structured question/approval/review/done-claim items, prioritized numbered inbox, batch resolve, and callback/file/socket response delivery with audit export. | Open [PR #66](https://github.com/awiseguy88/AgentWiseAI/pull/66) |
+| Agent Decision Triage | [`agent-decision-triage/`](agent-decision-triage/) | Local web app and CLI/webhook bridge for triaging decisions from parallel coding agents: structured question/approval/review/done-claim items, prioritized numbered inbox, batch resolve, and callback/file/socket response delivery with audit export. | Open [PR #67](https://github.com/awiseguy88/AgentWiseAI/pull/67) |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

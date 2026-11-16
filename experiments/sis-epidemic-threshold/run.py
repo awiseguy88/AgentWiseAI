@@ -456,11 +456,11 @@ def main():
     ap = argparse.ArgumentParser(description="SIS epidemic threshold finite-size experiment.")
     ap.add_argument("--N", type=str, default="500,1000,2000,4000",
                     help="comma-separated node counts")
-    ap.add_argument("--tau-list", type=str, default="0.25,0.30,0.34,0.38,0.44,0.50,0.56,0.65,0.75",
+    ap.add_argument("--tau-list", type=str, default="0.30,0.36,0.40,0.44,0.48,0.52,0.56,0.60,0.65",
                     help="comma-separated tau grid")
-    ap.add_argument("--graphs", type=str, default="6,5,4,3",
+    ap.add_argument("--graphs", type=str, default="4,4,3,3",
                     help="comma-separated graphs per N (matched to N order)")
-    ap.add_argument("--runs", type=str, default="3,3,2,2",
+    ap.add_argument("--runs", type=str, default="2,2,2,2",
                     help="comma-separated runs per graph per N")
     ap.add_argument("--burnin", type=float, default=5.0,
                     help="burn-in events as multiple of N")

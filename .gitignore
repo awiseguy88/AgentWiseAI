@@ -16,3 +16,4 @@ pnpm-debug.log*
 
 # Local tool state
 .local/
+__pycache__/

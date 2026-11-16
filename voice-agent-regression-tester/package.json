@@ -1,0 +1,19 @@
+{
+  "name": "voice-agent-regression-tester",
+  "version": "0.1.0",
+  "description": "Offline-first CLI that replays frozen voice-agent call scenarios against a text/HTTP endpoint, scores assertions, and emits HTML/JSON reports with CI-gating exit codes.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "bin": {
+    "voice-agent-regression-tester": "bin/voice-agent-regression-tester.js"
+  },
+  "main": "src/cli.js",
+  "scripts": {
+    "test": "node --test test/smoke.test.js",
+    "smoke": "node bin/voice-agent-regression-tester.js --fixtures fixtures/scenarios.json --agent fixtures/stub-agent-ok.json --out reports/smoke"
+  },
+  "keywords": ["voice-agent", "regression", "testing", "cli", "offline"],
+  "engines": {
+    "node": ">=18"
+  }
+}

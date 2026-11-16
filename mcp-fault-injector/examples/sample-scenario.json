@@ -1,0 +1,25 @@
+{
+  "name": "sample-mcp-scenario",
+  "description": "Calls a few MCP methods and checks whether faulted responses are detected.",
+  "steps": [
+    {
+      "name": "initialize",
+      "method": "initialize",
+      "expectWellFormed": true,
+      "requiredFields": ["protocolVersion"]
+    },
+    {
+      "name": "list-tools",
+      "method": "tools/list",
+      "expectWellFormed": true,
+      "requiredFields": ["tools"]
+    },
+    {
+      "name": "call-echo",
+      "method": "tools/call",
+      "params": { "name": "echo", "arguments": { "text": "hello" } },
+      "expectWellFormed": true,
+      "requiredFields": ["content"]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "acceptance1": {
+    "app": { "name": "billing-reports", "owner": "dev-a", "reviewer": "reviewer-1", "audience": "team-b", "initialScope": "read-only reports" },
+    "expandedRelease": { "version": "2.0.0", "dataScope": "write billing records" }
+  },
+  "acceptance2": {
+    "app": { "name": "team-c-tool", "owner": "dev-b", "reviewer": "reviewer-1", "audience": "team-c", "dataScope": "read-only" }
+  },
+  "acceptance3": {
+    "webhook": { "app_name": "unregistered-shadow-app", "changed_files": ["tools/unregistered-shadow-app/index.js"], "repo": "internal/tools", "pr": 42 }
+  }
+}

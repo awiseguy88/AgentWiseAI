@@ -1,4 +1,5 @@
 node_modules/
 .audit/
 audit-output/
+demo/output/
 *.log

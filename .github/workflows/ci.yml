@@ -72,3 +72,10 @@ jobs:
           npm ci
           npm run typecheck
           npm run build
+
+      - name: DEEPFIELD
+        working-directory: deepfield
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build

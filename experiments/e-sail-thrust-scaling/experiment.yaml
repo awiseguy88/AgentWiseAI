@@ -1,0 +1,96 @@
+experiment: e-sail-thrust-scaling
+name: E-Sail Thrust Scaling Exponent
+slug: e-sail-thrust-scaling
+issue: 99
+source: issue #99 (awiseguy88/AgentWiseAI)
+workflow: discovery
+createdAt: 2026-11-16T19:27:00.000Z
+
+# Signed hypothesis
+hypothesis: |
+  Under the simplified parametric E-sail sheath model with n(r) = n1*r_AU^-2,
+  constant v_sw, and b_eff(r) = k*lambda_D(r), the fitted radial decay exponent
+  alpha in F'(r) = 2*b_eff(r)*n(r)*m_p*v_sw^2 ~ r^-alpha is:
+  - alpha = 2.00 (fixed b_eff baseline, photon-pressure-like geometric scaling),
+  - alpha = 1.00 (isothermal electrons, beta = 0, so lambda_D ~ r),
+  - alpha in [1.00, 1.35] for Te(r) = T_e1*r^-beta with beta in [0, 0.7],
+  - alpha increases monotonically with beta, and beta = 1/3 gives alpha = 7/6
+    ~ 1.1667, consistent with the cited engineering estimate.
+  The cited ~1/r^(7/6) E-sail scaling is therefore reproducible under a
+  plausible slow electron-temperature decay (beta = 1/3).
+
+baseline: |
+  Fixed effective collection/deflection radius b_eff = b_0 (no sheath growth):
+  F'(r) = 2*b_0*n1*m_p*v_sw^2 / r^2, so alpha_baseline = 2.00.
+
+metric: radial_scaling_exponent_alpha
+
+units:
+  r: AU
+  n: m^-3
+  T_e: K
+  v_sw: m/s
+  F': N/m
+  alpha: dimensionless
+  b_eff: m
+  lambda_D: m
+
+threshold: |
+  PASS if all of:
+    (1) fixed-b_eff baseline yields alpha = 2.00 +/- 0.01;
+    (2) isothermal case (beta = 0) yields alpha = 1.00 +/- 0.02;
+    (3) for beta in [0, 0.7], fitted alpha increases monotonically with beta
+        and stays within [1.00, 1.35];
+    (4) at least one tested beta produces alpha within 5% of 7/6 ~ 1.1667.
+  FAIL if baseline or isothermal exponents deviate beyond tolerance, or if no
+  beta in [0, 0.7] gives alpha within 10% of 7/6.
+  INCONCLUSIVE if numerical fitting is unstable or results depend on
+  unphysical parameter choices not specified above.
+
+stop_condition: |
+  Stop when all specified beta cases and baseline/sensitivity runs complete,
+  exponents are fitted with reported R^2, and pass/fail is evaluated; or if
+  implementation cannot produce stable numeric fits (inconclusive).
+
+# Assumptions
+assumptions:
+  - Radial solar wind outflow, n(r) ~ r^-2, constant bulk speed v_sw.
+  - Electron temperature follows a simple power law T_e ~ r^-beta (parametric
+    sensitivity, not a full solar-wind model).
+  - Effective proton deflection impact parameter scales linearly with local
+    Debye length (b_eff = C*lambda_D) as a first-order sheath approximation.
+  - Tether potential high enough that V_0 >> V_1 (momentum transfer not cut off
+    by insufficient bias) over the modeled range; cutoff effects explored in
+    sensitivity only.
+  - 1 AU nominal: n1 = 7e6 m^-3, T_e1 = 1.5e5 K (representative),
+    v_sw = 400 km/s.
+
+# Failure mode
+most_likely_failure_mode: |
+  The simple b_eff ~ lambda_D model may not reproduce 7/6 for any reasonable
+  beta because the actual sheath/impact parameter depends nonlinearly on
+  V_0/(m_p v^2/2e) and trapped-electron physics (Janhunen 2015 PIC results),
+  making alpha deviate from the Debye-length scaling argument.
+
+# Tools
+tools:
+  - python3 (standard library only)
+expected_runtime: "< 30 seconds"
+
+# Artifacts
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - run.py
+  - test_smoke.py
+  - results/e-sail-thrust-scaling.csv
+  - results/summary.json
+  - report.md
+  - run command: python experiments/e-sail-thrust-scaling/run.py
+  - smoke test: python experiments/e-sail-thrust-scaling/test_smoke.py
+
+# Result label
+result_label: calculated
+
+# Verdict (filled after run)
+verdict: supported

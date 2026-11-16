@@ -1,0 +1,110 @@
+{
+  "verdict": "supported",
+  "result_label": "calculated",
+  "n_points_per_case": 200,
+  "r_range_AU": [
+    1.0,
+    20.0
+  ],
+  "constants": {
+    "n_1AU_m3": 7000000.0,
+    "Te_1AU_K": 150000.0,
+    "v_sw_m_s": 400000.0,
+    "m_p_kg": 1.673e-27
+  },
+  "cases": [
+    {
+      "case": "baseline_fixed_b_eff",
+      "beta": null,
+      "b_max_m": null,
+      "b0_m": 10.10188039158554,
+      "alpha": 2.0,
+      "r_squared": 1.0
+    },
+    {
+      "case": "sheath_beta_beta_0.0000",
+      "beta": 0.0,
+      "b_max_m": null,
+      "b0_m": null,
+      "alpha": 1.0,
+      "r_squared": 1.0
+    },
+    {
+      "case": "sheath_beta_beta_0.2000",
+      "beta": 0.2,
+      "b_max_m": null,
+      "b0_m": null,
+      "alpha": 1.1,
+      "r_squared": 1.0
+    },
+    {
+      "case": "sheath_beta_beta_1_over_3",
+      "beta": 0.3333333333333333,
+      "b_max_m": null,
+      "b0_m": null,
+      "alpha": 1.1666666666666665,
+      "r_squared": 1.0
+    },
+    {
+      "case": "sheath_beta_beta_0.5000",
+      "beta": 0.5,
+      "b_max_m": null,
+      "b0_m": null,
+      "alpha": 1.25,
+      "r_squared": 1.0
+    },
+    {
+      "case": "sheath_beta_beta_0.7000",
+      "beta": 0.7,
+      "b_max_m": null,
+      "b0_m": null,
+      "alpha": 1.3499999999999999,
+      "r_squared": 1.0
+    },
+    {
+      "case": "bounded_b_max_30m",
+      "beta": 0.3333333333333333,
+      "b_max_m": 30.0,
+      "b0_m": null,
+      "alpha": 1.6624912018843032,
+      "r_squared": 0.9852687891174685
+    },
+    {
+      "case": "bounded_b_max_10m",
+      "beta": 0.3333333333333333,
+      "b_max_m": 10.0,
+      "b0_m": null,
+      "alpha": 2.0,
+      "r_squared": 1.0
+    }
+  ],
+  "thresholds": {
+    "baseline_alpha_2.00_pm_0.01": {
+      "value": 2.0,
+      "ok": true
+    },
+    "isothermal_alpha_1.00_pm_0.02": {
+      "value": 1.0,
+      "ok": true
+    },
+    "monotonic_in_beta": {
+      "ok": true,
+      "alphas": [
+        1.0,
+        1.1,
+        1.1666666666666665,
+        1.25,
+        1.3499999999999999
+      ]
+    },
+    "alpha_in_1.00_1.35": {
+      "ok": true
+    },
+    "closest_to_7_over_6": {
+      "case": "sheath_beta_beta_1_over_3",
+      "alpha": 1.1666666666666665,
+      "target": 1.1666666666666667,
+      "within_5pct": true
+    }
+  }
+}

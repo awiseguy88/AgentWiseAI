@@ -1,0 +1,11 @@
+{
+  "id": "debounce",
+  "title": "Implement debounce",
+  "type": "bundled",
+  "prompt": "Write a function debounce(fn, ms) that returns a debounced version of fn which delays calling fn until ms have passed since the last call. Return only the function.",
+  "checker": {
+    "contains": ["debounce", "setTimeout"],
+    "containsAll": ["return"],
+    "notContains": []
+  }
+}

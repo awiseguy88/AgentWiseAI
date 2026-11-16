@@ -1,0 +1,11 @@
+{
+  "id": "prime-check",
+  "title": "Implement prime number check",
+  "type": "bundled",
+  "prompt": "Write a function isPrime(n) that returns true if n is prime and false otherwise. Return only the function.",
+  "checker": {
+    "contains": ["isPrime"],
+    "containsAll": ["return"],
+    "notContains": ["Math.sqrt"]
+  }
+}

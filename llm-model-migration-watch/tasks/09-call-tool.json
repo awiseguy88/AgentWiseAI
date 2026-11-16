@@ -1,0 +1,9 @@
+{
+  "id": "call-tool",
+  "title": "Agent must call the correct tool",
+  "type": "bundled",
+  "prompt": "You are an agent with two tools: `search` (searches a knowledge base) and `read` (reads a file). The user asks: \"What is the capital of France?\" Which tool should you call? Respond with only the tool name.",
+  "checker": {
+    "tool": "search"
+  }
+}

@@ -40,6 +40,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | dsh-reddit-suite (DeepSeek Harness / Cordis host plugin) | [`dsh-reddit-suite/`](dsh-reddit-suite/) | A host plugin bundle for the DeepSeek Harness (DSH) that lets the agent use Reddit via **session cookie** and/or **OAuth**, with: | Merged |
 | AgentWiseAI — MCP server for local Lemonade image generation + social posts | [`mcp-lemonade-server/`](mcp-lemonade-server/) | An [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that: | Merged |
 | MCP Tool Discovery Gateway | [`mcp-tool-discovery-gateway/`](mcp-tool-discovery-gateway/) | Local Node.js gateway and CLI for searchable MCP tool discovery, on-demand schema fetching, and proxied invocation across configured stdio/HTTP servers. | Pending PR |
+| LLM Model Migration Watch | [`llm-model-migration-watch/`](llm-model-migration-watch/) | Self-hosted CLI runner that loads task suites (bundled mini agent scenarios + repo test extraction), runs them against a current and candidate models, and emits an HTML/JSON comparison report with pass rate, cost, latency, tool-call accuracy, and a go/no-go recommendation with projected cost savings. | Pending PR |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

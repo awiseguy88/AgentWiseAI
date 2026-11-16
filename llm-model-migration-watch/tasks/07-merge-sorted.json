@@ -1,0 +1,11 @@
+{
+  "id": "merge-sorted",
+  "title": "Merge two sorted arrays",
+  "type": "bundled",
+  "prompt": "Write a function mergeSorted(a, b) that merges two sorted arrays into one sorted array. Return only the function.",
+  "checker": {
+    "contains": ["mergeSorted"],
+    "containsAll": ["return"],
+    "notContains": ["concat"]
+  }
+}

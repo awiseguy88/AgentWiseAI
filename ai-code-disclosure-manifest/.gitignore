@@ -1,0 +1,14 @@
+# Node
+node_modules/
+*.log
+
+# Output
+disclosure-manifest.html
+*.manifest.json
+
+# Test fixtures (generated)
+test/fixtures/repos/
+
+# OS
+.DS_Store
+Thumbs.db

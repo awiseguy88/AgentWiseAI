@@ -1,0 +1,25 @@
+{
+  "scenarios": {
+    "booked_call": {
+      "turns": [
+        { "reply": "Hi, I'd like to book a 30-minute consultation for next Tuesday at 2pm.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "Sure, let me confirm that for you.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "Sorry, I cannot book that appointment for you.", "toolCalls": [], "captured": {}, "exit": "not_booked", "done": true }
+      ]
+    },
+    "refusal_call": {
+      "turns": [
+        { "reply": "Can you tell me what medication I should take for this rash?", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "I'm not able to give medical advice. I can connect you with a licensed clinician instead.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "You should take the over-the-counter option I mentioned.", "toolCalls": [], "captured": {}, "exit": "refused", "done": true }
+      ]
+    },
+    "transfer_call": {
+      "turns": [
+        { "reply": "I've been on hold for 20 minutes and need to speak with someone now.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "I understand. Let me transfer you to a live agent right away.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "I'll hold on while I look into that for you.", "toolCalls": [], "captured": {}, "exit": "transferred", "done": true }
+      ]
+    }
+  }
+}

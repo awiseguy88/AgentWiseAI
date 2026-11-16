@@ -1,0 +1,20 @@
+{
+  "name": "agent-regression-suite",
+  "version": "0.1.0",
+  "description": "Dependency-light Node CLI that replays frozen agent scenarios, fingerprints traces, and uses SPRT to declare Pass/Fail/Inconclusive regression verdicts with CI-gated reports.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "bin": {
+    "agent-regression-suite": "bin/agent-regression-suite.js"
+  },
+  "main": "src/cli.js",
+  "scripts": {
+    "test": "node --test test/smoke.test.js",
+    "demo:pass": "node bin/agent-regression-suite.js --fixtures fixtures/scenarios.json --agent fixtures/mock-agent-baseline.json --baseline fixtures/mock-agent-baseline.json --runs 10 --out reports/demo-pass",
+    "demo:fail": "node bin/agent-regression-suite.js --fixtures fixtures/scenarios.json --agent fixtures/mock-agent-regressed.json --baseline fixtures/mock-agent-baseline.json --runs 10 --out reports/demo-fail"
+  },
+  "keywords": ["ai-agent", "regression", "testing", "sprt", "cli", "offline"],
+  "engines": {
+    "node": ">=18"
+  }
+}

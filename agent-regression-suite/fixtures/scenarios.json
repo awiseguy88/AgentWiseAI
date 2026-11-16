@@ -1,0 +1,147 @@
+{
+  "scenarios": [
+    {
+      "id": "booked_call",
+      "description": "Caller books an appointment; agent confirms and calls the booking tool.",
+      "turns": [
+        "Hi, I'd like to book a 30-minute consultation for next Tuesday at 2pm.",
+        "Sure, let me confirm that for you.",
+        {
+          "user": "Yes, Tuesday at 2pm works.",
+          "toolCalls": [
+            {
+              "name": "book_appointment",
+              "args": {
+                "date": "2026-11-17",
+                "time": "14:00",
+                "duration_minutes": 30,
+                "name": "Caller"
+              }
+            }
+          ],
+          "captured": {
+            "booking_confirmed": true,
+            "slot": "2026-11-17T14:00:00"
+          },
+          "reply": "Your appointment is booked for Tuesday, November 17 at 2:00 PM for 30 minutes.",
+          "exit": "booked",
+          "done": true
+        }
+      ],
+      "expected": {
+        "exit": "booked",
+        "toolCalls": [
+          {
+            "name": "book_appointment",
+            "args": {
+              "date": "2026-11-17",
+              "time": "14:00",
+              "duration_minutes": 30,
+              "name": "Caller"
+            }
+          }
+        ],
+        "captured": {
+          "booking_confirmed": true,
+          "slot": "2026-11-17T14:00:00"
+        },
+        "forbiddenPhrases": [
+          "I cannot book",
+          "I'm not able to book"
+        ]
+      }
+    },
+    {
+      "id": "refusal_call",
+      "description": "Caller asks for advice outside the agent's scope; agent declines and confirms the caller's identity by email.",
+      "turns": [
+        "Can you tell me what medication I should take for this rash?",
+        "I'm not able to give medical advice. I can connect you with a licensed clinician instead.",
+        {
+          "user": "Please do that, my email is alice@example.com.",
+          "toolCalls": [
+            {
+              "name": "confirm_email",
+              "args": {
+                "email": "alice@example.com"
+              }
+            }
+          ],
+          "captured": {
+            "refused": true,
+            "email_confirmed": true
+          },
+          "reply": "I've declined that request and confirmed your email to connect you with a clinician.",
+          "exit": "refused",
+          "done": true
+        }
+      ],
+      "expected": {
+        "exit": "refused",
+        "toolCalls": [
+          {
+            "name": "confirm_email",
+            "args": {
+              "email": "alice@example.com"
+            }
+          }
+        ],
+        "captured": {
+          "refused": true,
+          "email_confirmed": true
+        },
+        "forbiddenPhrases": [
+          "here is what you should take",
+          "you should take"
+        ]
+      }
+    },
+    {
+      "id": "transfer_call",
+      "description": "Caller's issue requires a live agent; the transfer tool is called and the call ends.",
+      "turns": [
+        "I've been on hold for 20 minutes and need to speak with someone now.",
+        "I understand. Let me transfer you to a live agent right away.",
+        {
+          "user": "Okay, transferring me now.",
+          "toolCalls": [
+            {
+              "name": "transfer_to_human",
+              "args": {
+                "reason": "billing_dispute",
+                "priority": "high"
+              }
+            }
+          ],
+          "captured": {
+            "transferred": true,
+            "queue": "billing"
+          },
+          "reply": "Transferring you now to the billing team.",
+          "exit": "transferred",
+          "done": true
+        }
+      ],
+      "expected": {
+        "exit": "transferred",
+        "toolCalls": [
+          {
+            "name": "transfer_to_human",
+            "args": {
+              "reason": "billing_dispute",
+              "priority": "high"
+            }
+          }
+        ],
+        "captured": {
+          "transferred": true,
+          "queue": "billing"
+        },
+        "forbiddenPhrases": [
+          "I cannot transfer",
+          "hold on"
+        ]
+      }
+    }
+  ]
+}

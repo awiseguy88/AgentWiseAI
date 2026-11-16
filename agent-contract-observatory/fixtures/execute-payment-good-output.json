@@ -1,0 +1,6 @@
+{
+  "transactionId": "tx-9",
+  "amount": 12.5,
+  "currency": "EUR",
+  "status": "settled"
+}

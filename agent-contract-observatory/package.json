@@ -1,0 +1,20 @@
+{
+  "name": "agent-contract-observatory",
+  "version": "0.1.0",
+  "description": "Local Node CLI plus web UI that loads versioned tool contracts, validates tool-call inputs before execution and tool outputs after execution, and emits HTML/JSON violation reports naming the exact field.",
+  "private": true,
+  "type": "commonjs",
+  "bin": {
+    "agent-contract-observatory": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/smoke.js",
+    "start": "node src/cli.js serve",
+    "serve": "node src/cli.js serve"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -119,7 +119,7 @@ The experiment **supports** the hypothesis that:
 ## Files
 
 - `run.py`: Main simulation script (reproduction command)
-- `test_smoke.py`: Smoke tests (run with `python test_smoke.py`)
+- `test_smoke.py`: Smoke tests (run with `python test_smoke.py` or `python3`)
 - `results/results_standard.csv`: Standard network sweep (demand vs costs)
 - `results/cost_vs_demand.png`: Plot of total cost vs demand
 - `results/analytical_vs_numerical.csv`: Analytical vs numerical comparison
@@ -131,8 +131,11 @@ The experiment **supports** the hypothesis that:
 ## Reproduction
 
 ```bash
+# use python3 if python is unavailable
 python experiments/braess-paradox-demand-threshold/run.py
 python experiments/braess-paradox-demand-threshold/test_smoke.py
 ```
+
+**Dependencies:** Python 3.8+ with `numpy`, `scipy`, `matplotlib`.
 
 All results are labeled **calculated** (analytical) or **simulated** (numerical solver) as indicated in the CSV files.

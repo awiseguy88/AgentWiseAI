@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agent Decision Triage</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Agent Decision Triage</h1>
+    <p class="subtitle">Prioritized inbox for decisions from parallel coding agents. Resolve in one numbered batch.</p>
+    <div class="toolbar">
+      <button id="refreshBtn">Refresh</button>
+      <a id="exportJson" href="/api/export.json" target="_blank">Export JSON audit</a>
+      <a id="exportHtml" href="/api/export.html" target="_blank">Export HTML audit</a>
+      <span id="statusMsg"></span>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Numbered Inbox</h2>
+      <p class="hint">Enter responses for items (JSON or plain text), select responder name, then <strong>Resolve selected batch</strong>. Duplicate clarification questions are linked to a primary item and delivered together.</p>
+      <div class="batch-bar">
+        <label>Responder <input id="responderName" value="operator" /></label>
+        <button id="resolveBatchBtn" class="primary">Resolve selected batch</button>
+      </div>
+      <div id="inbox"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Recently resolved / failed</h2>
+      <div id="history"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

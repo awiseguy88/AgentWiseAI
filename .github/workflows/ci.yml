@@ -94,3 +94,9 @@ jobs:
           npm ci
           npm run typecheck
           npm test
+
+      - name: Agent Decision Triage
+        working-directory: agent-decision-triage
+        run: |
+          npm ci
+          npm test

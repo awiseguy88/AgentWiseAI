@@ -26,6 +26,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | AI Code Disclosure Manifest | [`ai-code-disclosure-manifest/`](ai-code-disclosure-manifest/) | Scans Git repos for AI-assist markers and generates offline HTML/JSON disclosure manifests with notice templates. | Merged in [PR #30](https://github.com/awiseguy88/AgentWiseAI/pull/30) |
 | Voice Agent Regression Tester | [`voice-agent-regression-tester/`](voice-agent-regression-tester/) | Offline-first CLI that replays frozen voice-agent call scenarios against a text/HTTP endpoint, scores assertions, and emits HTML/JSON reports with CI-gating exit codes. | Merged in [PR #45](https://github.com/awiseguy88/AgentWiseAI/pull/45) |
 | AgentWise Studio | [`agentwise-studio/`](agentwise-studio/) | Local-first app to import agent transcripts, separate verified vs unverified completion claims, inspect slow/repeated steps, persist runs in SQLite, and compare runs. | Merged in [PR #47](https://github.com/awiseguy88/AgentWiseAI/pull/47) |
+| DEEPFIELD | [`deepfield/`](deepfield/) | Cinematic 3D Milky Way explorer and planetary simulator with Earth-orbit start, flight modes, HUD, and persistence. | Merged in [PR #50](https://github.com/awiseguy88/AgentWiseAI/pull/50) |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

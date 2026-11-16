@@ -1,0 +1,95 @@
+experiment: sis-epidemic-threshold
+title: "Experiment: SIS Epidemic Threshold on Random Regular Graphs (Finite-Size Correction Check)"
+name: SIS Epidemic Threshold — Finite-Size Correction
+slug: sis-epidemic-threshold
+issue: 105
+source: private
+workflow: discovery
+createdAt: 2026-11-16T20:00:00.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  For continuous-time SIS (Gillespie dynamics) on random 3-regular graphs with
+  recovery rate μ = 1, the inferred effective epidemic threshold τ_c^eff(N)
+  estimated from the quasistationary infected-fraction curve f*(τ) moves toward
+  the mean-field value 0.5 as N increases and is within ±0.03 of 0.5 by N = 4000.
+  A naive claim that τ_c^eff ≈ 0.45 holds for N ≤ 1000 should be rejected if the
+  data show convergence toward 0.5.
+
+baseline:
+  description: |
+    Homogeneous / degree-based mean-field prediction τ_c,MF = 1/(d-1) = 0.5 for
+    d = 3 (the value this experiment tests convergence toward). The spectral
+    (quenched mean-field) prediction is τ_c = 1/d = 1/3 and is recorded as the
+    reference for interpretation in report.md.
+  value: 0.5
+
+metric:
+  primary:
+    name: "τ_c^eff(N)"
+    definition: |
+      Effective epidemic threshold for a given N, estimated from the
+      quasistationary infected-fraction curve f*(τ): the mean infected fraction
+      measured in the sampling window (after burn-in) as a function of τ. For
+      each N, f*(τ) is the mean over all graph realizations and runs at each τ.
+      τ_c^eff(N) is the inflection (center) of the logistic fit
+      f*(τ) = L0 + (L1 - L0)/(1 + exp(-k(τ - τ_c))) to the mean f*(τ) curve.
+  secondary:
+    name: "susceptibility peak χ(τ)"
+    definition: |
+      χ(τ) = N · (⟨f*²⟩ - ⟨f*⟩²) / ⟨f*⟩, whose peak location is an independent
+      (sensitivity) estimate of the threshold.
+
+uncertainty:
+  method: "Bootstrap (resample graph-realization × run units with replacement, B = 2000)"
+  interval: "95% percentile CI on τ_c^eff(N)"
+
+units:
+  tau: "dimensionless (infection rate / recovery rate; μ = 1 fixed)"
+  f_star: "fraction infected in [0, 1] (dimensionless)"
+  N: "node count (dimensionless)"
+  susceptibility: "dimensionless"
+
+thresholds:
+  pass_conditions:
+    - "|τ_c^eff(4000) - 0.5| ≤ 0.03 AND τ_c^eff shows a trend toward 0.5 across increasing N (within CI)."
+  fail_conditions:
+    - "|τ_c^eff(4000) - 0.5| > 0.08 OR no trend toward 0.5 across increasing N."
+  inconclusive_conditions:
+    - "Stochastic noise prevents a stable logistic fit or bootstrap CI at N = 4000, or >30% of runs fail to reach the quasistationary regime."
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "Continuous-time SIS via Gillespie direct method (exact stochastic simulation of the Markov chain)."
+  - "Random 3-regular graphs (d = 3), generated with NetworkX random_regular_graph (configuration model)."
+  - "Recovery rate μ = 1 fixed; infection rate τ varied over a grid spanning the transition."
+  - "Per-edge infection rate: each infected node infects each susceptible neighbor at rate τ."
+  - "Quasistationary protocol: discard burn-in of 5N events, then sample over the next 20N events (per run). If the epidemic reaches the absorbing state (I = 0) during sampling, a single node is reintroduced and the event is counted; the run is flagged."
+  - "At least 10 graph realizations × 5 runs per (N, τ) for N ≤ 1000; reduced to 8×4 (N=2000) and 6×3 (N=4000) for runtime, with justification recorded in report.md."
+  - "All random seeds are recorded (master seed + derived per-config seeds)."
+
+stop_condition:
+  - "Complete all (N, τ) grid cells with the recorded counts, or stop early if >30% of runs fail to reach the quasistationary regime, or if runtime/memory errors prevent completion."
+  - "If the logistic fit fails or the bootstrap CI is unbounded at N = 4000, report inconclusive."
+
+tools:
+  - "Python 3.10+"
+  - "NumPy"
+  - "NetworkX (random_regular_graph)"
+expected_runtime: "< 10 minutes on a single core for the default grid (reduced for CI)"
+reproduction_command: "python experiments/sis-epidemic-threshold/run.py"
+ci_command: "python experiments/sis-epidemic-threshold/run.py --N 500 --tau-list 0.30,0.38,0.45,0.55,0.70 --graphs 3 --runs 2 --burnin 3 --sample 8 --no-plot"
+smoke_test: "python experiments/sis-epidemic-threshold/test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - run.py
+  - test_smoke.py
+  - results/sis_results.csv
+  - results/summary.json
+  - report.md
+
+result_label: simulated
+
+verdict: TBD

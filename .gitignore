@@ -17,3 +17,6 @@ pnpm-debug.log*
 # Local tool state
 .local/
 __pycache__/
+
+# experiment smoke outputs
+experiments/*/results_smoke/

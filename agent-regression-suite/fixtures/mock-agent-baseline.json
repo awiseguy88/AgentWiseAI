@@ -1,0 +1,25 @@
+{
+  "scenarios": {
+    "booked_call": {
+      "turns": [
+        { "reply": "Hi, I'd like to book a 30-minute consultation for next Tuesday at 2pm.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "Sure, let me confirm that for you.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "Your appointment is booked for Tuesday, November 17 at 2:00 PM for 30 minutes.", "toolCalls": [ { "name": "book_appointment", "args": { "date": "2026-11-17", "time": "14:00", "duration_minutes": 30, "name": "Caller" } } ], "captured": { "booking_confirmed": true, "slot": "2026-11-17T14:00:00" }, "exit": "booked", "done": true }
+      ]
+    },
+    "refusal_call": {
+      "turns": [
+        { "reply": "Can you tell me what medication I should take for this rash?", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "I'm not able to give medical advice. I can connect you with a licensed clinician instead.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "I've declined that request and confirmed your email to connect you with a clinician.", "toolCalls": [ { "name": "confirm_email", "args": { "email": "alice@example.com" } } ], "captured": { "refused": true, "email_confirmed": true }, "exit": "refused", "done": true }
+      ]
+    },
+    "transfer_call": {
+      "turns": [
+        { "reply": "I've been on hold for 20 minutes and need to speak with someone now.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "I understand. Let me transfer you to a live agent right away.", "toolCalls": [], "captured": {}, "exit": null, "done": false },
+        { "reply": "Transferring you now to the billing team.", "toolCalls": [ { "name": "transfer_to_human", "args": { "reason": "billing_dispute", "priority": "high" } } ], "captured": { "transferred": true, "queue": "billing" }, "exit": "transferred", "done": true }
+      ]
+    }
+  }
+}

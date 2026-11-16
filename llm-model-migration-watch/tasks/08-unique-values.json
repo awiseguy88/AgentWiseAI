@@ -1,0 +1,11 @@
+{
+  "id": "unique-values",
+  "title": "Return unique values from array",
+  "type": "bundled",
+  "prompt": "Write a function unique(arr) that returns an array containing only the unique values from arr, preserving order of first appearance. Return only the function.",
+  "checker": {
+    "contains": ["unique"],
+    "containsAll": ["return"],
+    "notContains": ["Set"]
+  }
+}

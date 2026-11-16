@@ -1,0 +1,10 @@
+{
+  "id": "refactor-async",
+  "title": "Refactor callback to async/await",
+  "type": "bundled",
+  "prompt": "Rewrite this callback-based fetch into async/await with try/catch:\n\nfunction fetchData(url, cb) {\n  fetch(url).then(r => r.json()).then(data => cb(null, data)).catch(err => cb(err));\n}\n\nReturn only the rewritten function.",
+  "checker": {
+    "contains": ["async", "await"],
+    "notContains": [".then(", ".catch("]
+  }
+}

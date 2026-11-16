@@ -8,6 +8,7 @@ const REPO_ROOT = path.resolve(__dirname, "../..");
 const SCENARIO_FILE = path.join(REPO_ROOT, "fixtures", "scenarios", "mixed-batch.json");
 const PORT = Number(process.env.DEMO_PORT || 3459);
 const BASE_URL = `http://127.0.0.1:${PORT}`;
+const isWin = process.platform === "win32";
 
 interface ScenarioItem {
   id: string;
@@ -44,7 +45,7 @@ async function main() {
       const t = path.join(REPO_ROOT, ".local", `demo-${item.id}.json`);
       fileTargets.set(item.id, t);
       item.channelTarget = t;
-    } else if (item.channel === "socket") {
+    } else if (item.channel === "socket" && !isWin) {
       const t = path.join(REPO_ROOT, ".local", `demo-${item.id}.sock`);
       socketTargets.set(item.id, t);
       item.channelTarget = t;
@@ -61,6 +62,12 @@ async function main() {
       });
       socketServers.push(srv);
       await new Promise<void>((resolve) => srv.listen(t, resolve));
+    } else if (item.channel === "socket" && isWin) {
+      // Windows runners cannot listen on unix domain sockets; fall back to file channel
+      const t = path.join(REPO_ROOT, ".local", `demo-${item.id}.json`);
+      fileTargets.set(item.id, t);
+      item.channel = "file";
+      item.channelTarget = t;
     } else if (item.channel === "callback") {
       if (!callbackServer) {
         let resolveCb: (v: any) => void = () => {};
@@ -131,9 +138,11 @@ async function main() {
       console.log(`  ${id} (file):`, fs.readFileSync(target, "utf8").trim().slice(0, 160));
     }
   }
-  for (const [id, p] of socketResponses) {
-    const v = await Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 5000))]).catch((e: any) => ({ error: e.message }));
-    console.log(`  ${id} (socket):`, JSON.stringify(v).slice(0, 160));
+  if (!isWin) {
+    for (const [id, p] of socketResponses) {
+      const v = await Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 5000))]).catch((e: any) => ({ error: e.message }));
+      console.log(`  ${id} (socket):`, JSON.stringify(v).slice(0, 160));
+    }
   }
   const cb = await Promise.race([callbackWait, new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), 5000))]).catch((e: any) => ({ error: e.message }));
   console.log(`  approval (callback):`, JSON.stringify(cb).slice(0, 160));

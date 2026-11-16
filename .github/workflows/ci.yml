@@ -116,6 +116,14 @@ jobs:
           npm run build
           npm test
 
+      - name: TinySqueeze
+        working-directory: products/tinysqueeze
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+          npm test
+
       - name: Chmod Lab
         working-directory: products/chmod-lab
         run: |

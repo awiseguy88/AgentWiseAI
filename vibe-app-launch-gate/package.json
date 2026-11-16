@@ -1,0 +1,20 @@
+{
+  "name": "vibe-app-launch-gate",
+  "version": "0.1.0",
+  "description": "Self-hosted governance gate for internal vibe-coded tools: app registry, ownership, release approval workflow, audit log, and CI shadow-IT detection.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "node --test test/smoke.mjs"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

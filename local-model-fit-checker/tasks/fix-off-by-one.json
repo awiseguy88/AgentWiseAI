@@ -1,0 +1,10 @@
+{
+  "id": "fix-off-by-one",
+  "title": "Fix off-by-one in sum loop",
+  "type": "bundled",
+  "prompt": "Fix this function so it sums all integers from 1 to n inclusive. Current buggy code:\n\nfunction sum(n) {\n  let s = 0;\n  for (let i = 1; i < n; i++) {\n    s += i;\n  }\n  return s;\n}\n\nReturn only the corrected function.",
+  "checker": {
+    "contains": ["i <= n", "i < n + 1"],
+    "notContains": ["i < n"]
+  }
+}

@@ -1,0 +1,4 @@
+local-model-fit-checker-report/
+*.log
+tmp/
+.DS_Store

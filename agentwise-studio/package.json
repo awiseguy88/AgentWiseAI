@@ -1,0 +1,21 @@
+{
+  "name": "agentwise-studio",
+  "version": "0.1.0",
+  "description": "Local-first app for inspecting agent runs: verified vs unverified completion claims, slow/repeated step analysis, SQLite persistence, run loading and comparison.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "private": true,
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "false-positive-regression",
+  "description": "Regression fixture: an unrelated nearby `git status` result must NOT verify a test claim. The claim must stay unverified with a `no_matching_command_result` reason.",
+  "events": [
+    { "kind": "assistant", "role": "assistant", "text": "Checking the repo state." },
+    { "kind": "command", "command": "git status" },
+    { "kind": "result", "command": "git status", "exitCode": 0, "output": "working tree clean" },
+    { "kind": "assistant", "role": "assistant", "text": "All tests passed and the build succeeded." }
+  ]
+}

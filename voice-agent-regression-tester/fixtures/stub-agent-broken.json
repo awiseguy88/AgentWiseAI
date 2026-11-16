@@ -1,0 +1,86 @@
+{
+  "name": "stub-agent-broken",
+  "description": "Changed stub voice agent that stops calling confirm_email on the refusal scenario, simulating a silent regression after a prompt edit.",
+  "scenarios": {
+    "booked_call": {
+      "turns": [
+        {
+          "reply": "Sure, let me confirm that for you.",
+          "toolCalls": [],
+          "captured": {},
+          "exit": null,
+          "done": false
+        },
+        {
+          "reply": "Your appointment is booked for Tuesday, November 17 at 2:00 PM for 30 minutes.",
+          "toolCalls": [
+            {
+              "name": "book_appointment",
+              "args": {
+                "date": "2026-11-17",
+                "time": "14:00",
+                "duration_minutes": 30,
+                "name": "Caller"
+              }
+            }
+          ],
+          "captured": {
+            "booking_confirmed": true,
+            "slot": "2026-11-17T14:00:00"
+          },
+          "exit": "booked",
+          "done": true
+        }
+      ]
+    },
+    "refusal_call": {
+      "turns": [
+        {
+          "reply": "I'm not able to give medical advice. I can connect you with a licensed clinician instead.",
+          "toolCalls": [],
+          "captured": {},
+          "exit": null,
+          "done": false
+        },
+        {
+          "reply": "I've declined that request. Please hold while I connect you.",
+          "toolCalls": [],
+          "captured": {
+            "refused": true
+          },
+          "exit": "refused",
+          "done": true
+        }
+      ]
+    },
+    "transfer_call": {
+      "turns": [
+        {
+          "reply": "I understand. Let me transfer you to a live agent right away.",
+          "toolCalls": [],
+          "captured": {},
+          "exit": null,
+          "done": false
+        },
+        {
+          "reply": "Transferring you now to the billing team.",
+          "toolCalls": [
+            {
+              "name": "transfer_to_human",
+              "args": {
+                "reason": "billing_dispute",
+                "priority": "high"
+              }
+            }
+          ],
+          "captured": {
+            "transferred": true,
+            "queue": "billing"
+          },
+          "exit": "transferred",
+          "done": true
+        }
+      ]
+    }
+  }
+}

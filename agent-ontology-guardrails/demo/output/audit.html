@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>agent-ontology-guardrails audit log</title>
+<style>
+body { font-family: system-ui, sans-serif; margin: 2rem; color: #1a1a1a; }
+h1 { font-size: 1.4rem; }
+table { border-collapse: collapse; width: 100%; }
+th, td { border: 1px solid #ddd; padding: 8px; vertical-align: top; text-align: left; }
+th { background: #f4f4f4; }
+tr.pass { background: #e8f5e9; }
+tr.block { background: #ffebee; }
+code { background: #f0f0f0; padding: 1px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<h1>agent-ontology-guardrails audit log</h1>
+<p>3 decisions recorded.</p>
+<table>
+<thead><tr><th>Timestamp</th><th>Action</th><th>Status</th><th>Violations</th></tr></thead>
+<tbody><tr>
+        <td>2026-11-16T03:01:49.466Z</td>
+        <td>refund</td>
+        <td>PASS</td>
+        <td><ul><li>none</li></ul></td>
+      </tr><tr>
+        <td>2026-11-16T03:01:49.468Z</td>
+        <td>refund</td>
+        <td>BLOCK</td>
+        <td><ul><li><strong>entityFieldEquals</strong> on <code>orderId</code>: Refund only allowed for delivered orders.</li></ul></td>
+      </tr><tr>
+        <td>2026-11-16T03:01:49.469Z</td>
+        <td>refund</td>
+        <td>BLOCK</td>
+        <td><ul><li><strong>entityFieldMax</strong> on <code>amount</code>: Refund amount cannot exceed order total.</li></ul></td>
+      </tr></tbody>
+</table>
+</body>
+</html>

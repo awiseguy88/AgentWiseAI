@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "entities": {
+    "Order": {
+      "fields": {
+        "id": { "type": "string", "required": true },
+        "total": { "type": "number", "required": true },
+        "status": { "type": "enum", "enum": ["pending", "delivered", "cancelled", "refunded"], "required": true }
+      }
+    },
+    "Approver": {
+      "fields": {
+        "id": { "type": "string", "required": true },
+        "role": { "type": "enum", "enum": ["support", "manager", "admin"], "required": true }
+      }
+    }
+  },
+  "relations": [
+    { "name": "orderApprover", "from": "Approver", "to": "Order", "type": "hasMany" }
+  ],
+  "data": {
+    "Order": {
+      "order-101": { "id": "order-101", "total": 150.00, "status": "delivered" },
+      "order-102": { "id": "order-102", "total": 200.00, "status": "pending" },
+      "order-103": { "id": "order-103", "total": 99.99, "status": "delivered" }
+    },
+    "Approver": {
+      "appr-1": { "id": "appr-1", "role": "support" },
+      "appr-2": { "id": "appr-2", "role": "manager" },
+      "appr-3": { "id": "appr-3", "role": "admin" }
+    }
+  },
+  "actions": {
+    "refund": {
+      "description": "Issue a refund for a delivered order.",
+      "constraints": [
+        { "rule": "required", "field": "orderId", "message": "orderId is required." },
+        { "rule": "required", "field": "amount", "message": "amount is required." },
+        { "rule": "required", "field": "approverId", "message": "approverId is required." },
+        { "rule": "entityExists", "entity": "Order", "lookupField": "orderId", "field": "orderId", "message": "Order does not exist." },
+        { "rule": "entityExists", "entity": "Approver", "lookupField": "approverId", "field": "approverId", "message": "Approver does not exist." },
+        { "rule": "entityFieldEquals", "entity": "Order", "lookupField": "orderId", "entityField": "status", "value": "delivered", "field": "orderId", "message": "Refund only allowed for delivered orders." },
+        { "rule": "entityFieldMax", "entity": "Order", "lookupField": "orderId", "entityField": "total", "field": "amount", "message": "Refund amount cannot exceed order total." },
+        { "rule": "entityFieldEquals", "entity": "Approver", "lookupField": "approverId", "entityField": "role", "value": "manager", "field": "approverId", "message": "Only managers can approve refunds." }
+      ]
+    }
+  }
+}

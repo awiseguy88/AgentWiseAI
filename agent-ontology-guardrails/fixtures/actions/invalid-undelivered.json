@@ -1,0 +1,8 @@
+{
+  "type": "refund",
+  "payload": {
+    "orderId": "order-102",
+    "amount": 50.00,
+    "approverId": "appr-2"
+  }
+}

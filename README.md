@@ -31,6 +31,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | DEEPFIELD — 3D Milky Way Explorer and Planetary Simulator (M1) | [`deepfield/`](deepfield/) | A cinematic 3D Milky Way explorer and planetary simulator built with TypeScript, Vite, React, and Three.js (WebGL 2 baseline). M1 delivers the core loop shell: Earth-orbit opener s | Merged |
 | dsh-reddit-suite (DeepSeek Harness / Cordis host plugin) | [`dsh-reddit-suite/`](dsh-reddit-suite/) | A host plugin bundle for the DeepSeek Harness (DSH) that lets the agent use Reddit via **session cookie** and/or **OAuth**, with: | Merged |
 | AgentWiseAI — MCP server for local Lemonade image generation + social posts | [`mcp-lemonade-server/`](mcp-lemonade-server/) | An [Model Context Protocol (MCP)](https://modelcontextprotocol.io/) server that: | Merged |
+| MCP Tool Discovery Gateway | [`mcp-tool-discovery-gateway/`](mcp-tool-discovery-gateway/) | Local Node.js gateway and CLI for searchable MCP tool discovery, on-demand schema fetching, and proxied invocation across configured stdio/HTTP servers. | Pending PR |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

@@ -1,0 +1,8 @@
+{
+  "name": "iam-permission-error",
+  "description": "Failure fixture: deliberate IAM permission error on a DynamoDB table the agent is not allowed to write.",
+  "steps": [
+    { "name": "create-table", "service": "dynamodb", "action": "create-table", "params": { "table": "agent-secret" } },
+    { "name": "put-item-denied", "service": "dynamodb", "action": "put", "params": { "table": "agent-secret", "pk": "user:9", "item": { "id": "user:9", "secret": "leaked" }, "iamDenied": "dynamodb:PutItem", "resourceArn": "arn:aws:dynamodb:us-east-1:000000000000:table/agent-secret" } }
+  ]
+}

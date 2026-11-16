@@ -31,18 +31,23 @@ test("mixed batch acceptance: dedupe, numbered queue, batch resolve, audit, expo
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "adt-int-"));
   const dbPath = path.join(dir, "t.db");
   const s = await startServer(dbPath);
+  const isWin = process.platform === "win32";
   try {
     const f1 = path.join(dir, "q1.json");
     const f2 = path.join(dir, "q2.json");
     const f3 = path.join(dir, "done.json");
+    const f4 = path.join(dir, "review.json");
     const sockPath = path.join(dir, "review.sock");
 
-    // socket listener for review item
+    // socket listener for review item (skip on Windows; unix sockets not supported)
     let sockReceived: any = null;
-    const sockServer = net.createServer((socket) => {
-      let d = ""; socket.on("data", c => d += c.toString()); socket.on("end", () => { try { sockReceived = JSON.parse(d.trim()); } catch { sockReceived = d; } });
-    });
-    await new Promise<void>((r) => sockServer.listen(sockPath, r));
+    let sockServer: net.Server | null = null;
+    if (!isWin) {
+      sockServer = net.createServer((socket) => {
+        let d = ""; socket.on("data", c => d += c.toString()); socket.on("end", () => { try { sockReceived = JSON.parse(d.trim()); } catch { sockReceived = d; } });
+      });
+      await new Promise<void>((r) => sockServer!.listen(sockPath, r));
+    }
 
     // callback server for approval
     let cbReceived: any = null;
@@ -54,7 +59,7 @@ test("mixed batch acceptance: dedupe, numbered queue, batch resolve, audit, expo
       { type: "question", context: { summary: "Should I use Redis or in-memory cache for the session store?", session: "session-claude-1", agent: "claude-code" }, channel: "file", channelTarget: f1 },
       { type: "question", context: { summary: "Should I use Redis or in-memory cache for the session store?", session: "session-codex-2", agent: "codex" }, channel: "file", channelTarget: f2 },
       { type: "approval", context: { summary: "Approve migration 004?", session: "session-claude-1", agent: "claude-code" }, channel: "callback", channelTarget: `http://127.0.0.1:${cbPort}/cb` },
-      { type: "review", context: { summary: "Review diff: login validation", session: "session-cursor-3", agent: "cursor", diff: { path: "src/auth/login.ts", after: "if (!email) throw err;" } }, channel: "socket", channelTarget: sockPath },
+      { type: "review", context: { summary: "Review diff: login validation", session: "session-cursor-3", agent: "cursor", diff: { path: "src/auth/login.ts", after: "if (!email) throw err;" } }, channel: isWin ? "file" : "socket", channelTarget: isWin ? f4 : sockPath },
       { type: "done-claim", context: { summary: "Implementation complete: tests pass", session: "session-codex-2", agent: "codex" }, channel: "file", channelTarget: f3 },
     ];
 
@@ -99,7 +104,13 @@ test("mixed batch acceptance: dedupe, numbered queue, batch resolve, audit, expo
     assert.equal(r2.response.answer, "Use Redis"); // duplicate caller also receives
     assert.equal(r3.response.accepted, true);
     assert.equal(cbReceived.response.approved, true);
-    assert.equal(sockReceived.response.comment, "ok");
+    if (!isWin) {
+      assert.equal(sockReceived.response.comment, "ok");
+    } else {
+      // On Windows, review uses file channel instead of socket
+      const r4 = JSON.parse(fs.readFileSync(f4, "utf8"));
+      assert.equal(r4.response.comment, "ok");
+    }
 
     // each resolution recorded with timestamp and responder
     const allItems = (await get(s.base, "/api/audit")).data.items;
@@ -122,7 +133,7 @@ test("mixed batch acceptance: dedupe, numbered queue, batch resolve, audit, expo
     assert.ok(h.includes("alice"));
 
     await new Promise<void>(r => cbServer.close(() => r()));
-    await new Promise<void>(r => sockServer.close(() => r()));
+    if (sockServer) await new Promise<void>(r => sockServer.close(() => r()));
   } finally {
     await s.close();
   }

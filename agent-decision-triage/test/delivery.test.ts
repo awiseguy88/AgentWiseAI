@@ -32,7 +32,7 @@ test("delivers response to callback", async () => {
   await new Promise<void>((resolve) => server.close(() => resolve()));
 });
 
-test("delivers response to socket", async () => {
+test("delivers response to socket", { skip: process.platform === "win32" }, async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "adt-sock-"));
   const sock = path.join(dir, "t.sock");
   let received: any = null;

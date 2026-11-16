@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Agent Done Claim Verifier
+        working-directory: agent-done-claim-verifier
+        run: npm test
+
+      - name: Agent Drift Monitor
+        working-directory: agent-drift-monitor
+        run: npm test
+
+      - name: Agent Reliability Logbook
+        working-directory: agent-reliability-logbook
+        run: node test/smoke.mjs
+
+      - name: AI Feature Usage Auditor
+        working-directory: ai-feature-usage-auditor
+        run: node smoke-check.mjs
+
+      - name: Glide Classic Escape Kit
+        working-directory: glide-classic-escape-kit
+        run: npm test
+
+      - name: Model API Watch
+        working-directory: model-api-watch
+        run: npm test
+
+      - name: PR Review Cost Guard
+        working-directory: pr-review-cost-guard
+        run: npm test
+
+      - name: Solo Site Rescue Kit
+        working-directory: solo-site-rescue-kit
+        run: npm run smoke
+
+      - name: Install Tool Launcher dependencies
+        working-directory: tool-launcher
+        run: npm ci
+
+      - name: Tool Launcher
+        working-directory: tool-launcher
+        run: npm test
+
+      - name: Vibe-Coded App Doctor
+        working-directory: vibe-coded-app-doctor
+        run: npm test
+
+      - name: MCP Lemonade Server
+        working-directory: mcp-lemonade-server
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+
+      - name: DEEPFIELD
+        working-directory: deepfield
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build

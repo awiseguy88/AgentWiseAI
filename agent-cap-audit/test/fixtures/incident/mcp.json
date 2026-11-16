@@ -1,0 +1,40 @@
+{
+  "mcpServers": {
+    "slack": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-slack"],
+      "env": {
+        "SLACK_BOT_TOKEN": "xoxb-...",
+        "SLACK_USER_TOKEN": "xoxp-..."
+      }
+    },
+    "gmail": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gmail"],
+      "env": {
+        "GMAIL_OAUTH_TOKEN": "..."
+      }
+    },
+    "drive": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-gdrive"],
+      "env": {
+        "GOOGLE_DRIVE_TOKEN": "..."
+      }
+    },
+    "calendar": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-calendar"],
+      "env": {
+        "GOOGLE_CALENDAR_TOKEN": "..."
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "..."
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+- insert:
+    - id: dsh-reddit-suite
+      name: '@local/dsh-reddit-suite'
+      config: {}

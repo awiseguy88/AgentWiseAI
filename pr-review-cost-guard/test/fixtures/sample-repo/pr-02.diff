@@ -1,0 +1,14 @@
+diff --git a/src/auth/middleware.js b/src/auth/middleware.js
+index 3333333..4444444 100644
+--- a/src/auth/middleware.js
++++ b/src/auth/middleware.js
+@@ -1,5 +1,8 @@
++const jwt = require('jsonwebtoken');
++const secret = process.env.JWT_SECRET || 'dev-secret';
++
+ function auth(req, res, next) {
+   const token = req.headers.authorization;
+-  if (!token) return res.sendStatus(401);
++  if (!token) return res.status(401).json({ error: 'missing token' });
+   next();
+ }

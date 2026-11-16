@@ -1,0 +1,18 @@
+appName: Field Ops (Glide Classic)
+description: YAML notes sample
+screens:
+  - name: Dashboard
+    notes: Summary metrics
+  - name: Tasks list
+    notes: Browse and filter
+logic:
+  - name: Visibility
+    notes: Row owners by project
+roles:
+  - name: Admin
+    notes: Full access
+cost:
+  currency: USD
+  assumptions: Minimal YAML sample
+  classicMonthly: 60
+  glideOsMonthly: 99

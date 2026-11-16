@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Reddit Suite">
+  <rect width="64" height="64" rx="12" fill="#0b1a2b"/>
+  <g fill="none" stroke="#ff4500" stroke-width="3">
+    <ellipse cx="24" cy="17" rx="12" ry="5"/>
+    <path d="M12 17v14c0 2.8 5.4 5 12 5s12-2.2 12-5V17"/>
+    <path d="M12 31v14c0 2.8 5.4 5 12 5s12-2.2 12-5V31"/>
+  </g>
+  <path d="M38 46h12a3 3 0 0 0 3-3V32a3 3 0 0 0-3-3h-7l-4-4v4h-1a3 3 0 0 0-3 3v11a3 3 0 0 0 3 3z" fill="#e8eef5"/>
+  <circle cx="42" cy="37.5" r="2" fill="#0b1a2b"/>
+  <circle cx="49" cy="37.5" r="2" fill="#0b1a2b"/>
+</svg>

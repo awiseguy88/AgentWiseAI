@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Feature Usage Auditor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>AI Feature Usage Auditor</h1>
+    <p class="subtitle">Track AI premiums, actual feature usage, and build negotiation talking points for renewals — fully offline.</p>
+  </header>
+
+  <main>
+    <section class="card" aria-labelledby="add-tool-heading">
+      <h2 id="add-tool-heading">Log a SaaS tool</h2>
+      <form id="tool-form">
+        <div class="grid">
+          <label>Tool name <input id="tool-name" required placeholder="e.g. Acme CRM"></label>
+          <label>AI premium paid (per term) <input id="tool-premium" type="number" min="0" step="0.01" required placeholder="e.g. 1200"></label>
+          <label>Billing term <input id="tool-term" placeholder="e.g. year"></label>
+          <label>Renewal date <input id="tool-renewal" type="date"></label>
+        </div>
+        <label>AI features (comma-separated)
+          <input id="tool-features" required placeholder="e.g. AI summaries, Smart replies, Forecasting">
+        </label>
+        <p class="help">After adding, set each feature's usage and frequency in the table below.</p>
+        <button type="submit">Add / Update tool</button>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="tools-heading">
+      <div class="section-head">
+        <h2 id="tools-heading">Your tools & AI features</h2>
+        <div class="actions">
+          <button id="export-csv" type="button">Export CSV</button>
+          <button id="export-pdf" type="button">Export PDF report</button>
+          <button id="clear-all" type="button" class="danger">Clear all data</button>
+        </div>
+      </div>
+      <div id="tools-empty" class="empty">No tools logged yet. Add a tool above to start your audit.</div>
+      <div id="tools-table-wrap" class="table-wrap hidden"></div>
+    </section>
+
+    <section class="card" aria-labelledby="report-heading">
+      <h2 id="report-heading">Paid-vs-used feature report</h2>
+      <div id="report-summary" class="summary"></div>
+      <h3>Negotiation talking points</h3>
+      <ul id="talking-points" class="points"></ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Data is stored locally in your browser (localStorage). No accounts, no network requests.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

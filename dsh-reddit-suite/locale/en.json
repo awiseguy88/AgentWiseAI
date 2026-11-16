@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Reddit Suite",
+    "description": "Browse subreddits and read posts and comments with a session cookie or OAuth token, fully expand comment \"more\" continuations, perform gated post/vote/moderation actions, and persist everything into a local SQLite database."
+  }
+}

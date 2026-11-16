@@ -1,0 +1,26 @@
+{
+  "name": "agent-compensation-relay",
+  "version": "0.1.0",
+  "description": "Offline CLI relay/proxy for agent tool calls with idempotency ledger, cached replays, paused unknown outcomes, and reverse-order compensation on abort.",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "agent-compensation-relay": "dist/cli.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "demo": "npm run build && node dist/cli.js demo",
+    "test": "npm run build && node test/acceptance.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  }
+}

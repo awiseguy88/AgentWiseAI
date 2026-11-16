@@ -1,0 +1,42 @@
+{
+  "generated": "2026-11-16T21:41:56.429370+00:00",
+  "note": "Sizes are reference metadata. Compressed sizes vary by browser/encoder; assert structural correctness, not exact bytes.",
+  "fixtures": [
+    {
+      "name": "sample-photo.jpg",
+      "type": "image/jpeg",
+      "width": 800,
+      "height": 600,
+      "bytes": 136416
+    },
+    {
+      "name": "sample-graphic.png",
+      "type": "image/png",
+      "width": 400,
+      "height": 300,
+      "bytes": 1171
+    },
+    {
+      "name": "sample-small.jpg",
+      "type": "image/jpeg",
+      "width": 200,
+      "height": 150,
+      "bytes": 9968
+    },
+    {
+      "name": "not-an-image.txt",
+      "type": "text/plain",
+      "width": null,
+      "height": null,
+      "bytes": 25
+    },
+    {
+      "name": "corrupt.png",
+      "type": "image/png",
+      "width": null,
+      "height": null,
+      "bytes": 31,
+      "corrupt": true
+    }
+  ]
+}

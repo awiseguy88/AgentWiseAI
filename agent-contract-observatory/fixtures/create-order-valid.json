@@ -1,0 +1,6 @@
+{
+  "customerId": "cust-42",
+  "items": [
+    { "sku": "SKU-1", "quantity": 2, "price": 19.99 }
+  ]
+}

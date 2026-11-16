@@ -1,0 +1,31 @@
+{
+  "server": "users",
+  "tool": "listUsers",
+  "version": "1.0.0",
+  "description": "Lists users (read-only, no side effects).",
+  "sideEffect": "read",
+  "input": {
+    "type": "object",
+    "required": ["limit"],
+    "properties": {
+      "limit": { "type": "integer", "minimum": 1, "maximum": 1000 }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["users"],
+    "properties": {
+      "users": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["id", "email"],
+          "properties": {
+            "id": { "type": "string" },
+            "email": { "type": "string", "format": "email" }
+          }
+        }
+      }
+    }
+  }
+}

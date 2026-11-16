@@ -1,0 +1,35 @@
+{
+  "server": "orders",
+  "tool": "createOrder",
+  "version": "1.0.0",
+  "description": "Creates an order. Every item must include a SKU before the write/payment step runs.",
+  "sideEffect": "write",
+  "input": {
+    "type": "object",
+    "required": ["customerId", "items"],
+    "properties": {
+      "customerId": { "type": "string" },
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "items": {
+          "type": "object",
+          "required": ["sku", "quantity", "price"],
+          "properties": {
+            "sku": { "type": "string" },
+            "quantity": { "type": "integer", "minimum": 1 },
+            "price": { "type": "number", "minimum": 0 }
+          }
+        }
+      }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["orderId", "status"],
+    "properties": {
+      "orderId": { "type": "string" },
+      "status": { "type": "string", "enum": ["created", "pending"] }
+    }
+  }
+}

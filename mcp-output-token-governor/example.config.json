@@ -1,0 +1,17 @@
+{
+  "defaultBudget": 2000,
+  "defaultMarker": "[mcp-output-token-governor] truncated to fit the per-tool token budget — original result was longer than the budget.",
+  "reportDir": "outputs",
+  "servers": {
+    "myserver": {
+      "transport": "stdio",
+      "command": "node",
+      "args": ["/path/to/your-mcp-server.js"],
+      "budget": 2000,
+      "tools": {
+        "search": 1500,
+        "list_files": 1000
+      }
+    }
+  }
+}

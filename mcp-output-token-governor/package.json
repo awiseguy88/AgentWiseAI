@@ -1,0 +1,23 @@
+{
+  "name": "mcp-output-token-governor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local stdio/HTTP MCP proxy that sits between an agent and each MCP server, applies a per-server/tool token budget to tool results, truncates oversized results with a clear truncation marker, and emits a JSON/HTML report of bytes saved.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "main": "src/cli.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/cli.js http",
+    "test": "node --test test/smoke.test.js",
+    "verify": "node src/cli.js verify",
+    "report": "node src/cli.js report"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,6 +1,6 @@
 import { Hud } from './Hud';
 import { PauseMenu } from './PauseMenu';
-import type { FlightMode } from '../core/types';
+import type { FlightMode, FlightStage } from '../core/types';
 
 export interface OverlayRootProps {
   mode: FlightMode;
@@ -12,9 +12,12 @@ export interface OverlayRootProps {
   onToggleReducedMotion: (v: boolean) => void;
   onToggleMuted: (v: boolean) => void;
   onQualityChange: (v: 'low' | 'medium' | 'high') => void;
+  onTimeScale: (v: number) => void;
+  onJumpDate: (isoDate: string) => void;
   reducedMotion: boolean;
   muted: boolean;
   qualityPreset: 'low' | 'medium' | 'high';
+  stage?: FlightStage | null;
 }
 
 export function OverlayRoot({
@@ -27,9 +30,12 @@ export function OverlayRoot({
   onToggleReducedMotion,
   onToggleMuted,
   onQualityChange,
+  onTimeScale,
+  onJumpDate,
   reducedMotion,
   muted,
   qualityPreset,
+  stage,
 }: OverlayRootProps) {
   return (
     <>
@@ -38,6 +44,7 @@ export function OverlayRoot({
         utcText={utcText}
         paused={paused}
         timeScale={timeScale}
+        stage={stage}
       />
       {paused && (
         <PauseMenu
@@ -46,9 +53,12 @@ export function OverlayRoot({
           onToggleReducedMotion={onToggleReducedMotion}
           onToggleMuted={onToggleMuted}
           onQualityChange={onQualityChange}
+          onTimeScale={onTimeScale}
+          onJumpDate={onJumpDate}
           reducedMotion={reducedMotion}
           muted={muted}
           qualityPreset={qualityPreset}
+          timeScale={timeScale}
         />
       )}
     </>

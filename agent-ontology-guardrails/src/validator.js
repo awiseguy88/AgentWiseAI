@@ -23,6 +23,50 @@ function makeViolation(rule, field, message, extra = {}) {
 }
 
 /**
+ * Build a machine-readable suggested corrective value for a violation, so agents
+ * can fix the action instead of guessing. Keys describe the field to change.
+ */
+function suggestedFor(c, value, inst) {
+  const s = {};
+  switch (c.rule) {
+    case 'required':
+      s[`provide${capitalize(c.field)}`] = 'Provide a value for this field.';
+      break;
+    case 'equals':
+      s[`set${capitalize(c.field)}`] = c.value;
+      break;
+    case 'notEquals':
+      s[`avoid${capitalize(c.field)}`] = c.value;
+      break;
+    case 'min':
+      s[`set${capitalize(c.field)}`] = c.value;
+      break;
+    case 'max':
+      s[`set${capitalize(c.field)}`] = Math.min(value, c.value);
+      break;
+    case 'enum':
+      s[`set${capitalize(c.field)}`] = Array.isArray(c.value) ? c.value[0] : c.value;
+      break;
+    case 'entityFieldEquals':
+      s[`set${capitalize(c.entityField)}`] = c.value;
+      break;
+    case 'entityFieldMax':
+      s[`set${capitalize(c.field)}`] = getPath(inst, c.entityField);
+      break;
+    case 'entityExists':
+      s[`choose${capitalize(c.entity)}`] = inst ? inst.id : 'an existing id';
+      break;
+    default:
+      break;
+  }
+  return s;
+}
+
+function capitalize(s) {
+  return s ? s.charAt(0).toUpperCase() + s.slice(1) : s;
+}
+
+/**
  * Compile/validate rule pack structure. Throws with actionable diagnostics on malformed packs
  * or unknown entity references. Does not modify existing files.
  */
@@ -149,22 +193,22 @@ function validateAction(pack, action, runtimeContext = {}) {
 
     switch (rule) {
       case 'required':
-        if (isMissing(value)) violations.push(makeViolation(rule, field, message));
+        if (isMissing(value)) violations.push(makeViolation(rule, field, message, { suggested: suggestedFor(c, value) }));
         break;
       case 'equals':
-        if (value !== c.value) violations.push(makeViolation(rule, field, message));
+        if (value !== c.value) violations.push(makeViolation(rule, field, message, { suggested: suggestedFor(c, value) }));
         break;
       case 'notEquals':
-        if (value === c.value) violations.push(makeViolation(rule, field, message));
+        if (value === c.value) violations.push(makeViolation(rule, field, message, { suggested: suggestedFor(c, value) }));
         break;
       case 'min':
-        if (typeof value !== 'number' || value < c.value) violations.push(makeViolation(rule, field, message));
+        if (typeof value !== 'number' || value < c.value) violations.push(makeViolation(rule, field, message, { suggested: suggestedFor(c, value) }));
         break;
       case 'max':
-        if (typeof value !== 'number' || value > c.value) violations.push(makeViolation(rule, field, message));
+        if (typeof value !== 'number' || value > c.value) violations.push(makeViolation(rule, field, message, { suggested: suggestedFor(c, value) }));
         break;
       case 'enum':
-        if (!Array.isArray(c.value) || !c.value.includes(value)) violations.push(makeViolation(rule, field, message));
+        if (!Array.isArray(c.value) || !c.value.includes(value)) violations.push(makeViolation(rule, field, message, { suggested: suggestedFor(c, value) }));
         break;
       case 'entityFieldEquals': {
         // Check field on a looked-up entity equals expected value.
@@ -172,10 +216,10 @@ function validateAction(pack, action, runtimeContext = {}) {
         const lookupId = getPath(payload, c.lookupField || field);
         const inst = lookupEntityInstance(c.entity, lookupId);
         if (!inst) {
-          violations.push(makeViolation(rule, field, message, { entity: c.entity }));
+          violations.push(makeViolation(rule, field, message, { entity: c.entity, suggested: suggestedFor(c, value) }));
         } else {
           const actual = getPath(inst, c.entityField);
-          if (actual !== c.value) violations.push(makeViolation(rule, field, message, { entity: c.entity }));
+          if (actual !== c.value) violations.push(makeViolation(rule, field, message, { entity: c.entity, suggested: suggestedFor(c, value, inst) }));
         }
         break;
       }
@@ -184,11 +228,11 @@ function validateAction(pack, action, runtimeContext = {}) {
         const lookupId = getPath(payload, c.lookupField || c.entityIdField);
         const inst = lookupEntityInstance(c.entity, lookupId);
         if (!inst) {
-          violations.push(makeViolation(rule, field, message, { entity: c.entity }));
+          violations.push(makeViolation(rule, field, message, { entity: c.entity, suggested: suggestedFor(c, value) }));
         } else {
           const limit = getPath(inst, c.entityField);
           if (typeof value !== 'number' || typeof limit !== 'number' || value > limit) {
-            violations.push(makeViolation(rule, field, message, { entity: c.entity }));
+            violations.push(makeViolation(rule, field, message, { entity: c.entity, suggested: suggestedFor(c, value, inst) }));
           }
         }
         break;
@@ -196,7 +240,7 @@ function validateAction(pack, action, runtimeContext = {}) {
       case 'entityExists': {
         const lookupId = getPath(payload, c.lookupField || field);
         const inst = lookupEntityInstance(c.entity, lookupId);
-        if (!inst) violations.push(makeViolation(rule, field, message, { entity: c.entity }));
+        if (!inst) violations.push(makeViolation(rule, field, message, { entity: c.entity, suggested: suggestedFor(c, value) }));
         break;
       }
       default:

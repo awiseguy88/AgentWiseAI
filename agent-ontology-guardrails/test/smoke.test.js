@@ -81,3 +81,14 @@ test('replay recorded 5-action trace produces audit report with pass/fail, viola
 test('loadAndValidatePack throws on unknown entity reference', () => {
   assert.throws(() => loadAndValidatePack({ version: 1, entities: { Order: { fields: {} } }, actions: { refund: { constraints: [{ rule: 'entityExists', entity: 'Missing', field: 'x', message: 'y' }] } } }), /unknown entity/);
 });
+
+test('violations carry machine-readable suggested corrective fields', () => {
+  const rules = loadJson(rulesPath);
+  const action = loadJson(amountPath);
+  const result = validateAction(rules, action);
+  assert.equal(result.valid, false);
+  const v = result.violations.find(x => x.rule === 'entityFieldMax');
+  assert.ok(v, 'entityFieldMax violation present');
+  assert.ok(v.suggested && typeof v.suggested === 'object', 'violation has suggested corrective fields');
+  assert.ok(Object.keys(v.suggested).length >= 1, 'suggested has at least one corrective key');
+});

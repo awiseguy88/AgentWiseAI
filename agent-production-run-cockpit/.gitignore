@@ -1,0 +1,7 @@
+node_modules/
+dist/
+report-output/
+drift-output/
+proxy-output/
+proxy-report/
+*.log

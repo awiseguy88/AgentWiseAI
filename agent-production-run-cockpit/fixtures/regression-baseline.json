@@ -1,0 +1,102 @@
+[
+  {
+    "run_id": "base-wf-alpha-0",
+    "workflow": "wf-alpha",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8493171033393738
+  },
+  {
+    "run_id": "base-wf-alpha-1",
+    "workflow": "wf-alpha",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8577651637084627
+  },
+  {
+    "run_id": "base-wf-alpha-2",
+    "workflow": "wf-alpha",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8218164338535079
+  },
+  {
+    "run_id": "base-wf-alpha-3",
+    "workflow": "wf-alpha",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8473744594169421
+  },
+  {
+    "run_id": "base-wf-alpha-4",
+    "workflow": "wf-alpha",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8608647909017458
+  },
+  {
+    "run_id": "base-wf-beta-0",
+    "workflow": "wf-beta",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8497101615088519
+  },
+  {
+    "run_id": "base-wf-beta-1",
+    "workflow": "wf-beta",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8209260618152334
+  },
+  {
+    "run_id": "base-wf-beta-2",
+    "workflow": "wf-beta",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8260038308615671
+  },
+  {
+    "run_id": "base-wf-beta-3",
+    "workflow": "wf-beta",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.864291422252897
+  },
+  {
+    "run_id": "base-wf-beta-4",
+    "workflow": "wf-beta",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8413974976029202
+  },
+  {
+    "run_id": "base-wf-gamma-0",
+    "workflow": "wf-gamma",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8246538611990748
+  },
+  {
+    "run_id": "base-wf-gamma-1",
+    "workflow": "wf-gamma",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8365888623430332
+  },
+  {
+    "run_id": "base-wf-gamma-2",
+    "workflow": "wf-gamma",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8537545902961341
+  },
+  {
+    "run_id": "base-wf-gamma-3",
+    "workflow": "wf-gamma",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.8592342479985774
+  },
+  {
+    "run_id": "base-wf-gamma-4",
+    "workflow": "wf-gamma",
+    "model_version": "gpt-4o-2024-08-06",
+    "score": 0.829502645430353
+  },
+  {
+    "run_id": "base-unv-0",
+    "workflow": "wf-alpha",
+    "score": 0.75
+  },
+  {
+    "run_id": "base-unv-1",
+    "workflow": "wf-alpha",
+    "score": 0.75
+  }
+]

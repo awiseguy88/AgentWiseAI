@@ -1,0 +1,55 @@
+name: braess-paradox-demand-threshold
+title: "Experiment: Braess Paradox Demand Threshold Verification"
+claim: >
+  For the classic Braess traffic network with affine cost functions, there exists
+  a critical demand D* below which adding the central edge is beneficial (or neutral)
+  to total travel cost, and above which it causes the Braess paradox (increased
+  total travel cost).
+sources:
+  primary:
+    doi: "10.48550/arxiv.2310.04256"
+    citation: "Verbree & Cherukuri (2023), Wardrop equilibrium and Braess's paradox for varying demand"
+  supporting:
+    - doi: "10.1007/s11238-010-9237-0"
+      citation: "Gisches & Rapoport (2010), experimental verification of Braess paradox"
+    - citation: "Braess (1968), English translation in Transportation Science 39(4):446-450 (2005)"
+      doi: "10.1287/trsc.1050.0127"
+hypothesis:
+  H1: >
+    For the classic Braess network (4 nodes, 5 edges, affine cost functions),
+    there exists a critical demand D* ≈ 32.67 such that: for D < D*, adding edge
+    A→B reduces total travel cost (no paradox); for D > D*, adding edge A→B
+    increases total travel cost (paradox occurs).
+  H2: >
+    At very high demand (D > 98), the paradox vanishes because all users revert
+    to the two original paths.
+baseline:
+  description: "Braess network WITHOUT central edge A→B"
+  solver: "Wardrop user equilibrium via Beckmann potential minimization (SLSQP) and analytical solution"
+proposed_model:
+  description: "Braess network WITH central edge A→B"
+  solver: "Wardrop user equilibrium via Beckmann potential minimization (SLSQP) and analytical solution"
+primary_metric:
+  name: "Total travel cost at Wardrop equilibrium"
+  formula: "sum_e flow_e * cost_e(flow_e)"
+units:
+  cost: "travel time (cost units)"
+  demand: "vehicles per unit time"
+threshold:
+  paradox_condition: "Total cost (WITH edge) > Total cost (WITHOUT edge) at same demand D"
+  critical_demand: "D* ≈ 32.67 (analytical 98/3)"
+  pass_condition: "D* ≈ 32.67 within 5% numerical tolerance; verify D* = 98/3 for standard parameterization"
+  sensitivity: "Test sensitivity to edge cost and constant travel time parameters"
+assumptions:
+  - "Wardrop (user) equilibrium: non-atomic selfish routing"
+  - "Affine cost functions: c_e(f) = a_e * f + b_e with a_e, b_e >= 0"
+  - "Standard Braess network: S→A (cost=f), A→T (cost=50), S→B (cost=50), B→T (cost=f), A→B (cost=1)"
+  - "Total demand D swept from 1 to 150 in steps of 1"
+  - "Uniqueness of equilibrium (holds for affine costs by Beckmann transformation)"
+stop_condition:
+  - "If simulation shows no paradox for any tested demand"
+  - "If critical demand D* is outside [1, 150] for all tested parameter variations"
+  - "If the solver fails to converge for more than 10% of test cases"
+reproduction_command: "python experiments/braess-paradox-demand-threshold/run.py"
+smoke_test: "python experiments/braess-paradox-demand-threshold/test_smoke.py"
+results_labeling: "All results labeled calculated (analytical) or simulated (numerical solver)"

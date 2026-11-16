@@ -1,0 +1,26 @@
+{
+  "name": "mcp-tool-discovery-gateway",
+  "version": "0.1.0",
+  "description": "Local gateway and CLI for searchable MCP tool discovery, schema-on-demand fetching, and proxied invocation across stdio/HTTP MCP servers.",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "mcp-tool-discovery-gateway": "dist/cli.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "smoke": "npm run build && node dist/cli.js demo --config fixtures/config.demo.json --out examples/demo-output"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  }
+}

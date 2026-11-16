@@ -1,0 +1,29 @@
+{
+  "servers": [
+    {
+      "name": "github_ci",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["fixtures/servers/github_ci_server.mjs"],
+      "tags": ["git", "ci", "github"]
+    },
+    {
+      "name": "chat",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["fixtures/servers/chat_server.mjs"],
+      "tags": ["chat", "messaging"]
+    },
+    {
+      "name": "devops",
+      "transport": "stdio",
+      "command": "node",
+      "args": ["fixtures/servers/devops_server.mjs"],
+      "tags": ["ops", "infra"]
+    }
+  ],
+  "policy": {
+    "maxSchemasPerRequest": 10,
+    "maxSchemaBytesPerRequest": 20000
+  }
+}

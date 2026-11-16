@@ -50,6 +50,8 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Agent Ontology Guardrails | [`agent-ontology-guardrails/`](agent-ontology-guardrails/) | Local Node.js validator proxy and CLI with a rule DSL/JSON schema for domain entities, relations, and action constraints; forwards valid actions and blocks invalid ones with structured violation reports and HTML/JSON audit logs. | Merged in [PR #53](https://github.com/awiseguy88/AgentWiseAI/pull/53) |
 | Agent Cloud Sandbox | [`agent-cloud-sandbox/`](agent-cloud-sandbox/) | Local cloud-emulator harness with fixture catalogs, deterministic smoke tests, and agent-ready validation for cloud-native AWS code (Lambda, DynamoDB, SQS, Step Functions). Runs fully offline. | Pending PR |
 
+| Agent Governance Control Plane | [`agent-governance-control-plane/`](agent-governance-control-plane/) | Self-hosted service and agent middleware/SDK that enforces least-privilege tool-call policy at runtime, routes high-risk actions for approval, and records a tamper-evident append-only audit log with an Express + SQLite dashboard. | Pending PR |
+
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 
 ## About AaronWiseAI

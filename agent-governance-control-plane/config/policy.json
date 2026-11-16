@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "defaultDecision": "block",
+  "riskClasses": {
+    "read": "read",
+    "write": "write",
+    "delete": "delete"
+  },
+  "rules": [
+    { "tool": "SELECT", "riskClass": "read", "decision": "allow", "reason": "Read-only query allowed by policy" },
+    { "tool": "INSERT", "riskClass": "write", "decision": "require-approval", "reason": "Write requires human approval" },
+    { "tool": "UPDATE", "riskClass": "write", "decision": "require-approval", "reason": "Write requires human approval" },
+    { "tool": "DELETE", "riskClass": "delete", "decision": "block", "reason": "Destructive delete denied by policy" }
+  ]
+}

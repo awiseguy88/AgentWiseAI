@@ -1,0 +1,21 @@
+{
+  "name": "agent-governance-control-plane",
+  "version": "0.1.0",
+  "description": "Self-hosted agent governance control plane: middleware/SDK that wraps a fixture coding agent, intercepts tool calls against a configurable least-privilege policy (allow/block/require-approval), records every decision in a tamper-evident append-only audit log, and serves an Express + SQLite dashboard listing pending approvals and recent decisions.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "node --test test/smoke.mjs",
+    "docker-smoke": "bash test/docker-smoke.sh"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

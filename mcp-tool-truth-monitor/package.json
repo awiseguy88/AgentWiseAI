@@ -1,0 +1,20 @@
+{
+  "name": "mcp-tool-truth-monitor",
+  "version": "0.1.0",
+  "description": "Local-first tool that ingests agent/MCP traces, matches tool results (errors, isError, empty, timeout) to later agent claims, flags mismatches, and exports offline HTML/JSON reports.",
+  "private": true,
+  "type": "commonjs",
+  "bin": {
+    "mcp-tool-truth-monitor": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test tests/smoke.test.js",
+    "smoke": "node --test tests/smoke.test.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {}
+}

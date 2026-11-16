@@ -1,0 +1,8 @@
+[
+  {"direction":"request","id":1,"method":"tools/call","params":{"name":"read_file","arguments":{"path":"/tmp/x.txt"}}},
+  {"direction":"response","id":1,"result":{"isError":true,"content":[{"type":"text","text":"File not found"}]}},
+  {"direction":"assistant","content":"Successfully read the file and got all contents."},
+  {"direction":"request","id":2,"method":"tools/call","params":{"name":"write_file","arguments":{"path":"/tmp/y.txt","content":"ok"}}},
+  {"direction":"response","id":2,"result":{"isError":false,"content":[{"type":"text","text":"Wrote 2 bytes"}]}},
+  {"direction":"assistant","content":"Done writing the file."}
+]

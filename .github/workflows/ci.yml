@@ -79,3 +79,11 @@ jobs:
           npm ci
           npm run typecheck
           npm run build
+
+      - name: FitFrame
+        working-directory: products/fitframe
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+          npm test

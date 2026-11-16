@@ -16,3 +16,4 @@ pnpm-debug.log*
 
 # Local tool state
 .local/
+tests/out-report.html

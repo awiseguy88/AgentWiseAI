@@ -8,8 +8,9 @@
 
 import { spawnSync } from "node:child_process";
 import * as path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT = path.resolve(new URL(".", import.meta.url).pathname);
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)));
 const CLI = path.join(ROOT, "..", "dist", "cli.js");
 const SCENARIO = path.join(ROOT, "..", "examples", "sample-scenario.json");
 

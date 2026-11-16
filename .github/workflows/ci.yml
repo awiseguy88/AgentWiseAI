@@ -122,3 +122,10 @@ jobs:
           npm ci
           npm run build
           npm test
+
+      - name: Base64 Bridge
+        working-directory: products/base64-bridge
+        run: |
+          npm ci
+          npm run build
+          npm test

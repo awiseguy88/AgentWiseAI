@@ -1,0 +1,9 @@
+{
+  "rho0_kg_m3": 1.22661378741097,
+  "rho0_within_1pct": true,
+  "num_sweep_points": 28,
+  "threshold_points": 23,
+  "threshold_points_in_range": 19,
+  "verdict": "unsupported",
+  "result_label": "calculated"
+}

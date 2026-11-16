@@ -1,0 +1,261 @@
+:root {
+  --bg: #0b1020;
+  --surface: #141b2d;
+  --surface-2: #1b2438;
+  --border: #2b3650;
+  --text: #e8edf7;
+  --muted: #a5b1c9;
+  --accent: #5aa7ff;
+  --accent-hover: #7ab8ff;
+  --ok: #2ecc71;
+  --ok-bg: rgba(46, 204, 113, 0.12);
+  --bad: #ff6b6b;
+  --bad-bg: rgba(255, 107, 107, 0.12);
+  --warn: #f4c542;
+  --warn-bg: rgba(244, 197, 66, 0.12);
+  --neutral: #8aa0c0;
+  --neutral-bg: rgba(138, 160, 192, 0.12);
+  --radius: 10px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.25);
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+#app { min-height: 100vh; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px 40px;
+}
+
+header.app-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.privacy {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 960px) {
+  .grid { grid-template-columns: 1fr; }
+  .privacy { white-space: normal; }
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+  min-width: 0;
+}
+
+.panel h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+.panel h3 {
+  margin: 14px 0 8px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font: inherit;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.92rem;
+}
+
+textarea { resize: vertical; min-height: 110px; }
+textarea.token-input { min-height: 140px; }
+
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+@media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+button {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+}
+button:hover { border-color: var(--accent); background: #22304a; }
+button.primary { background: #1f4f8f; border-color: #2e6bb8; }
+button.primary:hover { background: #2560ad; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.status-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  margin: 10px 0 4px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+.badge.ok { color: var(--ok); background: var(--ok-bg); border-color: rgba(46,204,113,0.3); }
+.badge.bad { color: var(--bad); background: var(--bad-bg); border-color: rgba(255,107,107,0.3); }
+.badge.warn { color: var(--warn); background: var(--warn-bg); border-color: rgba(244,197,66,0.35); }
+.badge.neutral { color: var(--neutral); background: var(--neutral-bg); border-color: rgba(138,160,192,0.3); }
+
+.notice {
+  margin-top: 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  border: 1px solid var(--border);
+}
+.notice.info { color: var(--muted); background: var(--neutral-bg); }
+.notice.error { color: #ffd7d7; background: var(--bad-bg); border-color: rgba(255,107,107,0.35); }
+.notice.warning { color: #ffe9a8; background: var(--warn-bg); border-color: rgba(244,197,66,0.35); }
+
+pre.output {
+  margin: 0;
+  background: #0f1626;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  overflow: auto;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  word-break: break-word;
+  min-height: 80px;
+}
+
+.claims-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.claims-table th, .claims-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.claims-table th { color: var(--muted); font-weight: 600; width: 90px; }
+.claims-table td code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88rem;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.hint { color: var(--muted); font-size: 0.85rem; margin: 6px 0 0; }
+.small { font-size: 0.85rem; color: var(--muted); }
+
+footer.app-footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+footer.app-footer a { color: var(--accent); }
+
+.inline-link { color: var(--accent); text-decoration: none; }
+.inline-link:hover { text-decoration: underline; }
+
+.copy-feedback {
+  font-size: 0.85rem;
+  color: var(--ok);
+  min-width: 70px;
+}
+
+.kbd {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8em;
+  padding: 1px 5px;
+  border: 1px solid var(--border);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--muted);
+}

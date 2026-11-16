@@ -115,3 +115,10 @@ jobs:
           npm ci
           npm run build
           npm test
+
+      - name: Chmod Lab
+        working-directory: products/chmod-lab
+        run: |
+          npm ci
+          npm run build
+          npm test

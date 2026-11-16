@@ -1,0 +1,7 @@
+[
+  { "type": "refund", "payload": { "orderId": "order-101", "amount": 100.00, "approverId": "appr-2" } },
+  { "type": "refund", "payload": { "orderId": "order-102", "amount": 50.00, "approverId": "appr-2" } },
+  { "type": "refund", "payload": { "orderId": "order-101", "amount": 250.00, "approverId": "appr-2" } },
+  { "type": "refund", "payload": { "orderId": "order-103", "amount": 99.99, "approverId": "appr-1" } },
+  { "type": "refund", "payload": { "orderId": "order-103", "amount": 50.00, "approverId": "appr-2" } }
+]

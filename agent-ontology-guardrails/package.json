@@ -1,0 +1,15 @@
+{
+  "name": "agent-ontology-guardrails",
+  "version": "0.1.0",
+  "description": "Local Node.js validator proxy and CLI for machine-checkable agent action guardrails with audit logs.",
+  "private": true,
+  "bin": {
+    "agent-ontology-guardrails": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test test/smoke.test.js",
+    "demo": "node demo/run-demo.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT"
+}

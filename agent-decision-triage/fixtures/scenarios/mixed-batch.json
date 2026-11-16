@@ -1,0 +1,66 @@
+{
+  "description": "Three sessions emit five decisions: two duplicate clarification questions, one approval, one diff review, one completion claim.",
+  "items": [
+    {
+      "id": "q1",
+      "type": "question",
+      "context": {
+        "summary": "Should I use Redis or in-memory cache for the session store?",
+        "agent": "claude-code",
+        "session": "session-claude-1",
+        "prompt": "Need clarification on cache backend choice.",
+        "links": [{ "label": "design doc", "url": "file://docs/cache.md", "snippet": "cache choice pending" }]
+      },
+      "channel": "file"
+    },
+    {
+      "id": "q2",
+      "type": "question",
+      "context": {
+        "summary": "Should I use Redis or in-memory cache for the session store?",
+        "agent": "codex",
+        "session": "session-codex-2",
+        "prompt": "Clarification needed: Redis or in-memory cache for session store?",
+        "links": [{ "label": "task", "url": "file://tasks/session.md" }]
+      },
+      "channel": "file"
+    },
+    {
+      "id": "approval1",
+      "type": "approval",
+      "context": {
+        "summary": "Approve running database migration 004_add_audit.sql on local dev DB?",
+        "agent": "claude-code",
+        "session": "session-claude-1",
+        "links": [{ "label": "migration", "url": "file://migrations/004_add_audit.sql" }]
+      },
+      "channel": "callback"
+    },
+    {
+      "id": "review1",
+      "type": "review",
+      "context": {
+        "summary": "Review diff: add input validation to login handler",
+        "agent": "cursor",
+        "session": "session-cursor-3",
+        "diff": {
+          "path": "src/auth/login.ts",
+          "after": "if (!email || !password) throw new Error('missing credentials');",
+          "hunks": ["@@ -10,2 +10,3 @@", "+if (!email || !password) throw new Error('missing credentials');"]
+        }
+      },
+      "channel": "socket"
+    },
+    {
+      "id": "done1",
+      "type": "done-claim",
+      "context": {
+        "summary": "Implementation complete: tests pass and endpoint returns 200",
+        "agent": "codex",
+        "session": "session-codex-2",
+        "links": [{ "label": "test log", "url": "file://logs/test.log", "snippet": "12 passed, 0 failed" }]
+      },
+      "channel": "file"
+    }
+  ]
+}

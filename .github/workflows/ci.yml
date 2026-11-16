@@ -95,6 +95,12 @@ jobs:
           npm run typecheck
           npm test
 
+- name: Agent Decision Triage
+        working-directory: agent-decision-triage
+        run: |
+          npm ci
+          npm test
+
       - name: TokenScope
         working-directory: products/token-scope
         run: |

@@ -1,0 +1,14 @@
+$ npm run build
+> agent-background-job-ledger@0.1.0 build
+> tsc -p tsconfig.json
+
+src/types.ts: OK
+src/db.ts: OK
+src/scrub.ts: OK
+src/runner.ts: OK
+src/notice.ts: OK
+src/reaper.ts: OK
+src/cli.ts: OK
+
+Build complete.
+All tests passed.

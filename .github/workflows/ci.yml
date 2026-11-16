@@ -79,3 +79,10 @@ jobs:
           npm ci
           npm run typecheck
           npm run build
+
+      - name: Schedule Cadence Lab
+        working-directory: products/schedule-cadence-lab
+        run: |
+          npm ci
+          npm run typecheck
+          npm test

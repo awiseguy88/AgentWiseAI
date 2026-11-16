@@ -1,0 +1,26 @@
+{
+  "server": "payments",
+  "tool": "executePayment",
+  "version": "1.0.0",
+  "description": "Executes a payment and returns the settled amount and currency.",
+  "sideEffect": "payment",
+  "input": {
+    "type": "object",
+    "required": ["orderId", "amount", "currency"],
+    "properties": {
+      "orderId": { "type": "string" },
+      "amount": { "type": "number", "minimum": 0 },
+      "currency": { "type": "string" }
+    }
+  },
+  "output": {
+    "type": "object",
+    "required": ["transactionId", "amount", "currency", "status"],
+    "properties": {
+      "transactionId": { "type": "string" },
+      "amount": { "type": "number" },
+      "currency": { "type": "string" },
+      "status": { "type": "string", "enum": ["settled", "pending", "failed"] }
+    }
+  }
+}

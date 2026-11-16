@@ -1,0 +1,11 @@
+{
+  "id": "format-json",
+  "title": "Format JSON output",
+  "type": "bundled",
+  "prompt": "You are an agent that must respond with valid JSON only. The user asks: \"List the steps to deploy a static site.\" Respond with a JSON object with key \"steps\" containing an array of strings. Output only the JSON.",
+  "checker": {
+    "contains": ["{", "\"steps\"", "["],
+    "containsAll": ["steps"],
+    "notContains": ["Here is"]
+  }
+}

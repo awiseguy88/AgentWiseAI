@@ -1,0 +1,11 @@
+{
+  "id": "reverse-string",
+  "title": "Reverse a string",
+  "type": "bundled",
+  "prompt": "Write a function reverse(str) that returns the string reversed. Return only the function.",
+  "checker": {
+    "contains": ["reverse"],
+    "containsAll": ["return"],
+    "notContains": ["for"]
+  }
+}

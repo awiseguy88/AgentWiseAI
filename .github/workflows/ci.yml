@@ -79,3 +79,53 @@ jobs:
           npm ci
           npm run typecheck
           npm run build
+
+      - name: FitFrame
+        working-directory: products/fitframe
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+          npm test
+
+      - name: Schedule Cadence Lab
+        working-directory: products/schedule-cadence-lab
+        run: |
+          npm ci
+          npm run typecheck
+          npm test
+
+      - name: TokenScope
+        working-directory: products/token-scope
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      - name: PixTrim Lab
+        working-directory: products/pixtrim-lab
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      - name: PicturaBox
+        working-directory: products/picturabox
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      - name: Chmod Lab
+        working-directory: products/chmod-lab
+        run: |
+          npm ci
+          npm run build
+          npm test
+
+      - name: Base64 Bridge
+        working-directory: products/base64-bridge
+        run: |
+          npm ci
+          npm run build
+          npm test

@@ -1,0 +1,7 @@
+{
+  "customerId": "cust-42",
+  "items": [
+    { "quantity": 2, "price": 19.99 },
+    { "sku": "SKU-9", "quantity": 1, "price": 5.00 }
+  ]
+}

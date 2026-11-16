@@ -1,0 +1,27 @@
+{
+  "name": "schedule-cadence-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Schedule Cadence Lab — a browser-only cron schedule editor with plain-English descriptions, next run previews, examples, and field-specific validation.",
+  "type": "module",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build:core": "tsc -p tsconfig.core.json && node -e \"require('fs').writeFileSync('dist-core/package.json','{\\\"type\\\":\\\"commonjs\\\"}')\"",
+    "build": "tsc --noEmit && vite build",
+    "test": "npm run build:core && node --test test/core.test.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2"
+  }
+}

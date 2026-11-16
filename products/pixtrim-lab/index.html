@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixTrim Lab</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f3f4f6;
+      --fg: #111827;
+      --muted: #6b7280;
+      --border: #d1d5db;
+      --accent: #2563eb;
+    }
+    :root.dark {
+      --bg: #0b1220;
+      --bg-secondary: #111827;
+      --fg: #f9fafb;
+      --muted: #9ca3af;
+      --border: #374151;
+      --accent: #3b82f6;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--fg); }
+    .container { max-width: 1200px; margin: 0 auto; padding: 16px; }
+    .header { margin-bottom: 16px; }
+    .header h1 { font-size: 28px; font-weight: 800; margin: 0 0 4px; }
+    .header p { margin: 0; color: var(--muted); font-size: 14px; }
+    .toolbar-wrapper { margin-bottom: 16px; }
+    .grid-container { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+    .hidden { display: none !important; }
+    .btn { transition: opacity 0.15s; }
+    .btn:hover { opacity: 0.9; }
+    @media (max-width: 768px) {
+      .container { padding: 12px; }
+      .header h1 { font-size: 22px; }
+      .toolbar-group { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .thumb-card { max-width: 100% !important; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="app">
+    <div class="header">
+      <h1>PixTrim Lab</h1>
+      <p>Browser-only image resize, format conversion, and batch export — all processing happens locally on your device.</p>
+    </div>
+    <div class="toolbar-wrapper" id="toolbar"></div>
+    <div id="dropzone"></div>
+    <div id="preview" class="hidden"></div>
+    <div class="grid-container" id="grid"></div>
+    <div id="progress"></div>
+    <div id="bulk-preview"></div>
+    <div id="privacy"></div>
+  </div>
+  <script type="module" src="/src/index.ts"></script>
+</body>
+</html>

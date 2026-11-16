@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibe App Launch Gate</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Vibe App Launch Gate</h1>
+    <p class="subtitle">Self-hosted governance for internal vibe-coded tools: registry, release approvals, audit log, and shadow-IT detection.</p>
+    <div id="auth-bar"></div>
+  </header>
+  <main>
+    <section id="login-panel" class="card">
+      <h2>Sign in</h2>
+      <p>Demo users (password <code>password</code>): dev-a, dev-b, reviewer-1, admin.</p>
+      <form id="login-form">
+        <label>Username <input name="username" required></label>
+        <label>Password <input name="password" type="password" required></label>
+        <button type="submit">Sign in</button>
+      </form>
+      <div id="login-msg" class="msg"></div>
+    </section>
+
+    <section id="app-panel" class="hidden">
+      <div class="card">
+        <h2>App registry</h2>
+        <div class="actions"><button id="refresh">Refresh</button></div>
+        <table id="apps-table"><thead><tr><th>Name</th><th>Owner</th><th>Reviewer</th><th>Audience</th><th>Data scope</th><th>Live</th><th>Pending</th><th>Status</th><th></th></tr></thead><tbody></tbody></table>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h2>Register app</h2>
+          <form id="create-app-form">
+            <label>Name <input name="name" required></label>
+            <label>Owner ID <input name="owner_id" type="number" required></label>
+            <label>Reviewer ID <input name="reviewer_id" type="number"></label>
+            <label>Audience <input name="audience" required></label>
+            <label>Data access scope <input name="data_scope" required></label>
+            <button type="submit">Register (creates checklist, blocks launch)</button>
+          </form>
+          <div id="create-app-msg" class="msg"></div>
+        </div>
+        <div class="card">
+          <h2>Report shadow IT (CI webhook)</h2>
+          <form id="ci-form">
+            <label>App name / path <input name="app_name" required></label>
+            <label>Changed files (comma-separated) <input name="changed_files" required></label>
+            <button type="submit">Send CI report</button>
+          </form>
+          <div id="ci-msg" class="msg"></div>
+        </div>
+      </div>
+
+      <div class="card" id="detail" class="hidden">
+        <h2 id="detail-title">App detail</h2>
+        <div id="detail-body"></div>
+      </div>
+
+      <div class="grid">
+        <div class="card"><h2>Shadow IT reports</h2><pre id="shadow-list" class="log"></pre></div>
+        <div class="card"><h2>Audit log</h2><pre id="audit-log" class="log"></pre></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>About AaronWiseAI</strong> — AaronWiseAI builds practical, open-source tools for AI agents and developers, online and offline. Visit <a href="https://aaronwiseai.com/" target="_blank" rel="noopener">https://aaronwiseai.com/</a>.</p>
+    <p>Part of the AaronWiseAI open-source tool collection — <a href="https://aaronwiseai.com/" target="_blank" rel="noopener">https://aaronwiseai.com/</a></p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

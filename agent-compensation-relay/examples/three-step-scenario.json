@@ -1,0 +1,23 @@
+{
+  "runId": "scenario-run-1",
+  "ledger": ".local/agent-compensation-relay-ledger.json",
+  "steps": [
+    {
+      "toolCallId": "tc-reserve",
+      "tool": "reserveStock",
+      "args": { "item": "widget", "qty": 1 },
+      "compensate": "releaseReservation"
+    },
+    {
+      "toolCallId": "tc-charge",
+      "tool": "chargeCard",
+      "args": { "reservationId": "res-1", "amount": 4999 },
+      "compensate": "reverseCharge"
+    },
+    {
+      "toolCallId": "tc-email",
+      "tool": "sendEmail",
+      "args": { "to": "customer@example.com", "subject": "Order confirmation" }
+    }
+  ]
+}

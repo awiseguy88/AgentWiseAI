@@ -1,0 +1,20 @@
+{
+  "name": "llm-model-migration-watch",
+  "version": "0.1.0",
+  "description": "Self-hosted CLI runner that compares a current LLM against candidate models on your own task suite and emits an HTML/JSON migration report with a go/no-go recommendation and projected cost savings.",
+  "main": "src/cli.js",
+  "bin": {
+    "llm-model-migration-watch": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node tests/smoke.js",
+    "smoke": "node tests/smoke.js"
+  },
+  "keywords": ["llm", "model", "migration", "eval", "comparison", "cli", "offline"],
+  "author": "awiseguy88 <18493653+awiseguy88@users.noreply.github.com>",
+  "license": "MIT",
+  "homepage": "https://aaronwiseai.com/",
+  "engines": {
+    "node": ">=18"
+  }
+}

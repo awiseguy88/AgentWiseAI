@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  agent-cloud-sandbox:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    # Run the full offline test suite to verify the container works
+    command: ["npm", "test"]
+    # No network mode = offline mode (no external calls)
+    network_mode: "none"
+
+  # Second container that runs the CLI smoke test directly (optional)
+  agent-cloud-sandbox-cli:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - NODE_ENV=production
+    command: ["node", "src/cli.js", "test", "--offline", "--report", "/tmp/report.json"]
+    network_mode: "none"
+    depends_on:
+      - agent-cloud-sandbox

@@ -1,0 +1,9 @@
+{
+  "name": "stepfunctions-workflow",
+  "description": "Step Functions workflow: create state machine, start execution, describe execution.",
+  "steps": [
+    { "name": "create-machine", "service": "stepfunctions", "action": "create-machine", "params": { "stateMachine": "agent-workflow", "definition": [ { "name": "start", "input": { "x": 1 } }, { "name": "done", "input": { "x": 2 } } ] } },
+    { "name": "start-execution", "service": "stepfunctions", "action": "start", "params": { "stateMachine": "agent-workflow", "input": { "order": "abc" } } },
+    { "name": "describe-execution", "service": "stepfunctions", "action": "describe", "params": { "executionArn": "$last", "expectSucceeded": true } }
+  ]
+}

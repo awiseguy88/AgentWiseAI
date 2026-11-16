@@ -1,0 +1,9 @@
+{
+  "name": "sqs-fanout",
+  "description": "SQS + Lambda fan-out: create queue, send N messages, drain queue, invoke consumer Lambda.",
+  "steps": [
+    { "name": "create-queue", "service": "sqs", "action": "create-queue", "params": { "queue": "agent-outbox" } },
+    { "name": "fan-out", "service": "sqs", "action": "fan-out", "params": { "queue": "agent-outbox", "messages": [ { "id": "m1", "type": "order", "amount": 10 }, { "id": "m2", "type": "order", "amount": 20 }, { "id": "m3", "type": "order", "amount": 30 } ] } },
+    { "name": "consume-lambda", "service": "lambda", "action": "invoke", "params": { "function": "agent-consumer", "payload": { "queue": "agent-outbox" } } }
+  ]
+}

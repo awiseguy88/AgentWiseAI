@@ -23,6 +23,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | PR Review Cost Guard | [`pr-review-cost-guard/`](pr-review-cost-guard/) | Wraps agent runs with a cheap first-pass scan, monthly spend caps, and HTML/JSON cost reports. | Open [PR #29](https://github.com/awiseguy88/AgentWiseAI/pull/29) |
 | Agent Capability Auditor | [`agent-cap-audit/`](agent-cap-audit/) | Scans agent configs/wrappers (Codex, Claude/Cursor MCP configs, mcp.json, scripts), classifies connector/tool risk, checks per-role policy, and emits HTML/JSON reports with fix snippets. | Open [PR #38](https://github.com/awiseguy88/AgentWiseAI/pull/38) |
 | Voice Agent Regression Tester | [`voice-agent-regression-tester/`](voice-agent-regression-tester/) | Offline-first CLI that replays frozen voice-agent call scenarios against a text/HTTP endpoint, scores assertions, and emits HTML/JSON reports with CI-gating exit codes. | Merged in [PR #45](https://github.com/awiseguy88/AgentWiseAI/pull/45) |
+| AgentWise Studio | [`agentwise-studio/`](agentwise-studio/) | Local-first app to import agent transcripts, separate verified vs unverified completion claims, inspect slow/repeated steps, persist runs in SQLite, and compare runs. | Merged in [PR #47](https://github.com/awiseguy88/AgentWiseAI/pull/47) |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

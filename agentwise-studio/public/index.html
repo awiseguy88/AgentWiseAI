@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgentWise Studio — Agent Run Inspector</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">A</span>
+    <span class="brand-name">AgentWise Studio</span>
+  </div>
+  <div class="brand-tagline">Local-first agent run inspector · Part of AaronWiseAI</div>
+</header>
+
+<main class="layout">
+  <aside class="sidebar">
+    <h3>Runs</h3>
+    <div class="toolbar-row">
+      <input type="file" id="importFile" accept=".json,.jsonl,.txt,.md" />
+      <button id="btnImport" class="btn-primary">Import</button>
+    </div>
+    <div id="runsList" class="runs-list">
+      <div class="empty">No runs yet. Import a transcript.</div>
+    </div>
+    <div class="compare-hint">
+      Select two runs below to compare. Comparison opens after you load a run.
+    </div>
+  </aside>
+
+  <section class="panel run-panel" id="runPanel" aria-hidden="true">
+    <div class="panel-header">
+      <h2 id="runName">Run</h2>
+      <div class="meta-chip" id="runMeta"></div>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-label">Claims</div><div class="kpi-value" id="kpiClaims">0</div></div>
+      <div class="kpi"><div class="kpi-label">Verified</div><div class="kpi-value verified" id="kpiVerified">0</div></div>
+      <div class="kpi"><div class="kpi-label">Unverified</div><div class="kpi-value unverified" id="kpiUnverified">0</div></div>
+      <div class="kpi"><div class="kpi-label">Alerts</div><div class="kpi-value alert-count" id="kpiAlerts">0</div></div>
+      <div class="kpi"><div class="kpi-label">Steps</div><div class="kpi-value" id="kpiSteps">0</div></div>
+    </div>
+
+    <div class="section">
+      <h3>Completion Claims</h3>
+      <div class="tabbar">
+        <button class="tab active" data-tab="verified">Verified ✅</button>
+        <button class="tab" data-tab="unverified">Unverified ⚠️</button>
+        <button class="tab" data-tab="all">All</button>
+      </div>
+      <div class="claims-table-wrap">
+        <table class="claims-table">
+          <thead><tr><th>#</th><th>Claim</th><th>Type</th><th>Status</th><th>Evidence / Reasons</th><th>Excerpt</th></tr></thead>
+          <tbody id="claimsBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Slow &amp; Repeated Steps (Drift Monitor)</h3>
+      <div class="alerts-list" id="alertsList">
+        <div class="empty">No drift alerts.</div>
+      </div>
+      <div class="steps-table-wrap" id="stepsWrap">
+        <table class="steps-table">
+          <thead><tr><th>#</th><th>Name</th><th>Type</th><th>Duration (ms)</th><th>Tokens</th><th>Quality</th><th>Span</th><th>Input / Output preview</th></tr></thead>
+          <tbody id="stepsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel compare-panel" id="comparePanel" aria-hidden="true">
+    <div class="panel-header">
+      <h2>Compare Runs</h2>
+      <div class="meta-chip">Previous run vs current run</div>
+    </div>
+    <div class="compare-controls">
+      <label>Run A (previous): <select id="selectRunA"></select></label>
+      <label>Run B (current): <select id="selectRunB"></select></label>
+      <button id="btnCompare" class="btn-primary">Compare</button>
+    </div>
+    <div class="compare-summary" id="compareSummary"></div>
+    <div class="compare-details" id="compareDetails"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

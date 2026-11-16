@@ -133,6 +133,6 @@ jobs:
       - name: Goodhart's Law in Evolution
         working-directory: experiments/goodharts-law-evolution
         run: |
-          python3 -m pip install --quiet numpy matplotlib 2>/dev/null || python -m pip install --quiet numpy matplotlib
-          python3 run.py --N 5000 --mus "1.0" --gammas "0.1,0.3,0.5,0.7,0.9" --runs 1 --gens-v 30 --no-plot 2>/dev/null || python run.py --N 5000 --mus "1.0" --gammas "0.1,0.3,0.5,0.7,0.9" --runs 1 --gens-v 30 --no-plot
-          python3 test_smoke.py 2>/dev/null || python test_smoke.py
+          python -m pip install --quiet numpy
+          python run.py --N 5000 --mus "1.0" --gammas "0.1,0.3,0.5,0.7,0.9" --runs 1 --gens-v 30 --no-plot
+          python test_smoke.py

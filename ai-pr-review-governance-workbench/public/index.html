@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI PR Review Governance Workbench</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <h1>AI PR Review Governance Workbench</h1>
+      <p>Flags AI-generated PR sprawl so reviewers can send it back to rescope.</p>
+    </div>
+    <div class="config" id="config"></div>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Sprawl Dashboard</h2>
+        <button id="refresh">Refresh</button>
+      </div>
+      <div id="sprawl-list"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Recent Webhook Activity</h2>
+      </div>
+      <div id="webhook-log"></div>
+    </section>
+  </main>
+
+  <template id="sprawl-row-template">
+    <div class="sprawl-row">
+      <div class="sprawl-meta">
+        <a class="repo" href="#"></a>
+        <span class="pr">PR #<span class="pr-number"></span></span>
+        <span class="title"></span>
+        <span class="author">by <span class="author-name"></span></span>
+      </div>
+      <div class="sprawl-stats">
+        <span class="stat"><strong class="lines"></strong> lines</span>
+        <span class="stat"><strong class="files"></strong> files</span>
+        <span class="stat status"></span>
+      </div>
+      <div class="sprawl-action">
+        <button class="rescope">Send back to rescope</button>
+      </div>
+    </div>
+  </template>
+
+  <div id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

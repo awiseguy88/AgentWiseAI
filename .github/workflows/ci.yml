@@ -149,6 +149,10 @@ jobs:
         working-directory: model-alias-drift-guard
         run: npm test
 
+      - name: Inbox Agent Coverage Guard
+        working-directory: inbox-agent-coverage-guard
+        run: npm test
+
       - name: SIS Epidemic Threshold
         working-directory: experiments/sis-epidemic-threshold
         run: |

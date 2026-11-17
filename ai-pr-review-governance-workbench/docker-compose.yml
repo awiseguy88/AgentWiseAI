@@ -1,0 +1,21 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DB_PATH=/data/app.db
+      - WEBHOOK_SECRET=compose-webhook-secret
+      - MAX_LINES=500
+      - MAX_FILES=10
+    volumes:
+      - app_data:/data
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  app_data:

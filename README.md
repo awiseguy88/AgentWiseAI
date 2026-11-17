@@ -52,6 +52,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Agent Cloud Sandbox | [`agent-cloud-sandbox/`](agent-cloud-sandbox/) | Local cloud-emulator harness with fixture catalogs, deterministic smoke tests, and agent-ready validation for cloud-native AWS code (Lambda, DynamoDB, SQS, Step Functions). Runs fully offline. | Pending PR |
 
 | Agent Governance Control Plane | [`agent-governance-control-plane/`](agent-governance-control-plane/) | Self-hosted service and agent middleware/SDK that enforces least-privilege tool-call policy at runtime, routes high-risk actions for approval, and records a tamper-evident append-only audit log with an Express + SQLite dashboard. | Pending PR |
+| Model Alias Drift Guard | [`model-alias-drift-guard/`](model-alias-drift-guard/) | Self-hosted CLI and web service that replays a frozen golden prompt set against a live model alias to detect silent drift, emit HTML/JSON reports with per-task diffs, trend charts, and threshold-breach alerts. | Pending PR |
 
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 

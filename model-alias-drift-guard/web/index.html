@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Model Alias Drift Guard</title>
+<link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <h1>Model Alias Drift Guard</h1>
+    <p>Guarding <code id="alias">—</code> against silent behavioral drift</p>
+  </div>
+  <div class="actions">
+    <button id="run-btn" class="btn primary">Run suite now</button>
+    <button id="alert-btn" class="btn">Send test alert</button>
+  </div>
+</header>
+
+<section class="kpis" id="kpis"></section>
+
+<section class="panel chart-panel">
+  <h2>Drift trend vs frozen baseline</h2>
+  <p class="muted">Each point is a stored run. The dashed line is the frozen baseline pass rate.</p>
+  <div id="chart" class="chart"></div>
+</section>
+
+<section class="panel">
+  <h2>Runs</h2>
+  <div class="table-wrap">
+    <table id="runs-table">
+      <thead><tr><th>Run</th><th>Alias</th><th>At</th><th>Pass</th><th>Fail</th><th>Regressed</th><th>Pass rate</th><th>Drift</th><th>Breached</th><th>Alerted</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="panel" id="detail-panel" hidden>
+  <h2>Run detail</h2>
+  <div id="detail"></div>
+</section>
+
+<section class="grid2">
+  <div class="panel">
+    <h2>Baseline &amp; thresholds</h2>
+    <pre id="config"></pre>
+  </div>
+  <div class="panel">
+    <h2>Alert channels</h2>
+    <pre id="alerts-config"></pre>
+  </div>
+</section>
+
+<footer class="foot">Part of the AaronWiseAI open-source tool collection — <a href="https://aaronwiseai.com/">https://aaronwiseai.com/</a></footer>
+<script src="/static/app.js"></script>
+</body>
+</html>

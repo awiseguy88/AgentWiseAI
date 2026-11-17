@@ -1,0 +1,23 @@
+{
+  "name": "model-alias-drift-guard",
+  "version": "0.1.0",
+  "description": "Self-hosted CLI and web service that detects silent behavioral drift in live model aliases by replaying a frozen golden prompt set and reporting per-task diffs, trends, and threshold-breach alerts.",
+  "main": "src/cli.js",
+  "bin": {
+    "model-alias-drift-guard": "src/cli.js",
+    "alias-drift-guard": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node tests/smoke.js",
+    "smoke": "node tests/smoke.js",
+    "start": "node src/cli.js serve",
+    "schedule": "node src/cli.js schedule"
+  },
+  "keywords": ["llm", "model", "alias", "drift", "regression", "eval", "monitoring", "cli", "offline", "self-hosted"],
+  "author": "awiseguy88 <18493653+awiseguy88@users.noreply.github.com>",
+  "license": "MIT",
+  "homepage": "https://aaronwiseai.com/",
+  "engines": {
+    "node": ">=18"
+  }
+}

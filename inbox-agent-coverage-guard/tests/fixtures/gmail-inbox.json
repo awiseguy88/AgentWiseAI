@@ -1,0 +1,25 @@
+{
+  "description": "Mock Gmail inbox: 20 test emails, 15 with PROCESSED label (agent processed), 5 untouched.",
+  "messages": [
+    { "id": "m1", "thread_id": "t1", "from": "booking@example.com", "to": "you@example.com", "subject": "Booking confirmation #1001", "snippet": "Your booking is confirmed.", "received_at": "2026-11-16T08:00:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m2", "thread_id": "t2", "from": "support@example.com", "to": "you@example.com", "subject": "Support ticket #42", "snippet": "We received your request.", "received_at": "2026-11-16T08:05:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m3", "thread_id": "t3", "from": "sales@example.com", "to": "you@example.com", "subject": "Quote request", "snippet": "Pricing info attached.", "received_at": "2026-11-16T08:10:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m4", "thread_id": "t4", "from": "noreply@example.com", "to": "you@example.com", "subject": "Order shipped", "snippet": "Your order is on the way.", "received_at": "2026-11-16T08:15:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m5", "thread_id": "t5", "from": "booking@example.com", "to": "you@example.com", "subject": "Hotel reservation", "snippet": "Check-in confirmed.", "received_at": "2026-11-16T08:20:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m6", "thread_id": "t6", "from": "support@example.com", "to": "you@example.com", "subject": "Password reset", "snippet": "Reset your password here.", "received_at": "2026-11-16T08:25:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m7", "thread_id": "t7", "from": "sales@example.com", "to": "you@example.com", "subject": "Demo booking", "snippet": "Schedule your demo.", "received_at": "2026-11-16T08:30:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m8", "thread_id": "t8", "from": "team@example.com", "to": "you@example.com", "subject": "Weekly digest", "snippet": "This week in review.", "received_at": "2026-11-16T08:35:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m9", "thread_id": "t9", "from": "alerts@example.com", "to": "you@example.com", "subject": "Server alert", "snippet": "CPU usage high.", "received_at": "2026-11-16T08:40:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m10", "thread_id": "t10", "from": "news@example.com", "to": "you@example.com", "subject": "Newsletter", "snippet": "October edition.", "received_at": "2026-11-16T08:45:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m11", "thread_id": "t11", "from": "partner@example.com", "to": "you@example.com", "subject": "Contract signed", "snippet": "Agreement executed.", "received_at": "2026-11-16T08:50:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m12", "thread_id": "t12", "from": "billing@example.com", "to": "you@example.com", "subject": "Invoice #202", "snippet": "Payment due.", "received_at": "2026-11-16T08:55:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m13", "thread_id": "t13", "from": "events@example.com", "to": "you@example.com", "subject": "Webinar invite", "snippet": "Join us next week.", "received_at": "2026-11-16T09:00:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m14", "thread_id": "t14", "from": "hr@example.com", "to": "you@example.com", "subject": "Offer letter", "snippet": "Welcome aboard.", "received_at": "2026-11-16T09:05:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m15", "thread_id": "t15", "from": "it@example.com", "to": "you@example.com", "subject": "Access granted", "snippet": "You now have access.", "received_at": "2026-11-16T09:10:00Z", "label_ids": ["INBOX", "PROCESSED"] },
+    { "id": "m16", "thread_id": "t16", "from": "unknown@example.com", "to": "you@example.com", "subject": "Edge case booking", "snippet": "Edge-case email skipped by agent.", "received_at": "2026-11-16T09:15:00Z", "label_ids": ["INBOX"] },
+    { "id": "m17", "thread_id": "t17", "from": "vendor@example.com", "to": "you@example.com", "subject": "Quote revision", "snippet": "Updated pricing.", "received_at": "2026-11-16T09:20:00Z", "label_ids": ["INBOX"] },
+    { "id": "m18", "thread_id": "t18", "from": "client@example.com", "to": "you@example.com", "subject": "Change request", "snippet": "Please review changes.", "received_at": "2026-11-16T09:25:00Z", "label_ids": ["INBOX"] },
+    { "id": "m19", "thread_id": "t19", "from": "ops@example.com", "to": "you@example.com", "subject": "Incident note", "snippet": "Post-incident review.", "received_at": "2026-11-16T09:30:00Z", "label_ids": ["INBOX"] },
+    { "id": "m20", "thread_id": "t20", "from": "partner2@example.com", "to": "you@example.com", "subject": "Renewal", "snippet": "Contract renewal due.", "received_at": "2026-11-16T09:35:00Z", "label_ids": ["INBOX"] }
+  ]
+}

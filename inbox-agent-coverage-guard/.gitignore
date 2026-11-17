@@ -1,0 +1,16 @@
+# Inbox Agent Coverage Guard — local artifacts
+node_modules/
+data/*.sqlite
+data/*.db
+.env
+.env.local
+*.log
+.DS_Store
+*.sqlite-wal
+*.sqlite-shm
+coverage/
+dist/
+*.tgz
+*.pem
+*.key
+!data/.gitkeep

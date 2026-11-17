@@ -1,0 +1,21 @@
+{
+  "description": "Mock agent-reported processed message IDs (15 of 20).",
+  "agent": "booking-agent",
+  "processed": [
+    { "message_id": "m1", "action": "labeled:PROCESSED", "payload": { "label": "PROCESSED" } },
+    { "message_id": "m2", "action": "replied", "payload": { "reply_id": "r2" } },
+    { "message_id": "m3", "action": "labeled:PROCESSED", "payload": { "label": "PROCESSED" } },
+    { "message_id": "m4", "action": "archived", "payload": { "archived": true } },
+    { "message_id": "m5", "action": "labeled:PROCESSED", "payload": { "label": "PROCESSED" } },
+    { "message_id": "m6", "action": "replied", "payload": { "reply_id": "r6" } },
+    { "message_id": "m7", "action": "labeled:PROCESSED", "payload": { "label": "PROCESSED" } },
+    { "message_id": "m8", "action": "archived", "payload": { "archived": true } },
+    { "message_id": "m9", "action": "labeled:PROCESSED", "payload": { "label": "PROCESSED" } },
+    { "message_id": "m10", "action": "replied", "payload": { "reply_id": "r10" } },
+    { "message_id": "m11", "action": "labeled:PROCESSED", "payload": { "label": "PROCESSED" } },
+    { "message_id": "m12", "action": "archived", "payload": { "archived": true } },
+    { "message_id": "m13", "action": "labeled:PROCESSED", "payload": { "label": "PROCESSED" } },
+    { "message_id": "m14", "action": "replied", "payload": { "reply_id": "r14" } },
+    { "message_id": "m15", "action": "labeled:PROCESSED", "payload": { "label": "PROCESSED" } }
+  ]
+}

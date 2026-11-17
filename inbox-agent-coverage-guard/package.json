@@ -1,0 +1,25 @@
+{
+  "name": "inbox-agent-coverage-guard",
+  "version": "0.1.0",
+  "description": "Local-first web service that guards AI email agents against silently-missed emails: OAuth to Gmail/Outlook, reconciliation sweeps, human review queue, dead-letter queue with retry, coverage dashboard, and agent webhooks.",
+  "main": "src/cli.js",
+  "bin": {
+    "inbox-coverage-guard": "src/cli.js",
+    "icg": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node tests/smoke.js",
+    "smoke": "node tests/smoke.js",
+    "start": "node src/cli.js serve"
+  },
+  "keywords": ["email", "gmail", "outlook", "ai-agent", "coverage", "reconciliation", "dead-letter", "webhook", "cli", "offline", "self-hosted"],
+  "author": "awiseguy88 <18493653+awiseguy88@users.noreply.github.com>",
+  "license": "MIT",
+  "homepage": "https://aaronwiseai.com/",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.0.0"
+  }
+}

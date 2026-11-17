@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CI Waste Control Plane</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header>
+    <h1>CI Waste Control Plane</h1>
+    <p class="subtitle">Self-hosted dashboard for GitHub Actions waste, cost, and automated remediation.</p>
+  </header>
+  <main>
+    <section id="summary" class="card">
+      <h2>Overall waste</h2>
+      <div id="summary-content" class="muted">Loading…</div>
+    </section>
+    <section id="repos" class="card">
+      <h2>Repositories</h2>
+      <div id="repos-content" class="muted">Loading…</div>
+    </section>
+    <section id="remediation" class="card">
+      <h2>Remediation PRs</h2>
+      <div id="remediation-content" class="muted">None yet.</div>
+    </section>
+  </main>
+  <footer>
+    <p>Part of the <a href="https://aaronwiseai.com/" target="_blank" rel="noopener">AaronWiseAI</a> open-source tool collection — <a href="https://aaronwiseai.com/" target="_blank" rel="noopener">https://aaronwiseai.com/</a></p>
+  </footer>
+  <script src="./app.js"></script>
+</body>
+</html>

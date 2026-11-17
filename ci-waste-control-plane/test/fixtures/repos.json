@@ -1,0 +1,48 @@
+{
+  "repos": [
+    {
+      "owner": "acme",
+      "name": "agent-app",
+      "default_branch": "main",
+      "workflow_yaml": "name: CI\non:\n  push:\n    branches: [main]\n  pull_request:\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm test\n",
+      "runs": [
+        { "id": 1001, "workflow_id": 1, "workflow_name": "CI", "run_number": 10, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "main", "head_sha": "aaa1111", "attempt": 1, "created_at": "2026-11-10T10:00:00Z", "updated_at": "2026-11-10T10:12:00Z", "duration_minutes": 12, "has_timeout": true },
+        { "id": 1002, "workflow_id": 1, "workflow_name": "CI", "run_number": 11, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "main", "head_sha": "bbb2222", "attempt": 1, "created_at": "2026-11-10T10:05:00Z", "updated_at": "2026-11-10T10:20:00Z", "duration_minutes": 15, "has_timeout": true },
+        { "id": 1003, "workflow_id": 1, "workflow_name": "CI", "run_number": 12, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "main", "head_sha": "ccc3333", "attempt": 1, "created_at": "2026-11-10T10:10:00Z", "updated_at": "2026-11-10T10:25:00Z", "duration_minutes": 15, "has_timeout": true },
+
+        { "id": 1010, "workflow_id": 1, "workflow_name": "CI", "run_number": 20, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "feature/x", "head_sha": "ddd4444", "attempt": 1, "created_at": "2026-11-11T09:00:00Z", "updated_at": "2026-11-11T09:14:00Z", "duration_minutes": 14, "has_timeout": true },
+        { "id": 1011, "workflow_id": 1, "workflow_name": "CI", "run_number": 21, "event": "pull_request", "status": "completed", "conclusion": "success", "head_branch": "feature/x", "head_sha": "ddd4444", "attempt": 1, "created_at": "2026-11-11T09:01:00Z", "updated_at": "2026-11-11T09:16:00Z", "duration_minutes": 15, "has_timeout": true },
+
+        { "id": 1020, "workflow_id": 2, "workflow_name": "Nightly", "run_number": 5, "event": "schedule", "status": "completed", "conclusion": "failure", "head_branch": "main", "head_sha": "zzz9999", "attempt": 1, "created_at": "2026-10-20T02:00:00Z", "updated_at": "2026-10-20T02:30:00Z", "duration_minutes": 30, "has_timeout": true },
+        { "id": 1021, "workflow_id": 2, "workflow_name": "Nightly", "run_number": 6, "event": "schedule", "status": "completed", "conclusion": "failure", "head_branch": "main", "head_sha": "zzz9998", "attempt": 1, "created_at": "2026-10-27T02:00:00Z", "updated_at": "2026-10-27T02:28:00Z", "duration_minutes": 28, "has_timeout": true },
+        { "id": 1022, "workflow_id": 2, "workflow_name": "Nightly", "run_number": 7, "event": "schedule", "status": "completed", "conclusion": "failure", "head_branch": "main", "head_sha": "zzz9997", "attempt": 1, "created_at": "2026-11-03T02:00:00Z", "updated_at": "2026-11-03T02:25:00Z", "duration_minutes": 25, "has_timeout": true },
+
+        { "id": 1030, "workflow_id": 3, "workflow_name": "Lint", "run_number": 30, "event": "push", "status": "completed", "conclusion": "failure", "head_branch": "fix/lint", "head_sha": "eee5555", "attempt": 1, "created_at": "2026-11-12T08:00:00Z", "updated_at": "2026-11-12T08:06:00Z", "duration_minutes": 6, "has_timeout": false },
+        { "id": 1031, "workflow_id": 3, "workflow_name": "Lint", "run_number": 31, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "fix/lint", "head_sha": "eee5555", "attempt": 2, "created_at": "2026-11-12T08:10:00Z", "updated_at": "2026-11-12T08:15:00Z", "duration_minutes": 5, "has_timeout": false }
+      ]
+    },
+    {
+      "owner": "acme",
+      "name": "tools",
+      "default_branch": "main",
+      "workflow_yaml": "name: CI\non:\n  push:\n    branches: [main]\n  pull_request:\njobs:\n  build:\n    runs-on: ubuntu-latest\n    timeout-minutes: 20\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm run build\n",
+      "runs": [
+        { "id": 2001, "workflow_id": 10, "workflow_name": "Build", "run_number": 40, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "dev", "head_sha": "t111111", "attempt": 1, "created_at": "2026-11-13T12:00:00Z", "updated_at": "2026-11-13T12:10:00Z", "duration_minutes": 10, "has_timeout": true },
+        { "id": 2002, "workflow_id": 10, "workflow_name": "Build", "run_number": 41, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "dev", "head_sha": "t222222", "attempt": 1, "created_at": "2026-11-13T12:05:00Z", "updated_at": "2026-11-13T12:16:00Z", "duration_minutes": 11, "has_timeout": true },
+        { "id": 2003, "workflow_id": 10, "workflow_name": "Build", "run_number": 42, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "dev", "head_sha": "t333333", "attempt": 1, "created_at": "2026-11-13T12:10:00Z", "updated_at": "2026-11-13T12:22:00Z", "duration_minutes": 12, "has_timeout": true },
+        { "id": 2010, "workflow_id": 11, "workflow_name": "Release", "run_number": 7, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "main", "head_sha": "r111111", "attempt": 1, "created_at": "2026-11-14T10:00:00Z", "updated_at": "2026-11-14T10:08:00Z", "duration_minutes": 8, "has_timeout": false }
+      ]
+    },
+    {
+      "owner": "acme",
+      "name": "stable-lib",
+      "default_branch": "main",
+      "workflow_yaml": "name: CI\non:\n  pull_request:\n  push:\n    branches: [main]\nconcurrency:\n  group: ${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\njobs:\n  test:\n    runs-on: ubuntu-latest\n    timeout-minutes: 15\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci\n      - run: npm test\n",
+      "runs": [
+        { "id": 3001, "workflow_id": 20, "workflow_name": "CI", "run_number": 50, "event": "pull_request", "status": "completed", "conclusion": "success", "head_branch": "feat/a", "head_sha": "s111111", "attempt": 1, "created_at": "2026-11-15T09:00:00Z", "updated_at": "2026-11-15T09:07:00Z", "duration_minutes": 7, "has_timeout": true },
+        { "id": 3002, "workflow_id": 20, "workflow_name": "CI", "run_number": 51, "event": "pull_request", "status": "completed", "conclusion": "success", "head_branch": "feat/b", "head_sha": "s222222", "attempt": 1, "created_at": "2026-11-15T10:00:00Z", "updated_at": "2026-11-15T10:06:00Z", "duration_minutes": 6, "has_timeout": true },
+        { "id": 3003, "workflow_id": 20, "workflow_name": "CI", "run_number": 52, "event": "push", "status": "completed", "conclusion": "success", "head_branch": "main", "head_sha": "s333333", "attempt": 1, "created_at": "2026-11-15T11:00:00Z", "updated_at": "2026-11-15T11:08:00Z", "duration_minutes": 8, "has_timeout": true }
+      ]
+    }
+  ]
+}

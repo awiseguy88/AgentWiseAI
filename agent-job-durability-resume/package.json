@@ -1,0 +1,26 @@
+{
+  "name": "agent-job-durability-resume",
+  "version": "0.1.0",
+  "description": "Web service + CLI shim that captures agent job state, persists checkpoints, suspends on interruption, and resumes with workspace revalidation and replanning.",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "agent-job-durability-resume": "dist/cli.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "test": "npm run build && node test/acceptance.mjs",
+    "demo": "npm run build && node dist/cli.js demo"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  }
+}

@@ -91,17 +91,10 @@ export function categorizeWaste(repo, runs, opts = {}) {
   }
 
   // --- flaky jobs (retry-proven) ---
-  // pattern 1: attempt > 1
-  // pattern 2: same workflow+head_sha has failure then success (re-run of same commit) - detect by multiple runs same sha/workflow with mixed conclusions
+  // Pattern 2 (retry-proven) takes precedence: same workflow+head_sha has failure then success on the same commit.
+  // Pattern 1 (attempt > 1) is a fallback flag for workflows not already flagged by pattern 2, and only counts
+  // failed attempts (conclusion === 'failure') so a successful retry's duration is not double-counted.
   const flakyWorkflows = new Map();
-  for (const r of runs) {
-    if ((r.attempt || 1) > 1) {
-      if (!flakyWorkflows.has(r.workflow_id)) flakyWorkflows.set(r.workflow_id, { name: r.workflow_name, minutes: 0, reasons: new Set() });
-      const w = flakyWorkflows.get(r.workflow_id);
-      w.minutes += r.duration_minutes || 0;
-      w.reasons.add(`attempt ${r.attempt} on run #${r.run_number}`);
-    }
-  }
   const shaOutcome = new Map();
   for (const r of runs) {
     if (!r.head_sha) continue;
@@ -114,9 +107,18 @@ export function categorizeWaste(repo, runs, opts = {}) {
     if (conclusions.includes('failure') && conclusions.includes('success') && g.runs.length >= 2) {
       if (!flakyWorkflows.has(g.runs[0].workflow_id)) flakyWorkflows.set(g.runs[0].workflow_id, { name: g.name, minutes: 0, reasons: new Set() });
       const w = flakyWorkflows.get(g.runs[0].workflow_id);
-      // recoverable = failed attempts' duration
+      // recoverable = failed attempts' duration only
       for (const r of g.runs.filter(r => r.conclusion === 'failure')) w.minutes += r.duration_minutes || 0;
       w.reasons.add(`retry-proven: failure then success on ${String(g.runs[0].head_sha).slice(0,7)}`);
+    }
+  }
+  // Fallback: workflows with retried runs (attempt > 1) not already flagged by pattern 2 above.
+  for (const r of runs) {
+    if ((r.attempt || 1) > 1 && !flakyWorkflows.has(r.workflow_id) && r.conclusion === 'failure') {
+      flakyWorkflows.set(r.workflow_id, { name: r.workflow_name, minutes: 0, reasons: new Set() });
+      const w = flakyWorkflows.get(r.workflow_id);
+      w.minutes += r.duration_minutes || 0;
+      w.reasons.add(`attempt ${r.attempt} on run #${r.run_number}`);
     }
   }
   for (const [, w] of flakyWorkflows) {

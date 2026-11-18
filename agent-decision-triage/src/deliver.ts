@@ -4,6 +4,7 @@ import https from "https";
 import net from "net";
 import path from "path";
 import type { DecisionItem, DeliveryDiagnostic } from "./types";
+import { resolveRestrictions, restrictFileTarget, restrictSocketTarget, restrictCallbackTarget, type DeliveryRestrictions } from "./restrictions";
 
 export interface DeliverOptions {
   maxAttempts?: number;
@@ -66,7 +67,7 @@ function writeSocketResponse(target: string, payload: unknown, timeoutMs: number
 export async function deliverResponse(
   item: Pick<DecisionItem, "id" | "channel" | "channelTarget" | "type" | "session">,
   response: unknown,
-  opts: DeliverOptions = {}
+  opts: DeliverOptions & { restrictions?: DeliveryRestrictions } = {}
 ): Promise<{ ok: true; attempts: number } | { ok: false; diagnostic: DeliveryDiagnostic }> {
   const maxAttempts = opts.maxAttempts ?? 3;
   const baseDelayMs = opts.baseDelayMs ?? 150;
@@ -79,12 +80,35 @@ export async function deliverResponse(
     deliveredAt: new Date().toISOString(),
   };
 
+  // Defense in depth: re-verify the delivery target before writing.
+  const restrictions = opts.restrictions || resolveRestrictions();
+  let safeTarget = item.channelTarget;
+  try {
+    if (item.channel === "file") {
+      safeTarget = restrictions.allowExternalFile ? item.channelTarget : restrictFileTarget(item.channelTarget, restrictions.baseDir);
+    } else if (item.channel === "socket") {
+      safeTarget = restrictions.allowExternalSocket ? item.channelTarget : restrictSocketTarget(item.channelTarget, restrictions.baseDir);
+    } else if (item.channel === "callback") {
+      safeTarget = restrictCallbackTarget(item.channelTarget, restrictions.baseDir, restrictions.allowExternalCallback);
+    }
+  } catch (e: any) {
+    return {
+      ok: false,
+      diagnostic: {
+        code: "delivery_blocked",
+        message: `Delivery target rejected by restrictions: ${e?.message || String(e)}`,
+        attempts: 0,
+        lastError: e?.message || String(e),
+      },
+    };
+  }
+
   let lastError = "";
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
     try {
-      if (item.channel === "callback") await postJson(item.channelTarget, payload, timeoutMs);
-      else if (item.channel === "file") await writeFileResponse(item.channelTarget, payload);
-      else if (item.channel === "socket") await writeSocketResponse(item.channelTarget, payload, timeoutMs);
+      if (item.channel === "callback") await postJson(safeTarget, payload, timeoutMs);
+      else if (item.channel === "file") await writeFileResponse(safeTarget, payload);
+      else if (item.channel === "socket") await writeSocketResponse(safeTarget, payload, timeoutMs);
       else throw new Error(`Unsupported channel: ${String(item.channel)}`);
       return { ok: true, attempts: attempt };
     } catch (e: any) {

@@ -2,6 +2,7 @@ import { computeDedupeKey } from "./dedupe";
 import { deliverResponse, DeliverOptions } from "./deliver";
 import { TriageDb } from "./db";
 import type { BatchResolvePayload, DecisionItem, NeedsInfoPayload, ResolvePayload, SnoozePayload, SubmitItem } from "./types";
+import { resolveRestrictions, type DeliveryRestrictions } from "./restrictions";
 
 const TYPE_PRIORITY: Record<string, number> = {
   approval: 40,
@@ -127,15 +128,16 @@ export async function resolveItemWithDelivery(
   db: TriageDb,
   id: number,
   payload: ResolvePayload,
-  opts: DeliverOptions = {}
+  opts: DeliverOptions & { restrictions?: DeliveryRestrictions } = {}
 ): Promise<{ resolved: DecisionItem[]; failed: Array<{ item: DecisionItem; error: string }> }> {
   const responder = payload.responder || "operator";
+  const restrictions = opts.restrictions || resolveRestrictions();
   const targets = resolutionTargets(db, id);
   const resolved: DecisionItem[] = [];
   const failed: Array<{ item: DecisionItem; error: string }> = [];
   for (const target of targets) {
     const updated = db.resolveItem(target.id, payload.response, responder)!;
-    const delivery = await deliverResponse(updated, payload.response, opts);
+    const delivery = await deliverResponse(updated, payload.response, { ...opts, restrictions });
     if (delivery.ok) {
       db.recordDeliverySuccess(target.id, delivery.attempts);
       resolved.push(db.getItem(target.id)!);
@@ -147,7 +149,7 @@ export async function resolveItemWithDelivery(
   return { resolved, failed };
 }
 
-export async function batchResolve(db: TriageDb, payload: BatchResolvePayload, opts: DeliverOptions = {}) {
+export async function batchResolve(db: TriageDb, payload: BatchResolvePayload, opts: DeliverOptions & { restrictions?: DeliveryRestrictions } = {}) {
   const results: Array<{ id: number; resolved: number[]; failed: Array<{ id: number; error: string }> }> = [];
   for (const r of payload.resolutions) {
     const out = await resolveItemWithDelivery(db, r.id, { response: r.response, responder: r.responder }, opts);

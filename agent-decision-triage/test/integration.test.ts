@@ -6,9 +6,16 @@ import path from "path";
 import http from "http";
 import net from "net";
 import { createApp } from "../src/server";
+import { resolveRestrictions } from "../src/restrictions";
 
 async function startServer(dbPath: string) {
-  const { app, db } = createApp(dbPath);
+  const { app, db } = createApp(dbPath, {
+    ...resolveRestrictions(),
+    baseDir: path.join(os.tmpdir(), "adt-delivery-base"),
+    allowExternalCallback: false,
+    allowExternalFile: true,
+    allowExternalSocket: true,
+  });
   const server = http.createServer(app);
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
   const port = (server.address() as net.AddressInfo).port;

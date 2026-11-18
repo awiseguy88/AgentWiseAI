@@ -6,11 +6,19 @@ import path from "path";
 import http from "http";
 import net from "net";
 import { deliverResponse } from "../src/deliver";
+import { resolveRestrictions } from "../src/restrictions";
+
+const UNRESTRICTED = {
+  baseDir: os.tmpdir(),
+  allowExternalCallback: true,
+  allowExternalFile: true,
+  allowExternalSocket: true,
+};
 
 test("delivers response to file", async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "adt-file-"));
   const target = path.join(dir, "out.json");
-  const r = await deliverResponse({ id: 1, channel: "file", channelTarget: target, type: "approval", session: "s" }, { ok: true });
+  const r = await deliverResponse({ id: 1, channel: "file", channelTarget: target, type: "approval", session: "s" }, { ok: true }, { restrictions: UNRESTRICTED });
   assert.equal(r.ok, true);
   const written = JSON.parse(fs.readFileSync(target, "utf8"));
   assert.equal(written.itemId, 1);
@@ -26,7 +34,7 @@ test("delivers response to callback", async () => {
   });
   await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
   const port = (server.address() as net.AddressInfo).port;
-  const r = await deliverResponse({ id: 2, channel: "callback", channelTarget: `http://127.0.0.1:${port}/cb`, type: "question", session: "s" }, "yes");
+  const r = await deliverResponse({ id: 2, channel: "callback", channelTarget: `http://127.0.0.1:${port}/cb`, type: "question", session: "s" }, "yes", { restrictions: UNRESTRICTED });
   assert.equal(r.ok, true);
   assert.equal(received.response, "yes");
   await new Promise<void>((resolve) => server.close(() => resolve()));
@@ -42,7 +50,7 @@ test("delivers response to socket", { skip: process.platform === "win32" }, asyn
     socket.on("end", () => { received = JSON.parse(data.trim()); });
   });
   await new Promise<void>((resolve) => server.listen(sock, resolve));
-  const r = await deliverResponse({ id: 3, channel: "socket", channelTarget: sock, type: "review", session: "s" }, { approved: true });
+  const r = await deliverResponse({ id: 3, channel: "socket", channelTarget: sock, type: "review", session: "s" }, { approved: true }, { restrictions: UNRESTRICTED });
   assert.equal(r.ok, true);
   await new Promise((res) => setTimeout(res, 50));
   assert.equal(received.response.approved, true);
@@ -53,7 +61,7 @@ test("unreachable callback fails with diagnostics after bounded retries", async 
   const r = await deliverResponse(
     { id: 4, channel: "callback", channelTarget: "http://127.0.0.1:9/nope", type: "approval", session: "s" },
     { ok: false },
-    { maxAttempts: 3, baseDelayMs: 10, timeoutMs: 200 }
+    { maxAttempts: 3, baseDelayMs: 10, timeoutMs: 200, restrictions: UNRESTRICTED }
   );
   assert.equal(r.ok, false);
   if (!r.ok) {

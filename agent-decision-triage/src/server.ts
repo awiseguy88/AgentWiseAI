@@ -3,14 +3,16 @@ import fs from "fs";
 import path from "path";
 import { TriageDb } from "./db";
 import { listAllWithQueueNumbers, batchResolve, needsInfo, resolveItemWithDelivery, snooze, submitItem } from "./inbox";
-import { formatErrors, validateSubmitPayload } from "./validate";
+import { formatErrors, validateSubmitPayload, restrictChannelTarget } from "./validate";
+import { resolveRestrictions, type DeliveryRestrictions } from "./restrictions";
 
 function escapeHtml(s: string): string {
   return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 }
 
-export function createApp(dbPath?: string) {
+export function createApp(dbPath?: string, restrictions?: DeliveryRestrictions) {
   const db = new TriageDb({ dbPath });
+  const restrictions_ = restrictions || resolveRestrictions();
   const app = express();
   app.use(express.json({ limit: "1mb" }));
 
@@ -39,8 +41,12 @@ export function createApp(dbPath?: string) {
         message: formatErrors(parsed.errors),
       });
     }
+    const restricted = restrictChannelTarget(parsed.value, restrictions_);
+    if (!restricted.ok) {
+      return res.status(400).json({ error: "Invalid delivery target", message: restricted.error });
+    }
     try {
-      const { item, deduped } = submitItem(db, parsed.value);
+      const { item, deduped } = submitItem(db, { ...parsed.value, channelTarget: restricted.target });
       res.status(201).json({ item, deduped });
     } catch (e: any) {
       res.status(500).json({ error: "Failed to submit item", message: e?.message || String(e) });
@@ -53,7 +59,7 @@ export function createApp(dbPath?: string) {
     if (req.body == null || typeof req.body !== "object" || !("response" in req.body)) {
       return res.status(400).json({ error: "Invalid payload", message: "response is required." });
     }
-    const result = await resolveItemWithDelivery(db, id, { response: req.body.response, responder: req.body.responder });
+    const result = await resolveItemWithDelivery(db, id, { response: req.body.response, responder: req.body.responder }, { restrictions: restrictions_ });
     res.json(result);
   });
 
@@ -85,7 +91,7 @@ export function createApp(dbPath?: string) {
       }
       if (!db.getItem(r.id)) return res.status(404).json({ error: "Item not found", id: r.id });
     }
-    const results = await batchResolve(db, { resolutions: body.resolutions });
+    const results = await batchResolve(db, { resolutions: body.resolutions }, { restrictions: restrictions_ });
     res.json({ results });
   });
 

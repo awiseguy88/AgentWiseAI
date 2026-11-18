@@ -116,6 +116,14 @@ jobs:
           npm run build
           npm test
 
+      - name: TinySqueeze
+        working-directory: products/tinysqueeze
+        run: |
+          npm ci
+          npm run typecheck
+          npm run build
+          npm test
+
       - name: Chmod Lab
         working-directory: products/chmod-lab
         run: |
@@ -129,3 +137,26 @@ jobs:
           npm ci
           npm run build
           npm test
+
+      - name: Goodhart's Law in Evolution
+        working-directory: experiments/goodharts-law-evolution
+        run: |
+          python -m pip install --quiet numpy
+          python run.py --N 5000 --mus "1.0" --gammas "0.1,0.3,0.5,0.7,0.9" --runs 1 --gens-v 30 --no-plot
+          python test_smoke.py
+
+      - name: Model Alias Drift Guard
+        working-directory: model-alias-drift-guard
+        run: npm test
+
+      - name: Inbox Agent Coverage Guard
+        working-directory: inbox-agent-coverage-guard
+        run: |
+          npm ci
+          npm test
+
+      - name: SIS Epidemic Threshold
+        working-directory: experiments/sis-epidemic-threshold
+        run: |
+          python -m pip install --quiet numpy networkx
+          python test_smoke.py

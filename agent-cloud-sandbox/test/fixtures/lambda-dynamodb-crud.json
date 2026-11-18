@@ -1,0 +1,12 @@
+{
+  "name": "lambda-dynamodb-crud",
+  "description": "Lambda + DynamoDB CRUD: create table, put item, get item, update item, delete item, invoke Lambda.",
+  "steps": [
+    { "name": "create-table", "service": "dynamodb", "action": "create-table", "params": { "table": "agent-items" } },
+    { "name": "put-item", "service": "dynamodb", "action": "put", "params": { "table": "agent-items", "pk": "user:1", "item": { "id": "user:1", "name": "Ada", "role": "engineer" } } },
+    { "name": "get-item", "service": "dynamodb", "action": "get", "params": { "table": "agent-items", "pk": "user:1" } },
+    { "name": "update-item", "service": "dynamodb", "action": "update", "params": { "table": "agent-items", "pk": "user:1", "attrs": { "role": "senior-engineer" } } },
+    { "name": "delete-item", "service": "dynamodb", "action": "delete", "params": { "table": "agent-items", "pk": "user:1" } },
+    { "name": "invoke-lambda", "service": "lambda", "action": "invoke", "params": { "function": "agent-handler", "payload": { "operation": "list", "table": "agent-items" } } }
+  ]
+}

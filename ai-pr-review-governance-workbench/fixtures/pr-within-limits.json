@@ -1,0 +1,32 @@
+{
+  "number": 7,
+  "title": "fix: update docs for tool launcher",
+  "repository": "awiseguy88/AgentWiseAI",
+  "author": "dev-a",
+  "html_url": "https://github.com/awiseguy88/AgentWiseAI/pull/7",
+  "additions": 242,
+  "deletions": 98,
+  "changed_files": 4,
+  "diff": [
+    {
+      "path": "src/module1/file1.ts",
+      "additions": 50,
+      "deletions": 20
+    },
+    {
+      "path": "src/module2/file2.ts",
+      "additions": 57,
+      "deletions": 23
+    },
+    {
+      "path": "src/module3/file3.ts",
+      "additions": 64,
+      "deletions": 26
+    },
+    {
+      "path": "src/module4/file4.ts",
+      "additions": 71,
+      "deletions": 29
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+services:
+  app:
+    build: .
+    image: model-alias-drift-guard:latest
+    ports:
+      - "3030:3030"
+    environment:
+      - DRIFT_GUARD_PORT=3030
+      - DRIFT_GUARD_ALIAS=${DRIFT_GUARD_ALIAS:-live-alias}
+      - DRIFT_GUARD_ADAPTER=${DRIFT_GUARD_ADAPTER:-mock:tests/fixtures/mock-good.json}
+      - DRIFT_GUARD_CRON=${DRIFT_GUARD_CRON:-0 2 * * *}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    volumes:
+      - drift_data:/app/data
+    command: ["node", "src/cli.js", "serve", "--port", "3030", "--data-dir", "/app/data"]
+
+  scheduler:
+    build: .
+    image: model-alias-drift-guard:latest
+    environment:
+      - DRIFT_GUARD_ALIAS=${DRIFT_GUARD_ALIAS:-live-alias}
+      - DRIFT_GUARD_ADAPTER=${DRIFT_GUARD_ADAPTER:-mock:tests/fixtures/mock-good.json}
+      - DRIFT_GUARD_CRON=${DRIFT_GUARD_CRON:-0 2 * * *}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    volumes:
+      - drift_data:/app/data
+    command: ["node", "src/cli.js", "schedule", "--cron", "${DRIFT_GUARD_CRON:-0 2 * * *}", "--data-dir", "/app/data"]
+    depends_on:
+      - app
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: driftguard
+      POSTGRES_USER: driftguard
+      POSTGRES_PASSWORD: driftguard
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    profiles: ["postgres"]
+
+volumes:
+  drift_data:
+  pg_data:

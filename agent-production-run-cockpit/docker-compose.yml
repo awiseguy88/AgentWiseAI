@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  cockpit:
+    build: .
+    ports:
+      - "8787:8787"
+    command: ["node", "dist/cli.js", "serve", "--file", "fixtures/runs-30.jsonl", "--port", "8787"]

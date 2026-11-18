@@ -1,0 +1,13 @@
+{
+  "description": "Simulated failing agent action (503) for dead-letter queue testing.",
+  "agent": "booking-agent",
+  "failed": [
+    {
+      "message_id": "m16",
+      "action": "reply_to_booking",
+      "payload": { "to": "unknown@example.com", "subject": "Re: Edge case booking", "body": "Thanks for reaching out." },
+      "error": { "status": 503, "message": "Service Unavailable" },
+      "mock_dispatch": { "fail": "Service Unavailable (503)" }
+    }
+  ]
+}

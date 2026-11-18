@@ -1,0 +1,79 @@
+experiment: karman-line-altitude
+name: Kármán Line Altitude Experiment
+slug: karman-line-altitude
+issue: 96
+source: private
+workflow: discovery
+createdAt: 2026-11-16T18:53:00.000Z
+
+# Signed hypothesis
+hypothesis: |
+  For a vehicle flying at circular orbital speed v = sqrt(GM/(R_E+h)), the altitude h at
+  which aerodynamic lift equals vehicle weight (the Kármán threshold) falls in the 70-90 km
+  range for realistic aircraft parameters (wing loading 500-5000 N/m², lift coefficient 0.5-2.0),
+  i.e. for wing-loading/C_L ratios (W/S)/C_L in [250, 2500] N/m² the computed Kármán altitude h
+  lies in [70, 90] km. This is consistent with von Kármán's 83.8 km for light, high-lift
+  configurations and confirms that the FAI's 100 km is a conventional (slightly conservative)
+  upper bound rather than a sharp physical transition.
+
+baseline: |
+  von Kármán's 83.8 km (1956, Bell X-2 parameters).
+
+metric: karman_altitude_km
+units:
+  altitude_km: km (m internally)
+  density: kg/m³
+  orbital_speed: m/s
+  wing_loading: N/m²
+  lift_coefficient: dimensionless
+  earth_radius_km: 6378
+  GM: 3.986e14 m³/s²
+
+threshold: |
+  PASS if, for wing-loading/C_L ratios (W/S)/C_L in [250, 2500] N/m², the computed Kármán
+  altitude h lies in [70, 90] km, AND the standard-atmosphere density model reproduces
+  sea-level density 1.225 kg/m³ within 1%. FAIL otherwise.
+
+stop_condition: |
+  Abort the experiment (model mis-implemented) if the density model does not reproduce sea-level
+  density 1.225 kg/m³ within 1%. Otherwise sweep all parameter pairs in the threshold range.
+
+# Assumptions
+assumptions:
+  - US Standard Atmosphere (1976) density model is adequate for 0-100 km.
+  - Vehicle flies horizontally at circular orbital speed v = sqrt(GM/r) with no thrust.
+  - Lift coefficient C_L is approximately constant over the altitude range.
+  - Wing loading W/S is constant (no fuel burn).
+  - Earth is spherical; GM = 3.986e14 m³/s²; R_E = 6378 km (equatorial).
+
+# Failure mode
+most_likely_failure_mode: |
+  The standard-atmosphere density model is least accurate above ~80 km, where density varies by
+  orders of magnitude with solar activity and the model is an average. Results above 80 km should
+  be treated as order-of-magnitude. If the solver returns h > 90 km for moderate parameters, the
+  density model (not the physics) is the likely culprit.
+
+# Tools
+tools:
+  - python3
+  - c (gcc), standard library only
+expected_runtime: "< 1 second for the full parameter sweep"
+
+# Artifacts
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - run.py
+  - karman.c
+  - test_smoke.py
+  - results/karman_results.csv
+  - results/summary.json
+  - report.md
+  - run command: python experiments/karman-line-altitude/run.py
+  - smoke test: python experiments/karman-line-altitude/test_smoke.py
+
+# Result label
+result_label: calculated
+
+# Verdict (filled after run)
+verdict: TBD

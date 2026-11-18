@@ -1,0 +1,26 @@
+{
+  "name": "agent-production-run-cockpit",
+  "version": "0.1.0",
+  "description": "Self-hosted observability cockpit for agent runs: per-step cost/latency/token breakdown, retry-loop and context-creep detection, model-drift diff, cost attribution, and budget-cap enforcement.",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "agent-production-run-cockpit": "dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "test": "npm run build && node test/acceptance.mjs",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  }
+}

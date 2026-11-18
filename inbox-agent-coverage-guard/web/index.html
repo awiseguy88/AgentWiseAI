@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inbox Coverage Guard</title>
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<header>
+  <h1>Inbox Coverage Guard</h1>
+  <p id="inbox-label">—</p>
+</header>
+<main>
+  <section id="kpis">
+    <div class="kpi" id="kpi-processed"><span class="label">Processed</span><span class="value" id="val-processed">—</span></div>
+    <div class="kpi" id="kpi-untouched"><span class="label">Untouched</span><span class="value" id="val-untouched">—</span></div>
+    <div class="kpi" id="kpi-failed"><span class="label">Failed</span><span class="value" id="val-failed">—</span></div>
+    <div class="kpi" id="kpi-total"><span class="label">Total</span><span class="value" id="val-total">—</span></div>
+  </section>
+
+  <section id="controls">
+    <button id="btn-sweep">Run Sweep</button>
+    <button id="btn-refresh">Refresh</button>
+    <span id="sweep-status"></span>
+  </section>
+
+  <section id="trend">
+    <h2>Trend</h2>
+    <div id="trend-chart"></div>
+  </section>
+
+  <section id="review">
+    <h2>Review Queue <span id="review-count">(0)</span></h2>
+    <div id="review-list"></div>
+  </section>
+
+  <section id="dlq">
+    <h2>Dead-Letter Queue <span id="dlq-count">(0)</span></h2>
+    <div id="dlq-list"></div>
+  </section>
+
+  <section id="audit">
+    <h2>Audit Log</h2>
+    <div id="audit-list"></div>
+  </section>
+</main>
+<script src="/app.js"></script>
+</body>
+</html>

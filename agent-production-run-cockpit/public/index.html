@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Production Run Cockpit</title>
+<style>
+  body { font-family: system-ui, sans-serif; margin: 0; padding: 24px; background: #f7f7f7; color: #111; }
+  h1 { margin-top: 0; }
+  .card { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+  a { color: #1565c0; }
+</style>
+</head>
+<body>
+  <h1>Agent Production Run Cockpit</h1>
+  <p>Self-hosted observability cockpit for agent production runs.</p>
+  <div class="card">
+    <h2>Endpoints</h2>
+    <ul>
+      <li><code>GET /health</code> — server health and run count.</li>
+      <li><code>GET /api/report?file=...</code> — full JSON report for a JSONL file.</li>
+      <li><code>GET /</code> — this page.</li>
+    </ul>
+  </div>
+  <p>Built by <a href="https://aaronwiseai.com/">AaronWiseAI</a>.</p>
+</body>
+</html>

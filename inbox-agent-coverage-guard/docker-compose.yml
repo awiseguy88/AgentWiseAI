@@ -1,0 +1,18 @@
+services:
+  app:
+    build: .
+    image: inbox-agent-coverage-guard:latest
+    ports:
+      - "3400:3400"
+    environment:
+      - ICG_PORT=3400
+      - ICG_PROVIDER=mock
+      - ICG_INBOX=default
+      - ICG_PROCESSED_LABEL=PROCESSED
+      - ICG_MOCK_INBOX_FILE=/app/tests/fixtures/gmail-inbox.json
+    volumes:
+      - icg_data:/app/data
+    command: ["node", "src/cli.js", "serve", "--port", "3400", "--data-dir", "/app/data", "--provider", "mock:tests/fixtures/gmail-inbox.json"]
+
+volumes:
+  icg_data:

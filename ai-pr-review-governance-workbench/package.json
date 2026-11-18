@@ -1,0 +1,20 @@
+{
+  "name": "ai-pr-review-governance-workbench",
+  "version": "0.1.0",
+  "description": "Self-hosted GitHub App that ingests PRs via webhook, computes diff size and file count against a configurable threshold, flags oversized PRs as 'sprawl' on a reviewer dashboard, and lets a reviewer send one back to rescope with a comment + label.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "node --test test/smoke.mjs"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

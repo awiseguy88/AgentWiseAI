@@ -1,0 +1,90 @@
+name: goodharts-law-evolution
+title: "Experiment: Goodhart's Law in Evolution — Selection Pressure Threshold"
+issue: 98
+workflow: discovery
+claim: >
+  For the Laplace noise evolution model (alpha=1), there exists a critical
+  selection pressure gamma_c(mu) that maximizes the scaled adaptation rate
+  V/log(N), and gamma_c(mu) is a monotonically increasing function of mu. For
+  gamma < gamma_c(mu), stronger selection (decreasing gamma) slows adaptation.
+
+sources:
+  primary:
+    doi: "10.48550/arXiv.2503.21849"
+    arxiv: "2503.21849v2"
+    citation: "Mallein, Paparella, Schertzer, Talyigás (2025/2026), Selection of the fittest or selection of the luckiest: the emergence of Goodhart's law in evolution"
+
+hypothesis:
+  H1: >
+    For Laplace noise (alpha=1), N=50000 (primary reproduction setting), mu in
+    {0.5, 1.0, 2.0, 5.0}, the scaled adaptation rate V/log(N) as a function of
+    gamma exhibits a clear maximum at gamma_c(mu), and for gamma < gamma_c(mu)
+    the rate decreases as selection pressure increases (decreasing gamma).
+  H2: >
+    The critical line gamma_c(mu) is a monotonically increasing function of mu
+    (higher noise requires weaker selection to avoid the luckiest regime).
+  H3: >
+    Effective population size N_e shows a non-monotonic dependence on gamma for
+    fixed mu, with a minimum near the critical line and increasing on both
+    sides.
+
+baseline:
+  description: >
+    No genotype-phenotype noise mismatch: set phenotypic noise mu = 0 so
+    phenotype = genotype exactly. In this limit selection acts directly on the
+    heritable trait and the adaptation rate should increase monotonically with
+    selection pressure (decreasing gamma), showing no Goodhart's law effect.
+  implementation: "run.py with --mu-baseline (mu=0.0)"
+
+proposed_model:
+  description: "Laplace genotype-phenotype noise model with mu in {0.5, 1.0, 2.0, 5.0}."
+  implementation: "run.py (stochastic evolution simulation)"
+
+primary_metrics:
+  - name: "Scaled adaptation rate V_scaled"
+    formula: "V_scaled = V / log(N), V = (mean genotype at n - mean genotype at 0) / n"
+    aggregation: "mean over independent simulated runs"
+  - name: "Effective population size N_e"
+    formula: "N_e = mean time to most recent common ancestor (T_2) of two randomly sampled individuals"
+    aggregation: "mean over sampled pairs and independent simulated runs"
+
+units:
+  N: "population size (dimensionless count)"
+  gamma: "selection pressure parameter, dimensionless (0 < gamma < 1); low gamma = high selection pressure"
+  mu: "phenotypic-to-genotypic noise ratio, dimensionless"
+  V_scaled: "genotype units per generation (dimensionless after scaling by log(N))"
+  N_e: "generations (dimensionless)"
+  generations: "discrete generation count (dimensionless)"
+
+thresholds:
+  pass_conditions:
+    - "H1: For each mu in {0.5,1.0,2.0,5.0}, V_scaled(gamma) has an interior maximum gamma_c(mu) within the tested gamma range and decreases for gamma below gamma_c(mu)."
+    - "H2: gamma_c(mu) is monotonically increasing in mu across the tested mu values."
+    - "H3: N_e shows non-monotonic dependence on gamma for fixed mu (a minimum near the critical region, higher on at least one side)."
+  fail_conditions:
+    - "No interior maximum is found in V_scaled vs gamma for any tested mu (monotonic throughout)."
+    - "gamma_c(mu) is not monotonically increasing in mu."
+    - "N_e decreases monotonically with gamma (or shows no non-monotonic pattern) for all tested mu."
+  baseline_expectation: "For mu=0, V_scaled increases monotonically as gamma decreases (stronger selection)."
+
+assumptions:
+  - "Asexual population, discrete generations, fixed N."
+  - "Primary reproduction setting: N=50000 (reduced from N=10^5 for feasible runtime) with 10 gamma values, 4 mu values, 5 runs, 200 generations for V."
+  - "Supplementary scaling note: finite-N effects and parameter sensitivity discussed in report."
+  - "Genotypic noise X ~ Laplace(0,1), independent."
+  - "Phenotypic noise Y ~ Laplace(0,mu), independent."
+  - "Selection: top K=round(N^gamma) by phenotype reproduce; deterministic N/K offspring with residuals assigned uniformly at random among selected parents."
+  - "Offspring genotype = parent genotype + X (mutation)."
+  - "Initial genotypes drawn from Laplace(0,1)."
+  - "N_e estimated from 150 sampled pairs per run over 300 generations (genealogy tracking) for a subset of gamma values."
+
+stop_condition:
+  - "All specified (mu, gamma) combinations tested and thresholds evaluated."
+  - "If >20% of runs fail to reach stable adaptation behavior, report instability and stop."
+  - "If no non-monotonicity found for any mu after exhaustive sweep of the tested range, report FAIL and stop."
+
+reproduction_command: "python experiments/goodharts-law-evolution/run.py"
+smoke_test: "python experiments/goodharts-law-evolution/test_smoke.py"
+results_labeling: "All results labeled simulated (no physical measurement)."
+dependencies: "Python 3.10+ with numpy (scipy optional; matplotlib optional for plot)"
+expected_runtime: "~3-5 minutes for default parameters on a modern CPU"

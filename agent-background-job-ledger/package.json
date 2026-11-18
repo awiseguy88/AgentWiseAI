@@ -1,0 +1,26 @@
+{
+  "name": "agent-background-job-ledger",
+  "version": "0.1.0",
+  "description": "Durable background job ledger (SQLite/Postgres) that registers jobs owned by a tenant/thread/turn, runs commands, captures exit status and bounded scrubbed output, delivers completion notices at-least-once to the owning turn, replays unacknowledged notices after a crash, and reaps orphan jobs whose owner turn is gone.",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "agent-background-job-ledger": "dist/cli.js"
+  },
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "test": "npm run build && node test/acceptance.mjs",
+    "demo": "npm run build && node dist/cli.js demo"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "typescript": "^5.6.3"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "acceptance1": {
+    "agent_id": "fixture-agent-1",
+    "delete_call": { "tool": "DELETE", "args": { "query": "DELETE FROM users WHERE id = 1", "id": 1 } },
+    "select_call": { "tool": "SELECT", "args": { "query": "SELECT * FROM users" } },
+    "expect_delete": { "decision": "block", "appears_in_pending": true },
+    "expect_select": { "decision": "pass", "logged": true }
+  },
+  "acceptance2": {
+    "agent_id": "fixture-agent-1",
+    "write_call": { "tool": "INSERT", "args": { "query": "INSERT INTO users (name, email) VALUES (?, ?)", "name": "Charlie", "email": "charlie@example.com" } },
+    "expect": { "queued_for_approval": true, "on_reject": { "agent_denied": true, "no_side_effect": true } }
+  },
+  "acceptance3": {
+    "agent_id": "fixture-agent-1",
+    "retrievable_by": ["agent_id", "created_at"],
+    "tamper": { "detect_altered_entry": true }
+  }
+}

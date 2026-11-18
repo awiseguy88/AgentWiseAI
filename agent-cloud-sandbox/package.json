@@ -1,0 +1,21 @@
+{
+  "name": "agent-cloud-sandbox",
+  "version": "0.1.0",
+  "description": "Local cloud-emulator harness with fixture catalogs, deterministic smoke tests, and agent-ready validation for cloud-native AWS code (Lambda, DynamoDB, SQS, Step Functions). Runs fully offline.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "bin": {
+    "agent-cloud-sandbox": "src/cli.js"
+  },
+  "main": "src/cli.js",
+  "scripts": {
+    "test": "node --test test/smoke.test.js test/dry-run.test.js",
+    "smoke": "node --test test/smoke.test.js",
+    "dry-run": "node --test test/dry-run.test.js",
+    "cli": "node src/cli.js"
+  },
+  "keywords": ["ai-agent", "aws", "emulator", "lambda", "dynamodb", "sqs", "step-functions", "offline", "cloud", "testing", "fixtures"],
+  "engines": {
+    "node": ">=18"
+  }
+}

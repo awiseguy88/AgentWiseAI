@@ -1,0 +1,7 @@
+{
+  "thresholds": {
+    "staleCronDays": 7,
+    "flakyRetryWindowDays": 7,
+    "missingTimeoutGraceSeconds": 60
+  }
+}

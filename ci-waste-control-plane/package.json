@@ -1,0 +1,22 @@
+{
+  "name": "ci-waste-control-plane",
+  "version": "0.1.0",
+  "description": "Self-hosted control plane for CI waste: backfills the last 100 GitHub Actions runs per repo, computes per-workflow/per-repo cost, categorizes waste (superseded runs, push+PR duplicates, zombie crons, flaky jobs, missing timeouts), shows a dashboard of top wasteful workflows with estimated recoverable minutes, and opens one-line YAML remediation PRs.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "seed": "node src/seed.js",
+    "test": "node --test test/smoke.mjs",
+    "docker-smoke": "bash test/docker-smoke.sh"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

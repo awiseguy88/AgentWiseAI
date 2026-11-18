@@ -1,0 +1,6 @@
+{"type":"tool_call","tool_call_id":"call-1","name":"read_file","arguments":{"path":"/tmp/nonexistent.txt"}}
+{"type":"tool_result","tool_call_id":"call-1","name":"read_file","isError":true,"error":"File not found: /tmp/nonexistent.txt"}
+{"type":"assistant_message","content":"Successfully read the file contents and I will now use them."}
+{"type":"tool_call","tool_call_id":"call-2","name":"write_file","arguments":{"path":"/tmp/ok.txt","content":"hello"}}
+{"type":"tool_result","tool_call_id":"call-2","name":"write_file","isError":false,"content":[{"type":"text","text":"Wrote 5 bytes to /tmp/ok.txt"}]}
+{"type":"assistant_message","content":"Done writing the file."}

@@ -1,0 +1,6 @@
+{"type":"tool_call","tool_call_id":"call-1","name":"list_files","arguments":{"path":"/tmp"}}
+{"type":"tool_result","tool_call_id":"call-1","name":"list_files","isError":false,"content":[{"type":"text","text":"a.txt\nb.txt"}]}
+{"type":"assistant_message","content":"Here are the files I found."}
+{"type":"tool_call","tool_call_id":"call-2","name":"read_file","arguments":{"path":"/tmp/a.txt"}}
+{"type":"tool_result","tool_call_id":"call-2","name":"read_file","isError":false,"content":[{"type":"text","text":"contents"}]}
+{"type":"assistant_message","content":"Read the file contents."}

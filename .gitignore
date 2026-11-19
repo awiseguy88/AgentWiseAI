@@ -23,3 +23,7 @@ experiments/*/results_smoke/
 
 # test artifacts
 **/out-report.html
+
+# agent-rule-linter test artifacts
+agent-rule-linter/reports/
+agent-rule-linter/examples/AGENTS.md

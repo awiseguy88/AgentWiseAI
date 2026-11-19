@@ -1,0 +1,18 @@
+{
+  "name": "agent-rule-linter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local CLI that parses AGENTS.md/CLAUDE.md/rule files, classifies each rule as machine-checkable or not, and generates pre-commit hooks, CI checks, and agent-hook snippets for the checkable ones. Offline, no paid APIs.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "bin": {
+    "agent-rule-linter": "src/cli.js"
+  },
+  "scripts": {
+    "test": "node test/smoke.js",
+    "smoke": "node src/cli.js --input examples/sample-AGENTS.md --out reports/smoke --json --hooks --ci --agent-hooks"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

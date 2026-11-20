@@ -160,3 +160,9 @@ jobs:
         run: |
           python -m pip install --quiet numpy networkx
           python test_smoke.py
+
+      - name: Agent Browser Isolation Runtime
+        working-directory: agent-browser-isolation-runtime
+        run: |
+          npm test
+          node src/cli.js verify

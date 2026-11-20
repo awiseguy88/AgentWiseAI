@@ -1,0 +1,20 @@
+{
+  "name": "agent-browser-isolation-runtime",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local Node runner launching N isolated Chromium profiles (separate user-data-dir, stealth/anti-detection, real input via CDP), exposing an MCP server for navigate/click/type/screenshot/extract, persisting cookies/storage per profile.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "main": "src/cli.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/cli.js serve",
+    "test": "node --test test/smoke.test.js",
+    "verify": "node src/cli.js verify"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "engines": {
+    "node": ">=18"
+  }
+}

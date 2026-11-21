@@ -59,6 +59,14 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Agent Decision Triage | `agent-decision-triage/` | Local Node.js/TypeScript web app plus CLI/webhook bridge for triaging decisions from parallel coding agents with a prioritized numbered inbox UI, deduplication, batch resolve, and SQLite-backed audit. | Open [PR #67](https://github.com/awiseguy88/AgentWiseAI/pull/67) |
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 
+## Experiments
+
+| Experiment | Folder | What it tests | Status |
+| --- | --- | --- | --- |
+| Payne Nodal Line Conjecture Counterexample | [`experiments/payne-nodal-line-counterexample/`](experiments/payne-nodal-line-counterexample/) | Numerical check (P1 FEM + scipy sparse eigensolver) of Payne's nodal line conjecture on a unit square with N centered circular holes: whether the second Neumann eigenfunction's nodal line stays closed/interior. Verdict: unsupported on the tested symmetric family (issue #159). | In repo |
+
+New experiments are added by the GitHub Agent under `experiments/`.
+
 ## About AaronWiseAI
 
 Built by [AaronWiseAI](https://aaronwiseai.com/).

@@ -1,0 +1,102 @@
+experiment: payne-nodal-line-counterexample
+title: "Experiment: Payne Nodal Line Conjecture Counterexample"
+name: Payne Nodal Line Conjecture — Counterexample Check
+slug: payne-nodal-line-counterexample
+issue: 159
+source: public
+workflow: discovery
+createdAt: 2026-11-21T06:57:00.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  For a unit square domain with N centered, non-overlapping circular holes
+  (N in {4, 5, 6}), the second Neumann eigenfunction's nodal line remains
+  closed/interior (nodal_line_touches_boundary = false, min_distance_to_boundary
+  > 0) over a non-trivial range of hole radii and separations; as holes shrink
+  or move apart, the nodal line transitions to touching the boundary.
+  Finding at least one tested parameter set with N >= 4 and a confirmed closed
+  interior nodal line falsifies Payne's conjecture (which predicts
+  nodal_line_touches_boundary = true for every domain).
+
+baseline:
+  description: |
+    Payne's conjecture: for every bounded planar domain the nodal line of the
+    second Neumann eigenfunction touches the outer boundary
+    (nodal_line_touches_boundary = true). Reference counterexample: Dähne's
+    numerical six-hole domain with a closed interior nodal line
+    (nodal_line_touches_boundary = false), extended by Mattfeldt & Kleefeld
+    (2026), arXiv:2611.12542.
+  value: true
+
+metric:
+  primary:
+    name: "nodal_line_touches_boundary"
+    definition: |
+      Boolean: True if any point of the extracted nodal line (zero contour of
+      the second Neumann eigenfunction) lies within the boundary tolerance of
+      the outer boundary of the unit square; False if the nodal line is a
+      closed loop entirely in the interior. Extracted by interpolating the
+      FEM eigenfunction onto a regular grid and taking the zero contour, then
+      measuring the minimum distance from contour points to the outer boundary.
+  secondary:
+    name: "min_distance_to_boundary"
+    definition: |
+      Minimum Euclidean distance (in domain length units, unit square) from any
+      nodal-line point to the outer boundary. Zero (within tolerance) when the
+      line touches the boundary; strictly positive for a closed interior line.
+
+uncertainty:
+  method: "Mesh convergence: compare min_distance_to_boundary between two mesh resolutions; relative change must be < 1%."
+  tolerance: "Boundary-contact tolerance = 2 × mesh scale h; points within this distance of x = 0, x = 1, y = 0 or y = 1 count as touching."
+
+units:
+  nodal_line_touches_boundary: "boolean"
+  min_distance_to_boundary: "length in domain units (unit square side length = 1)"
+  radius: "length in domain units (hole radius)"
+  separation: "length in domain units (center-to-center spacing along midline)"
+  mu_1: "eigenvalue of -Δ (1/length^2)"
+  mesh: "number of triangular elements (P1 FEM)"
+
+thresholds:
+  pass_conditions:
+    - "nodal_line_touches_boundary = false AND min_distance_to_boundary > 0 for at least one tested parameter set with N >= 4 (conjecture falsified)."
+  fail_conditions:
+    - "nodal_line_touches_boundary = true for every tested parameter set (conjecture stands on tested grid)."
+  inconclusive_conditions:
+    - "Second Neumann eigenvalue is degenerate (relative gap mu_2 - mu_1 < 1e-3) so the eigenfunction is not well defined, or mesh-convergence fails (change >= 1%) at all resolutions."
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "Neumann boundary conditions on outer boundary and hole boundaries (∂u/∂n = 0)."
+  - "Domain: unit square [0,1] x [0,1] with N centered non-overlapping circular holes along the midline y = 0.5."
+  - "Second Neumann eigenvalue mu_1 is simple (non-degenerate); eigenfunction sign-checked; orthogonal to constants."
+  - "Mesh resolution sufficient to resolve the nodal line (mesh-convergence check per parameter set)."
+  - "Isotropic, homogeneous Laplacian (constant coefficients)."
+
+stop_condition:
+  - "Mesh convergence: change in min_distance_to_boundary < 1% under mesh refinement; OR"
+  - "nodal line confirmed closed (min_distance_to_boundary > 0) for at least one stable parameter set; OR"
+  - "all tested parameter sets converge to touching (nodal_line_touches_boundary = true)."
+
+tools:
+  - "Python 3.10+"
+  - "NumPy"
+  - "SciPy (sparse eigensolver scipy.sparse.linalg.eigsh, Delaunay via scipy.spatial)"
+  - "matplotlib (zero-contour extraction only)"
+expected_runtime: "< 10 minutes per parameter set on a single core"
+reproduction_command: "python3 experiments/payne-nodal-line-counterexample/simulate.py"
+ci_command: "python3 experiments/payne-nodal-line-counterexample/simulate.py --N-list 4 --radius-list 0.04 --resolutions 2500 --quick && python3 experiments/payne-nodal-line-counterexample/test_smoke.py"
+smoke_test: "python3 experiments/payne-nodal-line-counterexample/test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - simulate.py
+  - test_smoke.py
+  - results/results.csv
+  - results/summary.json
+  - report.md
+
+result_label: simulated
+
+verdict: unsupported

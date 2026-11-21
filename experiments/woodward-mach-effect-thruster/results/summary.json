@@ -1,0 +1,38 @@
+{
+  "experiment": "woodward-mach-effect-thruster",
+  "issue": 161,
+  "result_label": "calculated",
+  "verdict": "supported",
+  "constants": {
+    "G": 6.674e-11,
+    "c": 299800000.0,
+    "f_Hz": 2200000.0
+  },
+  "sweep": {
+    "V_cm3": [
+      0.1,
+      10.0
+    ],
+    "E0_J": [
+      0.01,
+      10.0
+    ],
+    "a_mps2": [
+      1000.0,
+      10000000.0
+    ],
+    "points_per_axis": 10,
+    "n_combinations": 1000
+  },
+  "thresholds_N": {
+    "supported": 0.0003,
+    "unsupported": 3e-05
+  },
+  "verdict_detail": {
+    "F_pred_max_N": 2534812119.959127,
+    "F_pred_min_N": 2.534812119959127,
+    "n_combinations_ge_support_threshold": 1000,
+    "n_combinations_lt_unsupport_threshold": 0
+  },
+  "runtime_s": 0.0014348030090332031
+}

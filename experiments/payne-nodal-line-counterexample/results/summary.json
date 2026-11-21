@@ -1,0 +1,781 @@
+{
+  "experiment": "payne-nodal-line-counterexample",
+  "issue": 159,
+  "hypothesis": "For N in {4,5,6} centered holes the nodal line remains closed/interior over a non-trivial radius range; at least one closed set falsifies Payne's conjecture.",
+  "baseline": "Payne's conjecture: nodal_line_touches_boundary = true always.",
+  "domain": "unit square [0,1] x [0,1], N centered holes on midline y=0.5",
+  "boundary_conditions": "Neumann on outer boundary and hole boundaries",
+  "N_list": [
+    4,
+    5,
+    6
+  ],
+  "radius_fractions": [
+    0.3,
+    0.6,
+    0.9
+  ],
+  "grids": [
+    100,
+    200
+  ],
+  "seed": 20261121,
+  "max_radius": {
+    "4": 0.09,
+    "5": 0.075,
+    "6": 0.0642857142857143
+  },
+  "thresholds": {
+    "pass": "nodal_line_touches_boundary = false AND min_distance_to_boundary > 0 for at least one tested parameter set with N >= 4",
+    "fail": "nodal_line_touches_boundary = true for every tested parameter set",
+    "inconclusive": "degenerate second eigenvalue or mesh-convergence failure"
+  },
+  "result_label": "simulated",
+  "verdict": "unsupported",
+  "n_sets": 9,
+  "n_closed": 0,
+  "n_touching": 9,
+  "n_inconclusive": 0,
+  "early_stop": false,
+  "sets": [
+    {
+      "N": 4,
+      "radius": 0.027,
+      "hole_positions": [
+        {
+          "x": 0.2,
+          "y": 0.5
+        },
+        {
+          "x": 0.4,
+          "y": 0.5
+        },
+        {
+          "x": 0.6,
+          "y": 0.5
+        },
+        {
+          "x": 0.8,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 9.511955074503314,
+        "mu_2": 9.726409780217862,
+        "rel_gap": 0.022545807253588845,
+        "degenerate": false,
+        "residual": 1.5126939414148679e-12,
+        "n_nodes": 10437,
+        "n_elements": 20160,
+        "boundary_tol": 0.019829116509250285,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 5,
+        "n_contour_points": 182
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 9.505626888370038,
+        "mu_2": 9.722683897581637,
+        "rel_gap": 0.02283458121811665,
+        "degenerate": false,
+        "residual": 3.2754648812088707e-11,
+        "n_nodes": 40653,
+        "n_elements": 79872,
+        "boundary_tol": 0.009962074869981486,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 5,
+        "n_contour_points": 335
+      },
+      "mu_1": 9.505626888370038,
+      "mu_2": 9.722683897581637,
+      "rel_gap": 0.02283458121811665,
+      "degenerate": false,
+      "residual": 3.2754648812088707e-11,
+      "n_nodes_coarse": 10437,
+      "n_elements_coarse": 20160,
+      "n_nodes_fine": 40653,
+      "n_elements_fine": 79872,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.019829116509250285,
+      "boundary_tol_fine": 0.009962074869981486,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 2.1409008502960205,
+      "nodal_line_file": "nodal_lines/N4_r0p027000.json"
+    },
+    {
+      "N": 4,
+      "radius": 0.054,
+      "hole_positions": [
+        {
+          "x": 0.2,
+          "y": 0.5
+        },
+        {
+          "x": 0.4,
+          "y": 0.5
+        },
+        {
+          "x": 0.6,
+          "y": 0.5
+        },
+        {
+          "x": 0.8,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 8.366873379421628,
+        "mu_2": 9.387706300308187,
+        "rel_gap": 0.12200888845734212,
+        "degenerate": false,
+        "residual": 1.4231843209951185e-12,
+        "n_nodes": 10133,
+        "n_elements": 19552,
+        "boundary_tol": 0.01985415444099251,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 5,
+        "n_contour_points": 130
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 8.357760868637458,
+        "mu_2": 9.383717308428903,
+        "rel_gap": 0.12275494069725683,
+        "degenerate": false,
+        "residual": 6.7868809497113325e-12,
+        "n_nodes": 39581,
+        "n_elements": 77728,
+        "boundary_tol": 0.009957535821143889,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 5,
+        "n_contour_points": 253
+      },
+      "mu_1": 8.357760868637458,
+      "mu_2": 9.383717308428903,
+      "rel_gap": 0.12275494069725683,
+      "degenerate": false,
+      "residual": 6.7868809497113325e-12,
+      "n_nodes_coarse": 10133,
+      "n_elements_coarse": 19552,
+      "n_nodes_fine": 39581,
+      "n_elements_fine": 77728,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.01985415444099251,
+      "boundary_tol_fine": 0.009957535821143889,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 2.029592275619507,
+      "nodal_line_file": "nodal_lines/N4_r0p054000.json"
+    },
+    {
+      "N": 4,
+      "radius": 0.081,
+      "hole_positions": [
+        {
+          "x": 0.2,
+          "y": 0.5
+        },
+        {
+          "x": 0.4,
+          "y": 0.5
+        },
+        {
+          "x": 0.6,
+          "y": 0.5
+        },
+        {
+          "x": 0.8,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 6.257388692689492,
+        "mu_2": 9.071031639753475,
+        "rel_gap": 0.44965129788903185,
+        "degenerate": false,
+        "residual": 3.8469474912879945e-12,
+        "n_nodes": 9669,
+        "n_elements": 18624,
+        "boundary_tol": 0.01985381259174549,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 5,
+        "n_contour_points": 77
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 6.244900800376397,
+        "mu_2": 9.06762320793408,
+        "rel_gap": 0.4520043628855642,
+        "degenerate": false,
+        "residual": 6.583067523656163e-12,
+        "n_nodes": 37725,
+        "n_elements": 74016,
+        "boundary_tol": 0.009958697843306417,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 5,
+        "n_contour_points": 154
+      },
+      "mu_1": 6.244900800376397,
+      "mu_2": 9.06762320793408,
+      "rel_gap": 0.4520043628855642,
+      "degenerate": false,
+      "residual": 6.583067523656163e-12,
+      "n_nodes_coarse": 9669,
+      "n_elements_coarse": 18624,
+      "n_nodes_fine": 37725,
+      "n_elements_fine": 74016,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.01985381259174549,
+      "boundary_tol_fine": 0.009958697843306417,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 1.5883495807647705,
+      "nodal_line_file": "nodal_lines/N4_r0p081000.json"
+    },
+    {
+      "N": 5,
+      "radius": 0.0225,
+      "hole_positions": [
+        {
+          "x": 0.16666666666666666,
+          "y": 0.5
+        },
+        {
+          "x": 0.3333333333333333,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.6666666666666666,
+          "y": 0.5
+        },
+        {
+          "x": 0.8333333333333334,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 9.559265749223973,
+        "mu_2": 9.758422524461581,
+        "rel_gap": 0.02083389880167056,
+        "degenerate": false,
+        "residual": 9.093080103239454e-12,
+        "n_nodes": 10516,
+        "n_elements": 20240,
+        "boundary_tol": 0.019801944414423532,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 6,
+        "n_contour_points": 180
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 9.55210868969827,
+        "mu_2": 9.75438747197173,
+        "rel_gap": 0.02117634847388336,
+        "degenerate": false,
+        "residual": 4.845529662547823e-12,
+        "n_nodes": 40872,
+        "n_elements": 80152,
+        "boundary_tol": 0.009950721416216156,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 6,
+        "n_contour_points": 340
+      },
+      "mu_1": 9.55210868969827,
+      "mu_2": 9.75438747197173,
+      "rel_gap": 0.02117634847388336,
+      "degenerate": false,
+      "residual": 4.845529662547823e-12,
+      "n_nodes_coarse": 10516,
+      "n_elements_coarse": 20240,
+      "n_nodes_fine": 40872,
+      "n_elements_fine": 80152,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.019801944414423532,
+      "boundary_tol_fine": 0.009950721416216156,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 2.0913665294647217,
+      "nodal_line_file": "nodal_lines/N5_r0p022500.json"
+    },
+    {
+      "N": 5,
+      "radius": 0.045,
+      "hole_positions": [
+        {
+          "x": 0.16666666666666666,
+          "y": 0.5
+        },
+        {
+          "x": 0.3333333333333333,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.6666666666666666,
+          "y": 0.5
+        },
+        {
+          "x": 0.8333333333333334,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 8.522646158656743,
+        "mu_2": 9.498828240423954,
+        "rel_gap": 0.11453978771319397,
+        "degenerate": false,
+        "residual": 7.161219014112171e-12,
+        "n_nodes": 10272,
+        "n_elements": 19752,
+        "boundary_tol": 0.019802836039329728,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 6,
+        "n_contour_points": 123
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 8.511511531009058,
+        "mu_2": 9.49446599050485,
+        "rel_gap": 0.11548529963387838,
+        "degenerate": false,
+        "residual": 3.5566154718635015e-11,
+        "n_nodes": 39940,
+        "n_elements": 78288,
+        "boundary_tol": 0.009946718616917845,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 6,
+        "n_contour_points": 234
+      },
+      "mu_1": 8.511511531009058,
+      "mu_2": 9.49446599050485,
+      "rel_gap": 0.11548529963387838,
+      "degenerate": false,
+      "residual": 3.5566154718635015e-11,
+      "n_nodes_coarse": 10272,
+      "n_elements_coarse": 19752,
+      "n_nodes_fine": 39940,
+      "n_elements_fine": 78288,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.019802836039329728,
+      "boundary_tol_fine": 0.009946718616917845,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 2.0796613693237305,
+      "nodal_line_file": "nodal_lines/N5_r0p045000.json"
+    },
+    {
+      "N": 5,
+      "radius": 0.0675,
+      "hole_positions": [
+        {
+          "x": 0.16666666666666666,
+          "y": 0.5
+        },
+        {
+          "x": 0.3333333333333333,
+          "y": 0.5
+        },
+        {
+          "x": 0.5,
+          "y": 0.5
+        },
+        {
+          "x": 0.6666666666666666,
+          "y": 0.5
+        },
+        {
+          "x": 0.8333333333333334,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 6.452157839071273,
+        "mu_2": 9.27486098037909,
+        "rel_gap": 0.43748203495810933,
+        "degenerate": false,
+        "residual": 1.543599863035295e-12,
+        "n_nodes": 9880,
+        "n_elements": 18968,
+        "boundary_tol": 0.019789104750211582,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 6,
+        "n_contour_points": 78
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 6.436091522426499,
+        "mu_2": 9.271172083760524,
+        "rel_gap": 0.4404972414477349,
+        "degenerate": false,
+        "residual": 4.055565188724005e-11,
+        "n_nodes": 38332,
+        "n_elements": 75072,
+        "boundary_tol": 0.009946837511977042,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 6,
+        "n_contour_points": 147
+      },
+      "mu_1": 6.436091522426499,
+      "mu_2": 9.271172083760524,
+      "rel_gap": 0.4404972414477349,
+      "degenerate": false,
+      "residual": 4.055565188724005e-11,
+      "n_nodes_coarse": 9880,
+      "n_elements_coarse": 18968,
+      "n_nodes_fine": 38332,
+      "n_elements_fine": 75072,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.019789104750211582,
+      "boundary_tol_fine": 0.009946837511977042,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 1.63881516456604,
+      "nodal_line_file": "nodal_lines/N5_r0p067500.json"
+    },
+    {
+      "N": 6,
+      "radius": 0.019285714285714288,
+      "hole_positions": [
+        {
+          "x": 0.14285714285714285,
+          "y": 0.5
+        },
+        {
+          "x": 0.2857142857142857,
+          "y": 0.5
+        },
+        {
+          "x": 0.42857142857142855,
+          "y": 0.5
+        },
+        {
+          "x": 0.5714285714285714,
+          "y": 0.5
+        },
+        {
+          "x": 0.7142857142857143,
+          "y": 0.5
+        },
+        {
+          "x": 0.8571428571428571,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 9.597052147188846,
+        "mu_2": 9.779764943960954,
+        "rel_gap": 0.019038429089460376,
+        "degenerate": false,
+        "residual": 1.7544806738268662e-12,
+        "n_nodes": 10617,
+        "n_elements": 20364,
+        "boundary_tol": 0.019750917269343745,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 7,
+        "n_contour_points": 198
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 9.58901833698692,
+        "mu_2": 9.775460927618727,
+        "rel_gap": 0.01944334488470613,
+        "degenerate": false,
+        "residual": 2.1509977891772153e-11,
+        "n_nodes": 41085,
+        "n_elements": 80420,
+        "boundary_tol": 0.009938837684026071,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 7,
+        "n_contour_points": 347
+      },
+      "mu_1": 9.58901833698692,
+      "mu_2": 9.775460927618727,
+      "rel_gap": 0.01944334488470613,
+      "degenerate": false,
+      "residual": 2.1509977891772153e-11,
+      "n_nodes_coarse": 10617,
+      "n_elements_coarse": 20364,
+      "n_nodes_fine": 41085,
+      "n_elements_fine": 80420,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.019750917269343745,
+      "boundary_tol_fine": 0.009938837684026071,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 1.835207462310791,
+      "nodal_line_file": "nodal_lines/N6_r0p019286.json"
+    },
+    {
+      "N": 6,
+      "radius": 0.038571428571428576,
+      "hole_positions": [
+        {
+          "x": 0.14285714285714285,
+          "y": 0.5
+        },
+        {
+          "x": 0.2857142857142857,
+          "y": 0.5
+        },
+        {
+          "x": 0.42857142857142855,
+          "y": 0.5
+        },
+        {
+          "x": 0.5714285714285714,
+          "y": 0.5
+        },
+        {
+          "x": 0.7142857142857143,
+          "y": 0.5
+        },
+        {
+          "x": 0.8571428571428571,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 8.655120679019612,
+        "mu_2": 9.571426295892941,
+        "rel_gap": 0.10586861244979441,
+        "degenerate": false,
+        "residual": 1.4307503116686923e-12,
+        "n_nodes": 10405,
+        "n_elements": 19936,
+        "boundary_tol": 0.019749484200395292,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 7,
+        "n_contour_points": 124
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 8.642064629798787,
+        "mu_2": 9.566612427690746,
+        "rel_gap": 0.10698228230138629,
+        "degenerate": false,
+        "residual": 2.2979549159097338e-10,
+        "n_nodes": 40239,
+        "n_elements": 78728,
+        "boundary_tol": 0.009938146703729613,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 7,
+        "n_contour_points": 245
+      },
+      "mu_1": 8.642064629798787,
+      "mu_2": 9.566612427690746,
+      "rel_gap": 0.10698228230138629,
+      "degenerate": false,
+      "residual": 2.2979549159097338e-10,
+      "n_nodes_coarse": 10405,
+      "n_elements_coarse": 19936,
+      "n_nodes_fine": 40239,
+      "n_elements_fine": 78728,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.019749484200395292,
+      "boundary_tol_fine": 0.009938146703729613,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 1.809095859527588,
+      "nodal_line_file": "nodal_lines/N6_r0p038571.json"
+    },
+    {
+      "N": 6,
+      "radius": 0.057857142857142864,
+      "hole_positions": [
+        {
+          "x": 0.14285714285714285,
+          "y": 0.5
+        },
+        {
+          "x": 0.2857142857142857,
+          "y": 0.5
+        },
+        {
+          "x": 0.42857142857142855,
+          "y": 0.5
+        },
+        {
+          "x": 0.5714285714285714,
+          "y": 0.5
+        },
+        {
+          "x": 0.7142857142857143,
+          "y": 0.5
+        },
+        {
+          "x": 0.8571428571428571,
+          "y": 0.5
+        }
+      ],
+      "coarse": {
+        "label": "coarse",
+        "grid": 100,
+        "mu_1": 6.65034652481048,
+        "mu_2": 9.404074632537347,
+        "rel_gap": 0.4140728753687525,
+        "degenerate": false,
+        "residual": 1.5121912969471165e-12,
+        "n_nodes": 10051,
+        "n_elements": 19232,
+        "boundary_tol": 0.019742170494828272,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 7,
+        "n_contour_points": 78
+      },
+      "fine": {
+        "label": "fine",
+        "grid": 200,
+        "mu_1": 6.630486768606328,
+        "mu_2": 9.400147040180235,
+        "rel_gap": 0.41771597896666424,
+        "degenerate": false,
+        "residual": 6.962506564376892e-12,
+        "n_nodes": 38829,
+        "n_elements": 75908,
+        "boundary_tol": 0.009936926499031922,
+        "min_distance_to_boundary": 0.0,
+        "nodal_line_touches_boundary": true,
+        "n_segments": 7,
+        "n_contour_points": 141
+      },
+      "mu_1": 6.630486768606328,
+      "mu_2": 9.400147040180235,
+      "rel_gap": 0.41771597896666424,
+      "degenerate": false,
+      "residual": 6.962506564376892e-12,
+      "n_nodes_coarse": 10051,
+      "n_elements_coarse": 19232,
+      "n_nodes_fine": 38829,
+      "n_elements_fine": 75908,
+      "min_distance_to_boundary_coarse": 0.0,
+      "min_distance_to_boundary_fine": 0.0,
+      "relative_change": 0.0,
+      "mesh_converged": true,
+      "boundary_tol_coarse": 0.019742170494828272,
+      "boundary_tol_fine": 0.009936926499031922,
+      "nodal_line_touches_boundary_coarse": true,
+      "nodal_line_touches_boundary_fine": true,
+      "nodal_line_touches_boundary": true,
+      "closed_interior": false,
+      "touching_boundary": true,
+      "inconclusive_set": false,
+      "result_label": "simulated",
+      "runtime_s": 1.709230661392212,
+      "nodal_line_file": "nodal_lines/N6_r0p057857.json"
+    }
+  ],
+  "runtime_s": 16.92221975326538
+}

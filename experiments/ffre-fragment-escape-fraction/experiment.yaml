@@ -1,0 +1,85 @@
+experiment: ffre-fragment-escape-fraction
+name: FFRE Fission Fragment Escape Fraction
+slug: ffre-fragment-escape-fraction
+issue: 157
+source: issue #157 (awiseguy88/AgentWiseAI)
+workflow: discovery
+createdAt: 2026-11-21T05:56:26.000Z
+
+# Signed hypothesis
+hypothesis: |
+  For spherical fuel domains of radius R with fission fragment range L, the escape
+  fraction f_escape(R/L) transitions from ~1 (R << L) to ~0 (R >> L). For claimed
+  nanoparticle sizes (R <= 50 nm) and typical fission fragment ranges in oxide,
+  nitride and fluoride fuels (L = 7-15 um), R/L << 1, so f_escape ~ 1 and the
+  high-Isp claim is supported. For aerogel pores or larger fuel domains with R > L,
+  f_escape drops sharply, making the high-Isp claim geometrically impossible for
+  those designs. Monte Carlo standard error of f_escape < 1% (approx. 10^6
+  particles per R/L value).
+
+baseline: |
+  Ideal 100% escape: Isp = 1,000,000 s (Clark & Sheldon 2005).
+  NIAC delivered: 527,000 s (direct), 32,000 s (with afterburner, Werka et al. 2012).
+
+metric: f_escape (dimensionless 0-1) and effective_Isp (seconds)
+
+units:
+  R: m (domain radius)
+  L: m (fission fragment range in fuel)
+  R/L: dimensionless
+  f_escape: dimensionless (0-1)
+  effective_Isp: seconds (s)
+  n_particles: count
+
+threshold: |
+  PASS (supported) if f_escape >= 0.5 for claimed domain sizes (R <= L,
+  i.e. R/L <= 1), so effective Isp >= 500,000 s — order-of-magnitude
+  high-Isp regime achievable.
+  FAIL (unsupported) if f_escape < 0.1 for claimed domain sizes — high-Isp
+  claim not supported by geometry.
+  INCONCLUSIVE if Monte Carlo standard error >= 1% or results depend on
+  unphysical parameter choices not specified above.
+
+stop_condition: |
+  Stop when f_escape is computed for all tested R/L values with Monte Carlo
+  standard error < 1% (approx. 10^6 particles per R/L value), or when
+  f_escape < 0.01 robustly for all tested geometries.
+
+# Assumptions
+assumptions:
+  - Isotropic fragment emission from uniformly distributed fission sites within domain.
+  - Straight-line fragment trajectories (no scattering).
+  - Fission fragment range L in fuel: 10 um (UO2), 15 um (UN), 7 um (UF4) from
+    SRIM/TRIM literature.
+  - Spherical domains (nanoparticles) and larger domains (aerogel pores).
+  - No magnetic field effects on escape probability.
+  - Claimed nanoparticle sizes R <= 50 nm.
+
+# Failure mode
+most_likely_failure_mode: |
+  If actual fuel domain sizes in proposed designs (especially aerogel core) are
+  >> L, escape fraction -> 0, making the high-Isp claim geometrically
+  impossible for those designs.
+
+# Tools
+tools:
+  - python3
+  - numpy
+expected_runtime: "< 2 minutes on a single core"
+
+# Artifacts
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - simulate.py
+  - test_smoke.py
+  - results/ffre-escape-fraction.csv
+  - report.md
+  - run command: python3 simulate.py
+  - smoke test: python3 test_smoke.py
+
+# Result label
+result_label: simulated
+
+# Verdict (filled after run)
+verdict: supported

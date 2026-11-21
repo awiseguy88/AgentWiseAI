@@ -1,0 +1,33 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgres://agentmeter:agentmeter@postgres:5432/agentmeter
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000/api/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_USER=agentmeter
+      - POSTGRES_PASSWORD=agentmeter
+      - POSTGRES_DB=agentmeter
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agentmeter -d agentmeter"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  db_data:

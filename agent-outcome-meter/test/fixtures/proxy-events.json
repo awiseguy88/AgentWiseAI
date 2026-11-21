@@ -1,0 +1,41 @@
+[
+  {
+    "task_id": "task-merged-1",
+    "session_id": "sess-merged-1",
+    "repo": "owner/fixture-repo",
+    "pr_number": 10,
+    "engineer_id": "eng-alice",
+    "team_id": "platform",
+    "model": "claude-sonnet-4-20250514",
+    "prompt_tokens": 1000,
+    "completion_tokens": 500,
+    "turn": 1,
+    "source": "litellm"
+  },
+  {
+    "task_id": "task-merged-1",
+    "session_id": "sess-merged-1",
+    "repo": "owner/fixture-repo",
+    "pr_number": 10,
+    "engineer_id": "eng-alice",
+    "team_id": "platform",
+    "model": "claude-sonnet-4-20250514",
+    "prompt_tokens": 800,
+    "completion_tokens": 400,
+    "turn": 2,
+    "source": "litellm"
+  },
+  {
+    "task_id": "task-fail-1",
+    "session_id": "sess-fail-1",
+    "repo": "owner/fixture-repo",
+    "pr_number": null,
+    "engineer_id": "eng-bob",
+    "team_id": "platform",
+    "model": "gpt-4o-2024-11-20",
+    "prompt_tokens": 1000,
+    "completion_tokens": 1000,
+    "turn": 1,
+    "source": "litellm"
+  }
+]

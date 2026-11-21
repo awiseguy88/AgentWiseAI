@@ -160,3 +160,10 @@ jobs:
         run: |
           python -m pip install --quiet numpy networkx
           python test_smoke.py
+
+      - name: Woodward Mach Effect Thruster
+        working-directory: experiments/woodward-mach-effect-thruster
+        run: |
+          python3 -m pip install --quiet --break-system-packages numpy
+          python3 simulate.py
+          python3 test_smoke.py

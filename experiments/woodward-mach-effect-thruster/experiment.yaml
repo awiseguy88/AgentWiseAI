@@ -1,0 +1,89 @@
+experiment: woodward-mach-effect-thruster
+title: "Experiment: Woodward Mach Effect Thruster Numerical Verification"
+name: Woodward Mach Effect Thruster — Numerical Verification
+slug: woodward-mach-effect-thruster
+issue: 161
+source: private
+workflow: discovery
+createdAt: 2026-11-21T07:57:54.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  For realistic MLT capacitor parameters (volume V, stored energy E₀,
+  frequency f ≈ 2.2 MHz) and synchronous mechanical acceleration, Woodward's
+  transient mass equation predicts a peak thrust F_pred. The experimental
+  claim of March & Palfreyman (2006) (±3.14 mN at 2.2 MHz) is plausibly
+  supported by the stated theory if the numerical sweep yields F_pred ≥ 0.3 mN
+  (within an order of magnitude of the claimed thrust); it is not supported if
+  F_pred < 0.03 mN (theory underpredicts by >2 orders of magnitude).
+
+baseline:
+  description: |
+    Null hypothesis (standard physics): no transient mass fluctuation,
+    δm = 0 → F = 0. Woodward's model δm = (1/4πG) × (V/c²) × (d²E/dt²),
+    F_pred = δm × a, is recorded as the theoretical model under test.
+  value: 0
+
+metric:
+  primary:
+    name: "F_pred"
+    definition: |
+      Predicted peak thrust F_pred = δm × a (N), with δm =
+      (1/4πG) × (V/c²) × (d²E/dt²)_max. For sinusoidal E(t) = E₀ sin(ωt)
+      at f = 2.2 MHz, |d²E/dt²|_max = E₀ (2πf)².
+    unit: "N"
+  secondary:
+    name: "δm"
+    definition: |
+      Transient mass fluctuation δm = (1/4πG) × (V/c²) × (d²E/dt²)_max (kg).
+    unit: "kg"
+
+units:
+  V: "cm³ (converted to m³ in the computation)"
+  E_0: "J"
+  a: "m/s²"
+  f: "Hz (fixed at 2.2 MHz = 2.2×10⁶)"
+  delta_m: "kg"
+  F_pred: "N"
+
+thresholds:
+  pass_conditions:
+    - "F_pred ≥ 0.3 mN anywhere in the sweep → verdict supported (order-of-magnitude consistency with the ±3.14 mN claim)."
+  fail_conditions:
+    - "F_pred < 0.03 mN for all parameter combinations → verdict unsupported (theory underpredicts by >2 orders of magnitude)."
+  inconclusive_conditions:
+    - "0.03 mN ≤ F_pred < 0.3 mN at all points → verdict inconclusive."
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "Capacitor volume V swept over [0.1, 10] cm³ (typical MLT stack)."
+  - "Peak stored energy E₀ swept over [0.01, 10] J."
+  - "Excitation frequency f = 2.2 MHz fixed (March & Palfreyman 2006)."
+  - "Mechanical acceleration a swept over [10³, 10⁷] m/s²."
+  - "Sinusoidal energy variation E(t) = E₀ sin(ωt), so |d²E/dt²|_max = E₀ (2πf)²."
+  - "Thrust coupling F_pred ≈ δm_max × a_max (order-of-magnitude coupling)."
+  - "Isotropic, uniform fields; no magnetic effects; lossless dielectric."
+  - "Constants: G = 6.674×10⁻¹¹ m³/kg/s²; c = 2.998×10⁸ m/s."
+
+stop_condition:
+  - "Parameter sweep over V ∈ [0.1, 10] cm³, E₀ ∈ [0.01, 10] J, a ∈ [10³, 10⁷] m/s² completes."
+  - "Stop early if all combinations yield F_pred < 0.01 mN."
+
+tools:
+  - "Python 3"
+  - "NumPy"
+expected_runtime: "< 1 minute on a single core"
+reproduction_command: "python3 experiments/woodward-mach-effect-thruster/simulate.py"
+smoke_test: "python3 experiments/woodward-mach-effect-thruster/test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - simulate.py
+  - test_smoke.py
+  - results/woodward_results.csv
+  - report.md
+
+result_label: calculated
+
+verdict: supported

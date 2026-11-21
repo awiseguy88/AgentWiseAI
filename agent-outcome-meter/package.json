@@ -1,0 +1,23 @@
+{
+  "name": "agent-outcome-meter",
+  "version": "0.1.0",
+  "description": "Self-hosted Node/Express + Postgres service that attributes LLM spend to merged pull requests via a LiteLLM-proxy instrumentation plugin and GitHub webhooks, with a cost-per-merged-PR dashboard.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "test": "node --test test/smoke.mjs",
+    "docker-smoke": "bash test/docker-smoke.sh",
+    "typecheck": "node --check src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "pg": "^8.13.0"
+  }
+}

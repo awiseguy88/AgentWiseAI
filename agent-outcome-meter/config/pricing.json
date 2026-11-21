@@ -1,0 +1,12 @@
+{
+  "prices": {
+    "claude-opus-4-20250514": { "input": 15.0, "output": 75.0 },
+    "claude-sonnet-4-20250514": { "input": 3.0, "output": 15.0 },
+    "claude-haiku-4-20250514": { "input": 0.8, "output": 4.0 },
+    "gpt-4o-2024-11-20": { "input": 2.5, "output": 10.0 },
+    "gpt-4o-mini-2024-07-18": { "input": 0.15, "output": 0.6 },
+    "deepseek-chat": { "input": 0.14, "output": 0.28 }
+  },
+  "currency": "USD",
+  "per_tokens": 1000
+}

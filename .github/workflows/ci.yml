@@ -155,6 +155,12 @@ jobs:
           npm ci
           npm test
 
+      - name: Agent Outcome Meter
+        working-directory: agent-outcome-meter
+        run: |
+          npm ci
+          npm test
+
       - name: SIS Epidemic Threshold
         working-directory: experiments/sis-epidemic-threshold
         run: |

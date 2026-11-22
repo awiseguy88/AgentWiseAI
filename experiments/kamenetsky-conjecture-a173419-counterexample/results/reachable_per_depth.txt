@@ -1,0 +1,224 @@
+Exhaustive chain enumeration: operation counts per depth
+======================================================
+Depth = number of operations (+, -, *) from x_0 = 1.
+Each row reports the number of distinct chain value-sets
+at that depth and the values first reached exactly there.
+
+depth 1: chain_sets = 1, new_values = 1, elapsed = 0.0s
+  first reached at depth 1: 2
+  newly reachable (<= 200): [2]
+depth 2: chain_sets = 2, new_values = 2, elapsed = 0.0s
+  first reached at depth 2: 3
+  first reached at depth 2: 4
+  newly reachable (<= 200): [3, 4]
+depth 3: chain_sets = 8, new_values = 5, elapsed = 0.0s
+  first reached at depth 3: 5
+  first reached at depth 3: 6
+  first reached at depth 3: 8
+  first reached at depth 3: 9
+  first reached at depth 3: 16
+  newly reachable (<= 200): [5, 6, 8, 9, 16]
+depth 4: chain_sets = 59, new_values = 17, elapsed = 0.0001s
+  first reached at depth 4: 7
+  first reached at depth 4: 10
+  first reached at depth 4: 11
+  first reached at depth 4: 12
+  first reached at depth 4: 14
+  first reached at depth 4: 15
+  first reached at depth 4: 17
+  first reached at depth 4: 18
+  first reached at depth 4: 20
+  first reached at depth 4: 24
+  first reached at depth 4: 25
+  first reached at depth 4: 27
+  first reached at depth 4: 32
+  first reached at depth 4: 36
+  first reached at depth 4: 64
+  first reached at depth 4: 81
+  newly reachable (<= 200): [7, 10, 11, 12, 14, 15, 17, 18, 20, 24, 25, 27, 32, 36, 64, 81]
+depth 5: chain_sets = 663, new_values = 76, elapsed = 0.0012s
+  first reached at depth 5: 13
+  first reached at depth 5: 19
+  first reached at depth 5: 21
+  first reached at depth 5: 22
+  first reached at depth 5: 23
+  first reached at depth 5: 26
+  first reached at depth 5: 28
+  first reached at depth 5: 29
+  first reached at depth 5: 30
+  first reached at depth 5: 31
+  first reached at depth 5: 33
+  first reached at depth 5: 34
+  first reached at depth 5: 35
+  first reached at depth 5: 37
+  first reached at depth 5: 38
+  first reached at depth 5: 39
+  first reached at depth 5: 40
+  first reached at depth 5: 42
+  first reached at depth 5: 45
+  first reached at depth 5: 48
+  first reached at depth 5: 49
+  first reached at depth 5: 50
+  first reached at depth 5: 54
+  first reached at depth 5: 56
+  first reached at depth 5: 60
+  first reached at depth 5: 62
+  first reached at depth 5: 63
+  first reached at depth 5: 65
+  first reached at depth 5: 66
+  first reached at depth 5: 68
+  first reached at depth 5: 72
+  first reached at depth 5: 75
+  first reached at depth 5: 78
+  first reached at depth 5: 79
+  first reached at depth 5: 80
+  first reached at depth 5: 82
+  first reached at depth 5: 83
+  first reached at depth 5: 84
+  first reached at depth 5: 90
+  first reached at depth 5: 96
+  first reached at depth 5: 99
+  first reached at depth 5: 100
+  first reached at depth 5: 108
+  first reached at depth 5: 121
+  first reached at depth 5: 125
+  first reached at depth 5: 128
+  first reached at depth 5: 144
+  first reached at depth 5: 162
+  first reached at depth 5: 192
+  first reached at depth 5: 196
+  newly reachable (<= 200): [13, 19, 21, 22, 23, 26, 28, 29, 30, 31, 33, 34, 35, 37, 38, 39, 40, 42, 45, 48, 49, 50, 54, 56, 60, 62, 63, 65, 66, 68, 72, 75, 78, 79, 80, 82, 83, 84, 90, 96, 99, 100, 108, 121, 125, 128, 144, 162, 192, 196]
+depth 6: chain_sets = 10,609, new_values = 460, elapsed = 0.0252s
+  first reached at depth 6: 41
+  first reached at depth 6: 43
+  first reached at depth 6: 44
+  first reached at depth 6: 46
+  first reached at depth 6: 47
+  first reached at depth 6: 51
+  first reached at depth 6: 52
+  first reached at depth 6: 53
+  first reached at depth 6: 55
+  first reached at depth 6: 57
+  first reached at depth 6: 58
+  first reached at depth 6: 59
+  first reached at depth 6: 61
+  first reached at depth 6: 67
+  first reached at depth 6: 69
+  first reached at depth 6: 70
+  first reached at depth 6: 71
+  first reached at depth 6: 73
+  first reached at depth 6: 74
+  first reached at depth 6: 76
+  first reached at depth 6: 77
+  first reached at depth 6: 85
+  first reached at depth 6: 86
+  first reached at depth 6: 87
+  first reached at depth 6: 88
+  first reached at depth 6: 89
+  first reached at depth 6: 91
+  first reached at depth 6: 92
+  first reached at depth 6: 93
+  first reached at depth 6: 94
+  first reached at depth 6: 95
+  first reached at depth 6: 97
+  first reached at depth 6: 98
+  first reached at depth 6: 101
+  first reached at depth 6: 102
+  first reached at depth 6: 103
+  first reached at depth 6: 104
+  first reached at depth 6: 105
+  first reached at depth 6: 106
+  first reached at depth 6: 107
+  first reached at depth 6: 109
+  first reached at depth 6: 110
+  first reached at depth 6: 111
+  first reached at depth 6: 112
+  first reached at depth 6: 114
+  first reached at depth 6: 115
+  first reached at depth 6: 116
+  first reached at depth 6: 117
+  first reached at depth 6: 118
+  first reached at depth 6: 119
+  first reached at depth 6: 120
+  first reached at depth 6: 122
+  first reached at depth 6: 123
+  first reached at depth 6: 124
+  first reached at depth 6: 126
+  first reached at depth 6: 127
+  first reached at depth 6: 129
+  first reached at depth 6: 130
+  first reached at depth 6: 132
+  first reached at depth 6: 135
+  first reached at depth 6: 136
+  first reached at depth 6: 138
+  first reached at depth 6: 140
+  first reached at depth 6: 141
+  first reached at depth 6: 142
+  first reached at depth 6: 143
+  first reached at depth 6: 145
+  first reached at depth 6: 146
+  first reached at depth 6: 147
+  first reached at depth 6: 148
+  first reached at depth 6: 150
+  first reached at depth 6: 152
+  first reached at depth 6: 153
+  first reached at depth 6: 154
+  first reached at depth 6: 156
+  first reached at depth 6: 158
+  first reached at depth 6: 159
+  first reached at depth 6: 160
+  first reached at depth 6: 161
+  first reached at depth 6: 163
+  first reached at depth 6: 164
+  first reached at depth 6: 165
+  first reached at depth 6: 166
+  first reached at depth 6: 168
+  first reached at depth 6: 169
+  first reached at depth 6: 171
+  first reached at depth 6: 175
+  first reached at depth 6: 176
+  first reached at depth 6: 180
+  first reached at depth 6: 182
+  first reached at depth 6: 188
+  first reached at depth 6: 189
+  first reached at depth 6: 190
+  first reached at depth 6: 191
+  first reached at depth 6: 193
+  first reached at depth 6: 194
+  first reached at depth 6: 195
+  first reached at depth 6: 197
+  first reached at depth 6: 198
+  first reached at depth 6: 200
+  newly reachable (<= 200): [41, 43, 44, 46, 47, 51, 52, 53, 55, 57, 58, 59, 61, 67, 69, 70, 71, 73, 74, 76, 77, 85, 86, 87, 88, 89, 91, 92, 93, 94, 95, 97, 98, 101, 102, 103, 104, 105, 106, 107, 109, 110, 111, 112, 114, 115, 116, 117, 118, 119, 120, 122, 123, 124, 126, 127, 129, 130, 132, 135, 136, 138, 140, 141, 142, 143, 145, 146, 147, 148, 150, 152, 153, 154, 156, 158, 159, 160, 161, 163, 164, 165, 166, 168, 169, 171, 175, 176, 180, 182, 188, 189, 190, 191, 193, 194, 195, 197, 198, 200]
+depth 7: chain_sets = 225,219, new_values = 3,801, elapsed = 0.7461s
+  first reached at depth 7: 113
+  first reached at depth 7: 131
+  first reached at depth 7: 133
+  first reached at depth 7: 134
+  first reached at depth 7: 137
+  first reached at depth 7: 139
+  first reached at depth 7: 149
+  first reached at depth 7: 151
+  first reached at depth 7: 155
+  first reached at depth 7: 157
+  first reached at depth 7: 167
+  first reached at depth 7: 170
+  first reached at depth 7: 172
+  first reached at depth 7: 173
+  first reached at depth 7: 174
+  first reached at depth 7: 177
+  first reached at depth 7: 178
+  first reached at depth 7: 179
+  first reached at depth 7: 181
+  first reached at depth 7: 183
+  first reached at depth 7: 184
+  first reached at depth 7: 185
+  first reached at depth 7: 186
+  first reached at depth 7: 187
+  first reached at depth 7: 199
+  first reached at depth 7: 3359
+  newly reachable (<= 200): [113, 131, 133, 134, 137, 139, 149, 151, 155, 157, 167, 170, 172, 173, 174, 177, 178, 179, 181, 183, 184, 185, 186, 187, 199]
+depth 8: chain_sets = 0, new_values = 41,791, elapsed = 3.4589s
+  first reached at depth 8: 3358
+
+Targets tracked: (3358, 3359)

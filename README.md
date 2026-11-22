@@ -59,6 +59,14 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Agent Decision Triage | `agent-decision-triage/` | Local Node.js/TypeScript web app plus CLI/webhook bridge for triaging decisions from parallel coding agents with a prioritized numbered inbox UI, deduplication, batch resolve, and SQLite-backed audit. | Open [PR #67](https://github.com/awiseguy88/AgentWiseAI/pull/67) |
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 
+## Experiments
+
+| Experiment | Folder | What it tests | Status |
+| --- | --- | --- | --- |
+| Counterexample to Kamenetsky's Conjecture on OEIS A173419 | [`experiments/kamenetsky-conjecture-a173419-counterexample/`](experiments/kamenetsky-conjecture-a173419-counterexample/) | Exhaustive addition/subtraction/multiplication chain search (Python standard library) verifying a(3359) = 7 < 8 = a(3358), falsifying Kamenetsky's conjecture at p = 3359; explicit chains validated (calculated) and exhaustive enumeration to depth 8 (simulated), with a(1)..a(108) checked against the OEIS b-file (issue #167). | In repo |
+
+New experiments are added by the GitHub Agent under `experiments/`.
+
 ## About AaronWiseAI
 
 Built by [AaronWiseAI](https://aaronwiseai.com/).

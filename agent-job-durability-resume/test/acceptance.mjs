@@ -72,7 +72,7 @@ async function main() {
   });
   ok(createRes.status === 201, "job created");
   const jobId = createRes.json.job.id;
-  await req("POST", `/jobs/${jobId}/checkpoint`, { stepId: "s1", testResults: "step1 done" });
+  await req("POST", `/jobs/${jobId}/checkpoint`, { stepId: "initial", testResults: "step1 done" });
   const getRes1 = await req("GET", `/jobs/${jobId}`);
   const editStep = getRes1.json.steps.find((s) => s.name === "edit-file");
   await req("PATCH", `/steps/${editStep.id}`, { status: "completed", completedAtEffect: "src.js" });
@@ -103,7 +103,7 @@ async function main() {
     steps: [{ name: "build", type: "build", command: "node -e \"console.log('BUILD OK')\"" }],
   });
   const jobId2 = createRes2.json.job.id;
-  await req("POST", `/jobs/${jobId2}/checkpoint`, { stepId: "init" });
+  await req("POST", `/jobs/${jobId2}/checkpoint`, { stepId: "initial" });
   const g2 = await req("GET", `/jobs/${jobId2}`);
   const bstep = g2.json.steps[0];
   await req("PATCH", `/steps/${bstep.id}`, { status: "completed" });

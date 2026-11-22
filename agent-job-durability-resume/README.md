@@ -12,7 +12,7 @@ AaronWiseAI builds practical, open-source tools for AI agents and developers, on
 
 - **Durable job records**: objective, acceptance criteria, steps, status in a local SQLite database (`.local/agent-job-durability-resume.sqlite` by default).
 - **Checkpoints**: capture file hashes (tracked files via `git ls-files`, with fallback), `git status --porcelain`, optional test notes/results.
-- **Suspend/resume**: mark jobs suspended; resume revalidates the workspace against the latest checkpoint, flags changed files and marks affected pending steps stale, and produces a replan summary (completed steps preserved, no replay of completed effects).
+- **Suspend/resume**: mark jobs suspended; resume revalidates the workspace against the latest checkpoint, flags changed files and marks affected pending steps stale, and produces a replan summary (completed steps preserved, no replay of completed effects). Resume marks stale steps and returns a plan; it does **not** automatically requeue or replace steps — apply the revised plan with `POST /jobs/:id/apply` (or `PATCH /steps/:id`) and re-run steps yourself. Acceptance checks run shell commands; bind the service to localhost (default `--host 127.0.0.1`) unless you trust all callers.
 - **Acceptance-gated completion**: a job is completed only after all steps are complete and configured acceptance checks pass; otherwise it is marked blocked with a reason.
 - **Effect ledger (dedup)**: record external effects with a stable `effectKey`; re-recording the same key is treated as a duplicate (no duplicate external effects).
 
@@ -45,6 +45,8 @@ npm run start -- serve --port 8787 --repo /path/to/your/git/repo --db .local/age
 - `POST /jobs/:id/complete` — complete only if steps done and `acceptanceCriteriaChecks` all pass
 - `PATCH /steps/:id` — update step status (used by agent integration)
 - `POST /jobs/:id/effects` — record external effect with `effectKey` dedup
+- `POST /jobs/:id/replan` — regenerate the resume plan without marking steps stale
+- `POST /jobs/:id/apply` — transition selected stale steps back to pending (apply revised plan)
 
 ## Tests
 

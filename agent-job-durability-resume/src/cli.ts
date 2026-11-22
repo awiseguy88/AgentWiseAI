@@ -15,11 +15,12 @@ function getArg(name: string): string | undefined {
 async function main() {
   if (cmd === "serve") {
     const port = Number(getArg("--port") ?? "8787");
+    const host = getArg("--host") ?? "127.0.0.1";
     const repoRoot = path.resolve(process.cwd(), getArg("--repo") ?? ".");
     const dbPath = getArg("--db") ?? ".local/agent-job-durability-resume.sqlite";
     const { server } = createServer({ dbPath, repoRoot });
-    server.listen(port, () => {
-      console.log(`[agent-job-durability-resume] listening on http://127.0.0.1:${port}`);
+    server.listen(port, host, () => {
+      console.log(`[agent-job-durability-resume] listening on http://${host}:${port}`);
       console.log(`  dbPath: ${path.resolve(repoRoot, dbPath)}`);
       console.log(`  repoRoot: ${repoRoot}`);
     });
@@ -34,7 +35,7 @@ async function main() {
   console.log(`agent-job-durability-resume
 
 Commands:
-  serve --port 8787 --repo . [--db .local/agent-job-durability-resume.sqlite]
+  serve --port 8787 --repo . [--host 127.0.0.1] [--db .local/agent-job-durability-resume.sqlite]
   demo  --repo . [--db .local/demo.sqlite]
 `);
 }

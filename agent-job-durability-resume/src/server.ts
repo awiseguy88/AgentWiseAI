@@ -48,6 +48,31 @@ export function createServer(opts: { dbPath?: string; repoRoot: string }) {
       // POST /jobs
       if (method === "POST" && url.pathname === "/jobs") {
         const body = (await readJson(req)) as CreateJobInput;
+        const errors: string[] = [];
+        if (typeof body?.objective !== "string" || !body.objective.trim()) {
+          errors.push("objective must be a non-empty string");
+        }
+        if (!Array.isArray(body?.acceptanceCriteria)) {
+          errors.push("acceptanceCriteria must be an array of strings");
+        } else if (body.acceptanceCriteria.some((c) => typeof c !== "string")) {
+          errors.push("acceptanceCriteria entries must be strings");
+        }
+        if (!Array.isArray(body?.steps) || body.steps.length === 0) {
+          errors.push("steps must be a non-empty array");
+        } else {
+          for (let i = 0; i < body.steps.length; i++) {
+            const st = body.steps[i];
+            if (!st || typeof st.name !== "string" || !st.name.trim()) {
+              errors.push(`steps[${i}].name must be a non-empty string`);
+            }
+            if (typeof st?.type !== "string") {
+              errors.push(`steps[${i}].type must be a string`);
+            }
+          }
+        }
+        if (errors.length > 0) {
+          return json(res, 400, { error: "invalid request", details: errors });
+        }
         const job = await store.createJob(body);
         return json(res, 201, { job, dbPath });
       }
@@ -72,6 +97,12 @@ export function createServer(opts: { dbPath?: string; repoRoot: string }) {
         const id = cpMatch[1];
         const body = await readJson(req);
         const stepId = body.stepId ?? "initial";
+        if (stepId !== "initial") {
+          const jobSteps = await store.getSteps(id);
+          if (!jobSteps.some((st) => st.id === stepId)) {
+            return json(res, 400, { error: "step not found for job" });
+          }
+        }
         const fileHashes = collectFileHashes(repoRoot);
         const gitStatus = captureGitStatus(repoRoot);
         const cp = await store.createCheckpoint(id, stepId, {
@@ -186,6 +217,38 @@ export function createServer(opts: { dbPath?: string; repoRoot: string }) {
         const id = effectsGetMatch[1];
         const effects = await store.listEffects(id);
         return json(res, 200, { effects });
+      }
+
+      // POST /jobs/:id/replan — produce a revised plan without marking stale
+      const replanMatch = url.pathname.match(/^\/jobs\/([^/]+)\/replan$/);
+      if (method === "POST" && replanMatch) {
+        const id = replanMatch[1];
+        const job = await store.getJob(id);
+        if (!job) return json(res, 404, { error: "job not found" });
+        const checkpoint = await store.getLatestCheckpoint(id);
+        if (!checkpoint) return json(res, 400, { error: "no checkpoint found" });
+        const steps = await store.getSteps(id);
+        const plan = replan({ job, steps, checkpoint, repoRoot });
+        return json(res, 200, { plan });
+      }
+
+      // POST /jobs/:id/apply — transition stale steps back to pending (apply revised plan)
+      const applyMatch = url.pathname.match(/^\/jobs\/([^/]+)\/apply$/);
+      if (method === "POST" && applyMatch) {
+        const id = applyMatch[1];
+        const body = await readJson(req);
+        const steps = await store.getSteps(id);
+        const stale = steps.filter((s) => s.status === "stale");
+        const stepIds: string[] = Array.isArray(body?.stepIds)
+          ? body.stepIds
+          : stale.map((s) => s.id);
+        for (const s of steps) {
+          if (stepIds.includes(s.id) && s.status === "stale") {
+            await store.updateStepStatus(s.id, "pending", { staleReason: null });
+          }
+        }
+        const updated = await store.getSteps(id);
+        return json(res, 200, { ok: true, applied: stepIds, steps: updated });
       }
 
       json(res, 404, { error: "not found" });

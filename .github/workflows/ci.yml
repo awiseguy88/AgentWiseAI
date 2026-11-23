@@ -148,9 +148,9 @@ jobs:
       - name: Isolated Hadamard Defect Counterexample
         working-directory: experiments/isolated-hadamard-defect-counterexample
         run: |
-          python3 -m pip install --quiet numpy
-          python3 simulate.py
-          python3 test_smoke.py
+          python -m pip install --quiet numpy
+          python simulate.py
+          python test_smoke.py
 
       - name: Model Alias Drift Guard
         working-directory: model-alias-drift-guard

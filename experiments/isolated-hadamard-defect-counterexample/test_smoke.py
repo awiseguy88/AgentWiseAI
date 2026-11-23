@@ -43,7 +43,7 @@ def main():
         ("dim_C[P,Q] == 143", h["dim_C_PQ"] == 143),
         ("(n-1)^2 == 144", h["n_minus_1_squared"] == 144),
         ("spanFails TRUE", h["spanFails"] is True),
-        ("O_H(R0) ≈ -168/169", abs(h["O_H_R0"]["real"] + 168 / 169) < 1e-9),
+        ("O_H(R0) ~= -168/169", abs(h["O_H_R0"]["real"] + 168 / 169) < 1e-9),
         ("O_H(R0) != 0", h["secondOrderBlocks"] is True),
         ("Fourier control d == 0", fctl["d_F"] == 0),
         ("Fourier control dim_C[P,Q] == 144", fctl["dim_C_PQ"] == 144),

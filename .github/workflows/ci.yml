@@ -145,6 +145,13 @@ jobs:
           python run.py --N 5000 --mus "1.0" --gammas "0.1,0.3,0.5,0.7,0.9" --runs 1 --gens-v 30 --no-plot
           python test_smoke.py
 
+      - name: Isolated Hadamard Defect Counterexample
+        working-directory: experiments/isolated-hadamard-defect-counterexample
+        run: |
+          python3 -m pip install --quiet numpy
+          python3 simulate.py
+          python3 test_smoke.py
+
       - name: Model Alias Drift Guard
         working-directory: model-alias-drift-guard
         run: npm test

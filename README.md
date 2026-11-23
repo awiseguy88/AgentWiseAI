@@ -59,6 +59,17 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Agent Decision Triage | `agent-decision-triage/` | Local Node.js/TypeScript web app plus CLI/webhook bridge for triaging decisions from parallel coding agents with a prioritized numbered inbox UI, deduplication, batch resolve, and SQLite-backed audit. | Open [PR #67](https://github.com/awiseguy88/AgentWiseAI/pull/67) |
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 
+## Experiments
+
+| Experiment | Folder | What it does | Status |
+| --- | --- | --- | --- |
+| Goodhart's Law in Evolution | [`experiments/goodharts-law-evolution/`](experiments/goodharts-law-evolution/) | Simulates the evolution of a population under a frequency-dependent fitness rule (Goodhart's law) and measures the rate at which the population's objective drifts away from the true selection pressure. | Merged in [PR #105](https://github.com/awiseguy88/AgentWiseAI/pull/105) |
+| Braess Paradox Demand Threshold | [`experiments/braess-paradox-demand-threshold/`](experiments/braess-paradox-demand-threshold/) | Sweeps demand across a Braess-network model to find the demand threshold at which the paradox (extra latency from adding a road) appears and disappears. | Merged in [PR #106](https://github.com/awiseguy88/AgentWiseAI/pull/106) |
+| E-Sail Thrust Scaling | [`experiments/e-sail-thrust-scaling/`](experiments/e-sail-thrust-scaling/) | Simulates an electric-sail spacecraft and scales thrust across solar-wind and plasma parameters. | Merged in [PR #107](https://github.com/awiseguy88/AgentWiseAI/pull/107) |
+| Karman Line Altitude | [`experiments/karman-line-altitude/`](experiments/karman-line-altitude/) | Computes the Karman line altitude for varying planet and atmospheric parameters. | Merged in [PR #108](https://github.com/awiseguy88/AgentWiseAI/pull/108) |
+| SIS Epidemic Threshold | [`experiments/sis-epidemic-threshold/`](experiments/sis-epidemic-threshold/) | Estimates the effective SIS epidemic threshold on random regular graphs via Gillespie simulation and finite-size scaling. | Merged in [PR #109](https://github.com/awiseguy88/AgentWiseAI/pull/109) |
+| Stable Schur Positivity Counterexample | [`experiments/stable-schur-positivity-counterexample/`](experiments/stable-schur-positivity-counterexample/) | Exact-arithmetic verification of the Sra (2026) counterexample to Borcea-Brändén Problem 36: symmetric PD 5x5 matrices J1..J5, monomial expansion of q = (1/648) det(Σ xi Ji), Kostka inversion giving [s_(1^5)]q = -2972. | Merged in [PR #175](https://github.com/awiseguy88/AgentWiseAI/pull/175) |
+
 ## About AaronWiseAI
 
 Built by [AaronWiseAI](https://aaronwiseai.com/).

@@ -1,0 +1,91 @@
+experiment: stable-schur-positivity-counterexample
+title: "Experiment: Stable Schur Positivity Counterexample (Borcea-Brändén Problem 36)"
+name: Stable Schur Positivity Counterexample
+slug: stable-schur-positivity-counterexample
+issue: 175
+source: https://github.com/awiseguy88/AgentWiseAI/issues/175
+workflow: verification
+createdAt: 2026-11-23T00:00:00.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  There exist symmetric real stable homogeneous polynomials of degree 5 in 5 variables
+  with strictly positive monomial coefficients that are NOT Schur-positive: Borcea-Brändén
+  Problem 36 has a negative answer already at d = n = 5. Specifically, for q(x) =
+  (1/648) det(sum_i xi Ji) with the explicit 5x5 symmetric PD matrices J1..J5 from
+  Sra 2026 Section 3.2, [s_(1^5)]q = -2972 < 0. The conjecture (every such polynomial is
+  Schur-positive) is refuted.
+
+baseline:
+  description: |
+    Claim under test (conjecture): every symmetric, real stable, homogeneous polynomial of
+    degree d <= n with non-negative monomial coefficients is Schur-positive. Control: run the
+    same pipeline (determinant expansion -> monomial coefficients -> Kostka inversion) on a
+    known Schur-positive stable polynomial (complete homogeneous h_5 = s_(5), i.e. mixed
+    determinant eta(x1 A,...,xn A) with a single PSD matrix A) and confirm all Schur
+    coefficients >= 0, validating the Kostka inversion before trusting the negative coefficient.
+  value: "Conjecture holds for all such polynomials (Schur-positive)"
+
+metric:
+  primary:
+    name: "[s_(1^5)]q"
+    definition: |
+      Schur coefficient of s_(1^5) in q, obtained by exact inversion of the Kostka matrix
+      over Z applied to the monomial expansion of q = (1/648) det(sum_i xi Ji).
+  secondary:
+    name: "leading principal minors Δ1..Δ5 per Ji"
+    definition: |
+      Sylvester's criterion: Ji symmetric positive definite iff all leading principal minors
+      > 0 (implies real stability).
+    value: "all > 0"
+
+units:
+  metric: "dimensionless integer (degree 5 in 5 variables; exact integer/rational arithmetic; no physical units)"
+  monomial_coeffs: "dimensionless integers"
+  schur_coeffs: "dimensionless integers"
+
+thresholds:
+  pass_conditions:
+    - "J1..J5 all symmetric positive definite (leading principal minors Δ1..Δ5 > 0)"
+    - "monomial expansion of q matches listed coefficients"
+    - "Kostka inversion yields [s_(1^5)]q == -2972"
+  fail_conditions:
+    - "any Ji not PSD (a leading principal minor <= 0), or"
+    - "monomial coefficients mismatch, or"
+    - "[s_(1^5)]q >= 0"
+  inconclusive_conditions:
+    - "determinant expansion or Kostka inversion cannot be completed while partial results agree"
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "Matrices J1..J5 transcribed correctly from arXiv:2608.29595 Section 3.2 (Theorem 3.7)."
+  - "q = (1/648) det(sum_i xi Ji); degree 5 homogeneous; monomial basis m_lambda; Schur basis s_lambda."
+  - "Kostka matrix K_{lambda,mu} (lambda,mu \\vdash 5) invertible over Z."
+  - "Real stability follows from Ji ≻ 0 (Sylvester); verified via leading principal minors > 0."
+  - "Exact rational/integer arithmetic (Python fractions) so no float rounding affects sign."
+  - "Only d = n = 5 is claimed; no assertion about other (d,n)."
+
+stop_condition:
+  - "Complete when (a) all five Ji have leading principal minors > 0, (b) monomial expansion matches listed coefficients, (c) Kostka inversion yields [s_(1^5)]q == -2972 -> supported (calculated)."
+  - "Stop early if Ji not PSD -> unsupported; or monomial mismatch -> unsupported; or [s_(1^5)]q >= 0 -> unsupported; or exact computation cannot complete while partial results agree -> inconclusive."
+  - "Expected runtime seconds, single-core."
+
+tools:
+  - "Python 3.10+ (stdlib only; fractions for exact rational arithmetic)"
+expected_runtime: "< 1 minute single-core"
+reproduction_command: "python3 experiments/stable-schur-positivity-counterexample/simulate.py"
+ci_command: "python3 experiments/stable-schur-positivity-counterexample/test_smoke.py"
+smoke_test: "python3 experiments/stable-schur-positivity-counterexample/test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - simulate.py
+  - test_smoke.py
+  - results/results.json
+  - results/coefficients.txt
+  - report.md
+
+result_label: calculated
+
+verdict: supported

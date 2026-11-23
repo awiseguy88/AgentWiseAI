@@ -1,0 +1,96 @@
+experiment: domination-edge-domination-order50
+title: "Experiment: Domination-versus-Edge-Domination Conjecture Counterexample for a 50-Vertex Cubic Graph"
+name: Domination-versus-Edge-Domination Counterexample (50-vertex cubic)
+slug: domination-edge-domination-order50
+issue: 173
+source: github
+workflow: discovery
+createdAt: 2026-11-23T08:00:00.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  For the explicit 50-vertex cubic graph G of Afrasyab (arXiv:2609.10783),
+  gamma_e(G) == 15 AND gamma(G) == 16, i.e. the domination number strictly
+  exceeds the edge domination number, so the Domination-versus-Edge-Domination
+  Conjecture (Baste, Fürst, Henning, Mohr, Rautenbach 2019/2020) is false for
+  cubic graphs (Delta = 3). The counterexample is order-minimal among cubic
+  counterexamples (Gupta 2026 proves the conjecture for every cubic graph on
+  at most 48 vertices).
+
+baseline:
+  description: |
+    Conjecture direction: gamma(G) <= gamma_e(G) for every regular graph.
+    Known true for cubic graphs on at most 48 vertices (Gupta 2026) and for
+    all regular graphs of degree >= 7. The experiment's control is the same
+    exact computation run on small regular graphs (K4, K_{3,3}, Q3, Petersen),
+    confirming gamma <= gamma_e in every case, validating the pipeline before
+    trusting the counterexample. Cross-check gamma_e(G) = 15 via the two
+    independent ancillary routes (proof-tree certificate; direct
+    branch-and-bound search).
+  value: "gamma(G) <= gamma_e(G) (conjecture)"
+
+metric:
+  primary:
+    name: "gamma(G), gamma_e(G)"
+    definition: |
+      gamma(G) = domination number = min |D| over dominating sets D, where D
+      dominates iff every vertex is in D or adjacent to D. gamma_e(G) = edge
+      domination number = min size of an edge-dominating set, equivalently the
+      minimum cardinality of a maximal matching.
+  secondary:
+    name: "supporting integers"
+    definition: |
+      |V| = 50, |E| = 75, |M| = 15 (maximal matching size), |D0| = 16
+      (dominating witness), 2^20 = 1,048,576 clause subsets enumerated,
+      5,931 residual exact set-cover cases, 893,049 proof-tree nodes.
+
+uncertainty:
+  method: "None (exact deterministic finite integer computation; no randomness, no measurement, no rounding)."
+  interval: "exact; no confidence interval applies."
+
+units:
+  gamma: "vertex count (dimensionless)"
+  gamma_e: "edge count (dimensionless)"
+  integers: "dimensionless counts"
+
+thresholds:
+  pass_conditions:
+    - "exact computation reproduces gamma_e(G) == 15 (maximal matching M of size 15 verified maximal; lower bound 75/5 == 15) AND gamma(G) == 16 (explicit D0 of size 16 verified dominating; exact enumeration finds no dominating set of size <= 15) -> supported."
+  fail_conditions:
+    - "gamma_e(G) != 15, or D0 fails the domination check, or exact enumeration finds a dominating set of size < 16 -> unsupported."
+  inconclusive_conditions:
+    - "exact enumeration cannot complete (implementation/resource limit) while partial results agree with the paper -> inconclusive."
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "Graph transcribed exactly from counterexample.edgelist / counterexample.json (50 vertices, 75 edges, cubic, connected)."
+  - "Definitions: D dominating iff every vertex is in D or adjacent to D; edge-dominating set F iff every edge shares an endpoint with some edge in F; gamma_e equals minimum maximal matching size."
+  - "Exact integer arithmetic; no float rounding affects cardinalities."
+  - "Cubic graphs on <= 48 vertices satisfy the conjecture (Gupta); no claim is made about orders above 50 beyond this graph."
+
+stop_condition:
+  - "Complete when (a) gamma_e(G) == 15 verified two ways, (b) D0 verified dominating of size 16, (c) exact enumeration confirms no dominating set of size <= 15 -> gamma(G) == 16 -> supported."
+  - "Stop early if D0 fails -> unsupported; or enumeration finds a dominating set of size <= 15 -> unsupported; or exact computation cannot complete while partial results agree -> inconclusive."
+  - "Expected runtime seconds to a few minutes, single-core."
+
+tools:
+  - "Python 3 standard library only (array, functools, math, json, itertools)."
+  - "networkx optional cross-check (not required)."
+expected_runtime: "< 15 seconds on a single core for the default run."
+reproduction_command: "python3 simulate.py"
+ci_command: "python3 test_smoke.py"
+smoke_test: "python3 test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - verify_domination.py
+  - simulate.py
+  - test_smoke.py
+  - counterexample.edgelist
+  - counterexample.json
+  - results/verification.txt
+
+result_label: calculated
+
+verdict: supported

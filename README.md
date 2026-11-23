@@ -59,6 +59,12 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Agent Decision Triage | `agent-decision-triage/` | Local Node.js/TypeScript web app plus CLI/webhook bridge for triaging decisions from parallel coding agents with a prioritized numbered inbox UI, deduplication, batch resolve, and SQLite-backed audit. | Open [PR #67](https://github.com/awiseguy88/AgentWiseAI/pull/67) |
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 
+## Engineering Experiments
+
+| Experiment | Folder | What it does | Status |
+|---|---|---|---|
+| Domination-versus-Edge-Domination Counterexample (50-Vertex Cubic Graph) | [`experiments/domination-edge-domination-order50/`](experiments/domination-edge-domination-order50/) | Exact verification of the Afrasyab (2026, arXiv:2609.10783, DOI 10.48550/arXiv:2609.10783) counterexample to the Domination-versus-Edge-Domination Conjecture: γ(G) = 16 > 15 = γ_e(G), order-minimal cubic counterexample (Gupta 2026 for cubic graphs on ≤ 48 vertices). | Complete (Issue #173) |
+
 ## About AaronWiseAI
 
 Built by [AaronWiseAI](https://aaronwiseai.com/).

@@ -1,0 +1,34 @@
+Domination-versus-Edge-Domination Conjecture Counterexample (50-vertex cubic)
+======================================================================
+
+Graph: 50 vertices, 75 edges, cubic, connected (counterexample.edgelist)
+
+gamma_e(G) = 15   (calculated)
+  maximal matching M = {v_j^- v_j^+ : 1<=j<=15} (size 15) verified maximal
+  lower bound: ceil(75/5) = 15 in every cubic graph
+
+gamma(G) <= 16   (calculated) : D0 = [0, 2, 5, 7, 8, 13, 15, 30, 31, 32, 33, 35, 37, 42, 46, 48]
+  D0 dominates all 50 vertices: True
+
+gamma(G) >= 16   (calculated)
+  clause subsets enumerated: 1048576
+  residual exact set-cover cases: 5931
+  minimum exact total over residual cases: 16
+  all residual cases have total >= 16
+
+gamma(G) = 16
+gamma_e(G) = 15
+gamma(G) > gamma_e(G) -> conjecture falsified: True
+
+Independent direct branch-and-bound:
+  k=15 exists=False nodes=38369 memo_states=9195 seconds=0.234133
+  k=16 exists=True nodes=17 memo_states=16 seconds=0.000370
+
+Small-graph controls (gamma <= gamma_e):
+  K4: n=4 gamma=1 gamma_e=2 PASS
+  K_{3,3}: n=6 gamma=2 gamma_e=3 PASS
+  Q3 (cube): n=8 gamma=2 gamma_e=3 PASS
+  Petersen: n=10 gamma=3 gamma_e=3 PASS
+
+VERIFIED: every dominating set has size at least 16
+VERDICT: supported (calculated) - gamma_e=15 < gamma=16

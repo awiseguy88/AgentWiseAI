@@ -160,3 +160,7 @@ jobs:
         run: |
           python -m pip install --quiet numpy networkx
           python test_smoke.py
+
+      - name: Domination-versus-Edge-Domination (50-vertex cubic counterexample)
+        working-directory: experiments/domination-edge-domination-order50
+        run: python test_smoke.py

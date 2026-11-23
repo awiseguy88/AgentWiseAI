@@ -1,0 +1,152 @@
+{
+  "matrix_order": 7,
+  "separator": 1196,
+  "min_pivot_required": 82,
+  "K_frobenius_squared": 53836,
+  "L_A_K_frobenius_squared": 64387950,
+  "skew_ratio": {
+    "numerator": 64387950,
+    "denominator": 53836,
+    "decimal": 1196.0017460435397
+  },
+  "skew_exceeds_1196": true,
+  "K_is_skew_symmetric": true,
+  "symmetric_subspace_dimension": 28,
+  "skew_subspace_dimension": 21,
+  "certificate_separator": 1196,
+  "M_S_positive_definite": true,
+  "certificate_pivots": [
+    444.0,
+    210.0,
+    278.0,
+    1052.0,
+    548.0,
+    412.0,
+    1196.0,
+    483.3034749034749,
+    934.3517158663855,
+    1073.7929596310219,
+    318.98658352656105,
+    1169.6218571613294,
+    1272.0009543386705,
+    628.7944732446659,
+    204.7636511111038,
+    179.88144039836834,
+    764.1072525705601,
+    999.4498006457101,
+    314.7285956062086,
+    82.230995919532,
+    369.0151798161465,
+    86.595333289688,
+    483.3839310076298,
+    296.73508927172725,
+    2158.5298719719226,
+    447.72605646451336,
+    1003.491898771153,
+    979.6350628473319
+  ],
+  "certificate_min_pivot": 82.230995919532,
+  "certificate_all_pivots_ge_82": true,
+  "certificate_num_pivots": 28,
+  "symmetric_max_eigenvalue_float64": 1195.5939848377552,
+  "skew_max_eigenvalue_float64": 1196.025223697915,
+  "symmetric_norm_less_than_1196_float64": true,
+  "skew_norm_greater_than_1196_float64": true,
+  "controls_n_le_5": [
+    {
+      "n": 2,
+      "seed": 0,
+      "sym_norm_sq": 278.5138318695408,
+      "skew_norm_sq": 8.999999999999998,
+      "skew_le_sym": true
+    },
+    {
+      "n": 2,
+      "seed": 1,
+      "sym_norm_sq": 285.4040457654748,
+      "skew_norm_sq": 195.99999999999994,
+      "skew_le_sym": true
+    },
+    {
+      "n": 2,
+      "seed": 2,
+      "sym_norm_sq": 754.7574965137119,
+      "skew_norm_sq": 224.99999999999994,
+      "skew_le_sym": true
+    },
+    {
+      "n": 3,
+      "seed": 0,
+      "sym_norm_sq": 689.9418301237702,
+      "skew_norm_sq": 292.46225754878037,
+      "skew_le_sym": true
+    },
+    {
+      "n": 3,
+      "seed": 1,
+      "sym_norm_sq": 1078.6386681074264,
+      "skew_norm_sq": 332.00517761769765,
+      "skew_le_sym": true
+    },
+    {
+      "n": 3,
+      "seed": 2,
+      "sym_norm_sq": 917.1858628995931,
+      "skew_norm_sq": 345.3498358435918,
+      "skew_le_sym": true
+    },
+    {
+      "n": 4,
+      "seed": 0,
+      "sym_norm_sq": 679.5429078425982,
+      "skew_norm_sq": 344.854060574304,
+      "skew_le_sym": true
+    },
+    {
+      "n": 4,
+      "seed": 1,
+      "sym_norm_sq": 756.4817078672459,
+      "skew_norm_sq": 528.5409475817587,
+      "skew_le_sym": true
+    },
+    {
+      "n": 4,
+      "seed": 2,
+      "sym_norm_sq": 531.6647025575988,
+      "skew_norm_sq": 325.82813178382617,
+      "skew_le_sym": true
+    },
+    {
+      "n": 5,
+      "seed": 0,
+      "sym_norm_sq": 1341.9195416157268,
+      "skew_norm_sq": 885.7811636896291,
+      "skew_le_sym": true
+    },
+    {
+      "n": 5,
+      "seed": 1,
+      "sym_norm_sq": 1633.021487418642,
+      "skew_norm_sq": 920.2400668320315,
+      "skew_le_sym": true
+    },
+    {
+      "n": 5,
+      "seed": 2,
+      "sym_norm_sq": 944.641845457774,
+      "skew_norm_sq": 686.8641687621445,
+      "skew_le_sym": true
+    }
+  ],
+  "controls_all_skew_le_sym": true,
+  "pass_conditions": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "verdict": "supported",
+  "result_label": "calculated"
+}

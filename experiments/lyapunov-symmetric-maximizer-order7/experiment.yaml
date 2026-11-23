@@ -1,0 +1,100 @@
+experiment: lyapunov-symmetric-maximizer-order7
+title: "Experiment: Symmetric-Maximizer Conjecture Counterexample for Lyapunov Operators — Order-Seven Counterexample with Exact-Arithmetic Certificate"
+name: Lyapunov Symmetric-Maximizer Conjecture Counterexample (Order 7)
+slug: lyapunov-symmetric-maximizer-order7
+issue: 171
+source: github
+workflow: engineering-experiment
+createdAt: 2026-11-23T07:00:00.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  For the explicit integer matrix A of order 7 (Kressner & Vandereycken 2026,
+  arXiv:2608.20875, Theorem 2, Eq. 4) and the skew-symmetric integer witness K
+  from the proof, exact integer arithmetic confirms:
+    (a) ||K||_F^2 = 53836 and ||L_A(K)||_F^2 = 64387950 exactly (integers),
+        so ||L_A|_K7||^2 >= 64387950/53836 ≈ 1196.0017 > 1196;
+    (b) ||L_A|_S7||^2 < 1196, via the exact certificate M_S = 1196 D_S - B_S^T
+        D_S B_S ≻ 0 with all LDL^T pivots d_i >= 82 (28 pivots) and/or float64
+        symmetric max eigenvalue ≈ 1195.593985.
+  Combining: ||L_A|_S7||^2 < 1196 < ||L_A|_K7||^2, so the operator-norm maximum
+  is attained on a skew-symmetric matrix, not at any symmetric matrix -> the
+  symmetric-maximizer conjecture is false at n = 7.
+
+baseline:
+  description: |
+    Conjecture (symmetric-maximizer): ||L_A|_K_n|| <= ||L_A|_S_n|| for every A,
+    i.e. the operator-norm maximum of L_A(X) = A X + X A^T (Frobenius-induced)
+    is always attained at a symmetric matrix. Known consistent direction: the
+    conjecture holds for n <= 5 (Chen & Tian 2015). Reference control: run the
+    same restricted-norm pipeline on random integer matrices of order n in
+    {2, 3, 4, 5} and confirm ||L_A|_K|| <= ||L_A|_S|| within tolerance. Float64
+    control: reproduce the paper's motivating values ||L_A|_S7||^2 ≈ 1195.593985
+    and ||L_A|_K7||^2 ≈ 1196.025224.
+  value: "||L_A|_K_n|| <= ||L_A|_S_n|| holds for n <= 5"
+
+metric:
+  primary:
+    name: "||L_A|_S7||^2 and ||L_A|_K7||^2"
+    definition: |
+      Squared restricted operator norms of L_A(X) = A X + X A^T restricted to
+      the symmetric subspace S7 (dim 28) and the skew-symmetric subspace K7
+      (dim 21). With coordinate matrices B_U and Gram matrices D_U, the
+      restricted norm is ||L_A|_U||^2 = max_{x != 0} x^T B_U^T D_U B_U x / x^T D_U x,
+      a generalized eigenvalue problem. Dimensionless.
+  secondary:
+    name: "||K||_F^2, ||L_A(K)||_F^2, LDL^T pivots d_i"
+    definition: |
+      Exact integers ||K||_F^2 and ||L_A(K)||_F^2 (integer arithmetic), the
+      ratio ||L_A(K)||_F^2 / ||K||_F^2 (rational), and the 28 pivots d_i of the
+      exact rational LDL^T factorization of M_S = 1196 D_S - B_S^T D_S B_S
+      (each d_i >= 82 certifies M_S ≻ 0 and hence ||L_A|_S7||^2 < 1196).
+
+units:
+  restricted_norms: "dimensionless (squared operator norms; matrix order 7, all exact integer/rational linear algebra)"
+  frobenius: "dimensionless"
+  pivots: "dimensionless (exact rational)"
+
+thresholds:
+  pass_conditions:
+    - "||K||_F^2 == 53836 AND ||L_A(K)||_F^2 == 64387950 exactly (so skew > 1196)"
+    - "symmetric max eigenvalue < 1196 (numeric float64 control)"
+    - "exact certificate M_S ≻ 0 with all 28 pivots d_i >= 82"
+  fail_conditions:
+    - "Either integer identity (||K||_F^2 or ||L_A(K)||_F^2) fails, or symmetric max eigenvalue >= 1196"
+    - "or LDL^T pivot d_i < 82 breaks the symmetric upper-bound certificate"
+  inconclusive_conditions:
+    - "Exact rational LDL^T cannot be completed (implementation limit) but float64 numerics hold both inequalities"
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "A and K entries transcribed correctly from arXiv:2608.20875 Theorem 2 (Eq. 4 and the proof's matrix K)."
+  - "L_A(X) = A X + X A^T; restricted to S7 (dim 28, Gram D_S = diag(I_7, 2 I_21)) and K7 (dim 21, Gram D_K = 2 I_21); both invariant under L_A."
+  - "Restricted norm ||L_A|_U||^2 = max_{x!=0} x^T B_U^T D_U B_U x / x^T D_U x, a generalized eigenvalue problem."
+  - "Exact integer/rational arithmetic (Python fractions) so no float rounding affects the sign of M_S or d_i >= 82."
+  - "n = 6 remains open (not claimed resolved); n >= 7 follows by direct sum A ⊕ 0_m (||A||_2^2 = max(1159, 592) < 1196)."
+
+stop_condition:
+  - "Complete when (a) ||K||_F^2 == 53836 and ||L_A(K)||_F^2 == 64387950 exactly, (b) ratio 64387950/53836 > 1196, (c) symmetric max eigenvalue < 1196 (numeric control), and (d) exact certificate M_S ≻ 0 with all 28 pivots d_i >= 82 -> supported."
+  - "Stop early if either integer identity fails -> unsupported; or symmetric max eigenvalue >= 1196 -> unsupported; or exact certificate unverifiable while numerics hold -> inconclusive."
+
+tools:
+  - "Python 3 (stdlib fractions for exact rational arithmetic)"
+  - "NumPy (float64 controls)"
+  - "SciPy (generalized eigenvalue solver for controls)"
+expected_runtime: "seconds, single-core"
+reproduction_command: "python3 experiments/lyapunov-symmetric-maximizer-order7/simulate.py"
+smoke_test: "python experiments/lyapunov-symmetric-maximizer-order7/test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - simulate.py
+  - test_smoke.py
+  - results/output.json
+  - results/invariants.txt
+  - report.md
+
+result_label: calculated
+
+verdict: supported

@@ -116,6 +116,13 @@ jobs:
           npm run build
           npm test
 
+      - name: IconKiln
+        working-directory: products/iconkiln
+        run: |
+          npm ci
+          npm run build
+          npm test
+
       - name: TinySqueeze
         working-directory: products/tinysqueeze
         run: |

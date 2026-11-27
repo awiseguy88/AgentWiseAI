@@ -1,0 +1,33 @@
+{
+  "name": "iconkiln",
+  "version": "1.0.0",
+  "description": "Browser-only app-icon and favicon pack generator — rasterize one source image into multi-resolution .ico, per-size PNGs, and a conventional favicon/apple-touch/android-chrome ZIP pack with site.webmanifest. Runs entirely client-side with no uploads.",
+  "homepage": "https://aaronwiseai.com/",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "preview": "vite preview",
+    "fixtures": "node scripts/generate-fixtures.mjs"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "jsdom": "^25.0.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.4"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true
+  }
+}

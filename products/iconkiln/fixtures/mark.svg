@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="IconKiln mark">
+  <defs>
+    <linearGradient id="kiln" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c3aed"/>
+      <stop offset="1" stop-color="#db2777"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#kiln)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="150" y="150" width="212" height="212" rx="36"/>
+    <path d="M150 256 L256 150 L362 256 L256 362 Z"/>
+  </g>
+  <circle cx="256" cy="256" r="34" fill="#ffffff"/>
+</svg>

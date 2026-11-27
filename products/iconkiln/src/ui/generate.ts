@@ -380,15 +380,16 @@ async function handleExportPack(container: HTMLElement, state: GenerateState): P
 }
 
 export function defaultGenerateState(): GenerateState {
+  const presetValues = [16, 32, 48, 64, 128];
   return {
     source: null,
     settings: {
       iconType: 'multi',
-      sizes: mergeSizes([...PRESET_SIZES].slice(0, 5), []),
+      sizes: mergeSizes(presetValues, []),
       background: 'transparent',
       flattenColor: '#ffffff',
     },
-    presetValues: [16, 32, 48, 64, 128],
+    presetValues,
     customInput: '',
     preview1to1: false,
     lastAssets: [],

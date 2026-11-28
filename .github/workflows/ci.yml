@@ -160,3 +160,9 @@ jobs:
         run: |
           python -m pip install --quiet numpy networkx
           python test_smoke.py
+
+      - name: Degree-Respecting Labelling (Ordered Neighbour Sums)
+        working-directory: experiments/degree-respecting-labelling-ordered-neighbour-sums
+        run: |
+          python run.py --quick
+          python test_smoke.py

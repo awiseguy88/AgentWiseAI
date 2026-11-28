@@ -1,0 +1,107 @@
+experiment: degree-respecting-labelling-ordered-neighbour-sums
+title: "Experiment: Degree-Respecting Labellings with Ordered Neighbour Sums — Independent Software Reproduction of Ishikawa–Uda Theorem 1 / Corollary 2"
+name: Degree-Respecting Labelling — Ordered Neighbour Sums
+slug: degree-respecting-labelling-ordered-neighbour-sums
+issue: 191
+source: public
+workflow: engineering-experiment
+createdAt: 2026-11-28T01:56:00.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  For every tested finite simple graph G=(V,E) with |V|=n, label set I_n={0,...,n-1},
+  and every tested strictly increasing weight function c:I_n->R (including c(i)=2^i,
+  c(i)=i, and a nonlinear rational c), the edge-potential-minimizing degree-respecting
+  labelling f* (minimizing Phi(g)=sum_{{x,y} in E} c(g(x))*c(g(y)) over the set A of
+  degree-respecting labellings) satisfies BOTH:
+    (1.1) degree condition:       d(v) < d(w) => f(w) < f(v)
+    (1.3) equal-degree sum cond.: d(v)=d(w) and f(w)<f(v)
+                                  => sum_{u in N(v)} c(f(u)) <= sum_{u in N(w)} c(f(u))
+  exactly (0 violations). Moreover the degree-respecting + (1.3) labelling is generally
+  non-unique: Example 4 (2-methylbutane) has exactly two valid labellings.
+  Reproduction is CALCULATED (exact integer/rational arithmetic), not simulated.
+
+baseline:
+  description: |
+    Validate the pipeline before testing the claim, using exact computation:
+    (a) Engine sanity / anchors: reproduce Example 4 (2-methylbutane, isopentane
+        skeleton, degrees (3,2,1,1,1)): degree condition holds, the degree-1 class
+        carries labels {2,3,4} with neighbour sums {1,1,2} (non-increasing in label),
+        and exactly two valid labellings exist. Reproduce the forced labels on K_n,
+        P_n, star K_{1,n-1}, and the empty graph.
+    (b) Phi-minimizer correctness: the chosen f* is genuinely degree-respecting and
+        attains the minimum of Phi over A (brute-force minimum matches).
+    (c) POSITIVE control: for all tested (G,c), f* satisfies (1.1) and (1.3) exactly
+        (0 violations).
+    (d) NEGATIVE control (engine is not vacuous): a degree-violating permutation is
+        correctly rejected by (1.1), AND among degree-respecting labellings there exist
+        ones that VIOLATE (1.3) (so the (1.3) test can actually fail on a non-minimizer).
+  anchors:
+    example4_2methylbutane: "exactly two valid labellings; degree-1 labels {2,3,4}; degree-1 neighbour sums {1,1,2}"
+    complete_K_n: "all vertices equal degree => (1.1) vacuous; unique valid labelling up to (1.3) symmetry"
+    path_P_n: "forced monotone labelling by degree"
+    star_K1_n: "centre forced to label 0; leaves ordered by (1.3)"
+    empty_graph: "no edges; every labelling degree-respecting and (1.3)-vacuous"
+
+metric:
+  primary:
+    name: "total violation count of f*"
+    definition: |
+      Total count of (1.1)-violations plus (1.3)-violations of f*, summed over all
+      tested (G,c). A violation of (1.1) is an ordered pair (v,w) with d(v)<d(w) but
+      f(w)>=f(v). A violation of (1.3) is an ordered equal-degree pair (v,w) with
+      f(w)<f(v) but S(v)>S(w), where S(x)=sum_{u in N(x)} c(f(u)).
+  secondary:
+    name: "valid-labelling count per graph"
+    definition: |
+      Number of bijections f:V->I_n that are degree-respecting AND satisfy (1.3),
+      used as a uniqueness / non-uniqueness check (Example 4 must yield exactly 2).
+
+units:
+  violations: "dimensionless (integer counts of ordered pairs)"
+  labellings: "dimensionless (bijections V->I_n)"
+  phi: "dimensionless (exact int or Fraction, depends on c)"
+
+threshold:
+  pass_condition: >
+    Baselines (a)-(d) pass AND f* has 0 violations of (1.1) and (1.3) for every tested
+    (G,c) (including c(i)=2^i and at least one nonlinear rational c) AND the negative
+    control confirms degree-respecting non-minimizers that violate (1.3) exist and are
+    rejected AND Example 4 yields exactly two valid labellings with degree-1 labels
+    {2,3,4} and sums {1,1,2}.
+  fail_condition: >
+    The Phi-minimizer violates (1.3) on some genuine graph (would contradict the proved
+    theorem => likely an engine/Phi bug), OR an anchor mismatches, OR the negative control
+    cannot produce a (1.3)-violating degree-respecting labelling (engine too weak). This
+    would NOT disprove the theorem; the proof stands.
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "Simple undirected finite graphs (any n, disconnected allowed, empty allowed)."
+  - "Labels I_n={0,...,n-1}; c strictly increasing real."
+  - "(1.1) and (1.3) exactly as in the paper (Section 1)."
+  - "The {1,...,n}/2^k convention is equivalent by Remark 3 (an overall factor of 2 in c)."
+  - "All arithmetic exact: int for c(i)=2^i and c(i)=i; fractions.Fraction for rational/real c."
+  - "Degree-respecting labellings enumerated by itertools.permutations (feasible for n<=7)."
+
+stop_condition:
+  - "Stop and report unsupported/inconclusive if any baseline fails, f* violates (1.3) on a genuine graph, an anchor mismatches, or the negative control is vacuous."
+  - "Complete all (G,c) cells in the catalogue, or stop early on the first failing baseline."
+
+tools:
+  - "Python 3.8+ (stdlib only: itertools, fractions, json, csv, argparse)"
+expected_runtime: "< 5 seconds on a single core (exhaustive over degree-respecting labellings, n<=7)"
+reproduction_command: "python experiments/degree-respecting-labelling-ordered-neighbour-sums/run.py"
+ci_command: "python experiments/degree-respecting-labelling-ordered-neighbour-sums/run.py --quick"
+smoke_test: "python experiments/degree-respecting-labelling-ordered-neighbour-sums/test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - run.py
+  - test_smoke.py
+  - results/per_case_results.csv
+  - results/summary.json
+  - report.md
+
+result_label: calculated

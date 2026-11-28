@@ -1,0 +1,3827 @@
+{
+  "label": "calculated",
+  "num_graphs": 35,
+  "num_weight_funcs": 4,
+  "weight_funcs": [
+    "2^i",
+    "i",
+    "nonlinear",
+    "linear_shift"
+  ],
+  "total_violations_1_1": 0,
+  "total_violations_1_3": 0,
+  "all_zero_violations": true,
+  "example4": {
+    "f_star": [
+      0,
+      1,
+      3,
+      4,
+      2
+    ],
+    "num_valid": 2,
+    "valid_labellings": [
+      [
+        0,
+        1,
+        3,
+        4,
+        2
+      ],
+      [
+        0,
+        1,
+        4,
+        3,
+        2
+      ]
+    ],
+    "neighbour_sums_f_star": [
+      "26",
+      "5",
+      "1",
+      "1",
+      "2"
+    ],
+    "degrees": [
+      3,
+      2,
+      1,
+      1,
+      1
+    ],
+    "degree1_labels": [
+      2,
+      3,
+      4
+    ],
+    "degree1_sums": [
+      "1",
+      "1",
+      "2"
+    ],
+    "degree1_labels_are_2_3_4": true,
+    "degree1_sums_are_1_1_2": true
+  },
+  "negative_control": {
+    "example4_2methylbutane|2^i": {
+      "degree_respecting_nonminimizer_violating_1_3": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          "14",
+          "17",
+          "1",
+          "1",
+          "2"
+        ],
+        2
+      ],
+      "degree_violating_permutation_rejected_by_1_1": [
+        [
+          0,
+          2,
+          1,
+          3,
+          4
+        ],
+        1
+      ]
+    },
+    "C_5|2^i": {
+      "degree_respecting_nonminimizer_violating_1_3": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        [
+          "18",
+          "5",
+          "10",
+          "20",
+          "9"
+        ],
+        5
+      ],
+      "degree_violating_permutation_rejected_by_1_1": null
+    },
+    "double_star|nonlinear": {
+      "degree_respecting_nonminimizer_violating_1_3": [
+        [
+          2,
+          0,
+          1,
+          3,
+          4,
+          5
+        ],
+        [
+          "1/7",
+          "122/7",
+          "643/14",
+          "1/7",
+          "23/14",
+          "23/14"
+        ],
+        5
+      ],
+      "degree_violating_permutation_rejected_by_1_1": [
+        [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        2
+      ]
+    },
+    "C_4|i": {
+      "degree_respecting_nonminimizer_violating_1_3": [
+        [
+          0,
+          1,
+          2,
+          3
+        ],
+        [
+          "4",
+          "2",
+          "4",
+          "2"
+        ],
+        1
+      ],
+      "degree_violating_permutation_rejected_by_1_1": null
+    }
+  },
+  "per_graph": [
+    {
+      "name": "example4_2methylbutane",
+      "n": 5,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "note": "Example 4: 2-methylbutane (isopentane) skeleton, degrees (3,2,1,1,1)",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            3,
+            4,
+            2
+          ],
+          "phi_min": "34",
+          "num_degree_respecting": 6,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "26",
+            "5",
+            "1",
+            "1",
+            "2"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            3,
+            4,
+            2
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 6,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "8",
+            "2",
+            "0",
+            "0",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            3,
+            4,
+            2
+          ],
+          "phi_min": "627/49",
+          "num_degree_respecting": 6,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "213/7",
+            "37/7",
+            "1/7",
+            "1/7",
+            "23/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            3,
+            4,
+            2
+          ],
+          "phi_min": "17",
+          "num_degree_respecting": 6,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "11",
+            "4",
+            "1",
+            "1",
+            "2"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "K_1",
+      "n": 1,
+      "edges": [],
+      "note": "complete graph K_1",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "K_2",
+      "n": 2,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "note": "complete graph K_2",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "1",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "23/98",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "23/14",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "K_3",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "note": "complete graph K_3",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "14",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "6",
+            "5",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "3",
+            "2",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "923/98",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "95/14",
+            "37/7",
+            "25/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "11",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "5",
+            "4",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "K_4",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "note": "complete graph K_4",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "70",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "14",
+            "13",
+            "11",
+            "7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "11",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "6",
+            "5",
+            "4",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "16299/196",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "122/7",
+            "223/14",
+            "87/7",
+            "97/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "35",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "9",
+            "8",
+            "7",
+            "6"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "K_5",
+      "n": 5,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "note": "complete graph K_5",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "310",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "30",
+            "29",
+            "27",
+            "23",
+            "15"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "35",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "10",
+            "9",
+            "8",
+            "7",
+            "6"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "78783/196",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "249/7",
+            "477/14",
+            "214/7",
+            "351/14",
+            "123/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "85",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "14",
+            "13",
+            "12",
+            "11",
+            "10"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "K_6",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ],
+        [
+          1,
+          5
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          3,
+          5
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "note": "complete graph K_6",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "1302",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "62",
+            "61",
+            "59",
+            "55",
+            "47",
+            "31"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "85",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "15",
+            "14",
+            "13",
+            "12",
+            "11",
+            "10"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "272283/196",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "885/14",
+            "432/7",
+            "815/14",
+            "369/7",
+            "633/14",
+            "250/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "175",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "20",
+            "19",
+            "18",
+            "17",
+            "16",
+            "15"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "P_1",
+      "n": 1,
+      "edges": [],
+      "note": "path P_1",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "P_2",
+      "n": 2,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "note": "path P_2",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "1",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "23/98",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "23/14",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "P_3",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ]
+      ],
+      "note": "path P_3",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            1,
+            0,
+            2
+          ],
+          "phi_min": "6",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "1",
+            "6",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            1,
+            0,
+            2
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "0",
+            "3",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            1,
+            0,
+            2
+          ],
+          "phi_min": "95/98",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "1/7",
+            "95/14",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            1,
+            0,
+            2
+          ],
+          "phi_min": "5",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "1",
+            "5",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "P_4",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "note": "path P_4",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            2,
+            1,
+            0,
+            3
+          ],
+          "phi_min": "18",
+          "num_degree_respecting": 4,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "5",
+            "10",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            2,
+            1,
+            0,
+            3
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 4,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "1",
+            "2",
+            "4",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            2,
+            1,
+            0,
+            3
+          ],
+          "phi_min": "500/49",
+          "num_degree_respecting": 4,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "23/14",
+            "37/7",
+            "86/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            2,
+            1,
+            0,
+            3
+          ],
+          "phi_min": "12",
+          "num_degree_respecting": 4,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "4",
+            "6",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "P_5",
+      "n": 5,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ]
+      ],
+      "note": "path P_5",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            3,
+            1,
+            2,
+            0,
+            4
+          ],
+          "phi_min": "44",
+          "num_degree_respecting": 12,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "12",
+            "3",
+            "20",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            3,
+            1,
+            2,
+            0,
+            4
+          ],
+          "phi_min": "5",
+          "num_degree_respecting": 12,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "1",
+            "5",
+            "1",
+            "6",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            3,
+            1,
+            2,
+            0,
+            4
+          ],
+          "phi_min": "5735/196",
+          "num_degree_respecting": 12,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "23/14",
+            "221/14",
+            "25/14",
+            "163/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            3,
+            1,
+            2,
+            0,
+            4
+          ],
+          "phi_min": "22",
+          "num_degree_respecting": 12,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "7",
+            "3",
+            "8",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "P_6",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ]
+      ],
+      "note": "path P_6",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            4,
+            1,
+            2,
+            3,
+            0,
+            5
+          ],
+          "phi_min": "112",
+          "num_degree_respecting": 48,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "2",
+            "20",
+            "10",
+            "5",
+            "40",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            4,
+            1,
+            2,
+            3,
+            0,
+            5
+          ],
+          "phi_min": "12",
+          "num_degree_respecting": 48,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "1",
+            "6",
+            "4",
+            "2",
+            "8",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            4,
+            1,
+            2,
+            3,
+            0,
+            5
+          ],
+          "phi_min": "9649/98",
+          "num_degree_respecting": 48,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "23/14",
+            "163/7",
+            "86/7",
+            "37/7",
+            "268/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            4,
+            1,
+            2,
+            3,
+            0,
+            5
+          ],
+          "phi_min": "38",
+          "num_degree_respecting": 48,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "2",
+            "8",
+            "6",
+            "4",
+            "10",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "P_7",
+      "n": 7,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ]
+      ],
+      "note": "path P_7",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            5,
+            1,
+            3,
+            2,
+            4,
+            0,
+            6
+          ],
+          "phi_min": "256",
+          "num_degree_respecting": 240,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "2",
+            "40",
+            "6",
+            "24",
+            "5",
+            "80",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            5,
+            1,
+            3,
+            2,
+            4,
+            0,
+            6
+          ],
+          "phi_min": "22",
+          "num_degree_respecting": 240,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "1",
+            "8",
+            "3",
+            "7",
+            "2",
+            "10",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            5,
+            1,
+            3,
+            2,
+            4,
+            0,
+            6
+          ],
+          "phi_min": "10737/49",
+          "num_degree_respecting": 240,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "23/14",
+            "268/7",
+            "95/14",
+            "403/14",
+            "37/7",
+            "401/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            5,
+            1,
+            3,
+            2,
+            4,
+            0,
+            6
+          ],
+          "phi_min": "59",
+          "num_degree_respecting": 240,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "2",
+            "10",
+            "5",
+            "9",
+            "4",
+            "12",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "star_K1_1",
+      "n": 2,
+      "edges": [
+        [
+          0,
+          1
+        ]
+      ],
+      "note": "star K_(1, {1})",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "1",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "23/98",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "23/14",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "star_K1_2",
+      "n": 3,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ]
+      ],
+      "note": "star K_(1, {2})",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "6",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "6",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "3",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "95/98",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "95/14",
+            "1/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "5",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "5",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "star_K1_3",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ]
+      ],
+      "note": "star K_(1, {3})",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "14",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "14",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "6",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "122/49",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "122/7",
+            "1/7",
+            "1/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "9",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "9",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "star_K1_4",
+      "n": 5,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ]
+      ],
+      "note": "star K_(1, {4})",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "30",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "30",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "10",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "249/49",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "249/7",
+            "1/7",
+            "1/7",
+            "1/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "14",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "14",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "star_K1_5",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "note": "star K_(1, {5})",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "62",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "62",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "15",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "885/98",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "885/14",
+            "1/7",
+            "1/7",
+            "1/7",
+            "1/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "20",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "20",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "star_K1_6",
+      "n": 7,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          0,
+          5
+        ],
+        [
+          0,
+          6
+        ]
+      ],
+      "note": "star K_(1, {6})",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "phi_min": "126",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "126",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "21",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "phi_min": "1433/98",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "1433/14",
+            "1/7",
+            "1/7",
+            "1/7",
+            "1/7",
+            "1/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6
+          ],
+          "phi_min": "27",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "27",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "empty_1",
+      "n": 1,
+      "edges": [],
+      "note": "empty graph on 1 vertices",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 1,
+          "num_valid": 1,
+          "neighbour_sums_f_star": [
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "empty_2",
+      "n": 2,
+      "edges": [],
+      "note": "empty graph on 2 vertices",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "empty_3",
+      "n": 3,
+      "edges": [],
+      "note": "empty graph on 3 vertices",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 6,
+          "num_valid": 6,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "empty_4",
+      "n": 4,
+      "edges": [],
+      "note": "empty graph on 4 vertices",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 24,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "empty_5",
+      "n": 5,
+      "edges": [],
+      "note": "empty graph on 5 vertices",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 120,
+          "num_valid": 120,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "empty_6",
+      "n": 6,
+      "edges": [],
+      "note": "empty graph on 6 vertices",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "0",
+          "num_degree_respecting": 720,
+          "num_valid": 720,
+          "neighbour_sums_f_star": [
+            "0",
+            "0",
+            "0",
+            "0",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "paw",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "note": "triangle with a pendant (paw)",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "phi_min": "22",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "5",
+            "14",
+            "3",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "2",
+            "6",
+            "1",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "phi_min": "536/49",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "37/7",
+            "122/7",
+            "25/14",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            1,
+            0,
+            2,
+            3
+          ],
+          "phi_min": "15",
+          "num_degree_respecting": 2,
+          "num_valid": 2,
+          "neighbour_sums_f_star": [
+            "4",
+            "9",
+            "3",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "diamond",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ]
+      ],
+      "note": "diamond K4 minus an edge",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "38",
+          "num_degree_respecting": 4,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "14",
+            "13",
+            "3",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "5",
+          "num_degree_respecting": 4,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "6",
+            "5",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "5571/196",
+          "num_degree_respecting": 4,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "122/7",
+            "223/14",
+            "25/14",
+            "25/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "phi_min": "23",
+          "num_degree_respecting": 4,
+          "num_valid": 4,
+          "neighbour_sums_f_star": [
+            "9",
+            "8",
+            "3",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "C_4",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "note": "4-cycle",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "phi_min": "36",
+          "num_degree_respecting": 24,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "12",
+            "3",
+            "12",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "phi_min": "5",
+          "num_degree_respecting": 24,
+          "num_valid": 16,
+          "neighbour_sums_f_star": [
+            "5",
+            "1",
+            "5",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "phi_min": "5525/196",
+          "num_degree_respecting": 24,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "221/14",
+            "25/14",
+            "221/14",
+            "25/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            2,
+            1,
+            3
+          ],
+          "phi_min": "21",
+          "num_degree_respecting": 24,
+          "num_valid": 16,
+          "neighbour_sums_f_star": [
+            "7",
+            "3",
+            "7",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "C_5",
+      "n": 5,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "note": "5-cycle",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            3,
+            2,
+            1,
+            4
+          ],
+          "phi_min": "96",
+          "num_degree_respecting": 120,
+          "num_valid": 10,
+          "neighbour_sums_f_star": [
+            "24",
+            "5",
+            "10",
+            "20",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            3,
+            2,
+            1,
+            4
+          ],
+          "phi_min": "12",
+          "num_degree_respecting": 120,
+          "num_valid": 10,
+          "neighbour_sums_f_star": [
+            "7",
+            "2",
+            "4",
+            "6",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            3,
+            2,
+            1,
+            4
+          ],
+          "phi_min": "4758/49",
+          "num_degree_respecting": 120,
+          "num_valid": 10,
+          "neighbour_sums_f_star": [
+            "403/14",
+            "37/7",
+            "86/7",
+            "163/7",
+            "25/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            3,
+            2,
+            1,
+            4
+          ],
+          "phi_min": "37",
+          "num_degree_respecting": 120,
+          "num_valid": 10,
+          "neighbour_sums_f_star": [
+            "9",
+            "4",
+            "6",
+            "8",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "C_6",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          3
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          0
+        ]
+      ],
+      "note": "6-cycle",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            4,
+            2,
+            3,
+            1,
+            5
+          ],
+          "phi_min": "224",
+          "num_degree_respecting": 720,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "48",
+            "5",
+            "24",
+            "6",
+            "40",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            4,
+            2,
+            3,
+            1,
+            5
+          ],
+          "phi_min": "22",
+          "num_degree_respecting": 720,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "9",
+            "2",
+            "7",
+            "3",
+            "8",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            4,
+            2,
+            3,
+            1,
+            5
+          ],
+          "phi_min": "21313/98",
+          "num_degree_respecting": 720,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "641/14",
+            "37/7",
+            "403/14",
+            "95/14",
+            "268/7",
+            "25/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            4,
+            2,
+            3,
+            1,
+            5
+          ],
+          "phi_min": "58",
+          "num_degree_respecting": 720,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "11",
+            "4",
+            "9",
+            "5",
+            "10",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "double_star",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          2,
+          4
+        ],
+        [
+          2,
+          5
+        ]
+      ],
+      "note": "two degree-3 centres joined, 4 leaves",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            2,
+            1,
+            0,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "74",
+          "num_degree_respecting": 48,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "2",
+            "13",
+            "50",
+            "2",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            2,
+            1,
+            0,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "5",
+          "num_degree_respecting": 48,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "1",
+            "5",
+            "10",
+            "1",
+            "0",
+            "0"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            2,
+            1,
+            0,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "6411/196",
+          "num_degree_respecting": 48,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "23/14",
+            "223/14",
+            "332/7",
+            "23/14",
+            "1/7",
+            "1/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            2,
+            1,
+            0,
+            3,
+            4,
+            5
+          ],
+          "phi_min": "27",
+          "num_degree_respecting": 48,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "2",
+            "8",
+            "13",
+            "2",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "K2_3",
+      "n": 5,
+      "edges": [
+        [
+          0,
+          2
+        ],
+        [
+          0,
+          3
+        ],
+        [
+          0,
+          4
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          1,
+          3
+        ],
+        [
+          1,
+          4
+        ]
+      ],
+      "note": "complete bipartite K_{2,3}",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "84",
+          "num_degree_respecting": 12,
+          "num_valid": 12,
+          "neighbour_sums_f_star": [
+            "28",
+            "28",
+            "3",
+            "3",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "9",
+          "num_degree_respecting": 12,
+          "num_valid": 12,
+          "neighbour_sums_f_star": [
+            "9",
+            "9",
+            "1",
+            "1",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "11875/196",
+          "num_degree_respecting": 12,
+          "num_valid": 12,
+          "neighbour_sums_f_star": [
+            "475/14",
+            "475/14",
+            "25/14",
+            "25/14",
+            "25/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "phi_min": "36",
+          "num_degree_respecting": 12,
+          "num_valid": 12,
+          "neighbour_sums_f_star": [
+            "12",
+            "12",
+            "3",
+            "3",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "barbell",
+      "n": 6,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          2
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          3
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "note": "two triangles joined by a bridge",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            2,
+            5,
+            0,
+            1,
+            3,
+            4
+          ],
+          "phi_min": "342",
+          "num_degree_respecting": 48,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "33",
+            "5",
+            "38",
+            "25",
+            "18",
+            "10"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            2,
+            4,
+            1,
+            0,
+            3,
+            5
+          ],
+          "phi_min": "29",
+          "num_degree_respecting": 48,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "5",
+            "3",
+            "6",
+            "9",
+            "5",
+            "3"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            2,
+            5,
+            0,
+            1,
+            3,
+            4
+          ],
+          "phi_min": "10849/28",
+          "num_degree_respecting": 48,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "389/14",
+            "37/7",
+            "241/7",
+            "405/14",
+            "277/14",
+            "86/7"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            2,
+            4,
+            1,
+            0,
+            3,
+            5
+          ],
+          "phi_min": "67",
+          "num_degree_respecting": 48,
+          "num_valid": 24,
+          "neighbour_sums_f_star": [
+            "7",
+            "5",
+            "9",
+            "12",
+            "7",
+            "5"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    },
+    {
+      "name": "disconnected_2K2",
+      "n": 4,
+      "edges": [
+        [
+          0,
+          1
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "note": "two disjoint edges (disconnected)",
+      "cases": [
+        {
+          "weight": "2^i",
+          "f_star": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "phi_min": "16",
+          "num_degree_respecting": 24,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "8",
+            "1",
+            "4",
+            "2"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "i",
+          "f_star": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "phi_min": "2",
+          "num_degree_respecting": 24,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "3",
+            "0",
+            "2",
+            "1"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "nonlinear",
+          "f_star": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "phi_min": "977/98",
+          "num_degree_respecting": 24,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "149/14",
+            "1/7",
+            "36/7",
+            "23/14"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        },
+        {
+          "weight": "linear_shift",
+          "f_star": [
+            0,
+            3,
+            1,
+            2
+          ],
+          "phi_min": "10",
+          "num_degree_respecting": 24,
+          "num_valid": 8,
+          "neighbour_sums_f_star": [
+            "4",
+            "1",
+            "3",
+            "2"
+          ],
+          "violations_1_1": 0,
+          "violations_1_3": 0
+        }
+      ]
+    }
+  ],
+  "verdict": "supported",
+  "baseline_ok": true,
+  "negative_control_ok": true
+}

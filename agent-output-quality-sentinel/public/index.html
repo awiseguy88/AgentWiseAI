@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Agent Output Quality Sentinel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">Q</span>
+    <span class="brand-name">Agent Output Quality Sentinel</span>
+  </div>
+  <div class="brand-tagline">Local-first agent output quality scorer · Part of AaronWiseAI</div>
+</header>
+
+<main class="layout">
+  <aside class="sidebar">
+    <h3>Runs</h3>
+    <div class="toolbar-row">
+      <input type="file" id="importFile" accept=".json,.jsonl,.txt,.md" />
+      <button id="btnImport" class="btn-primary">Import</button>
+    </div>
+    <div class="meta-chip small">Gate threshold: <span id="gateThresholdDisplay">60</span></div>
+    <div id="runsList" class="runs-list">
+      <div class="empty">No runs yet. Import a transcript.</div>
+    </div>
+    <div class="footer-note">Part of the AaronWiseAI open-source tool collection — https://aaronwiseai.com/</div>
+  </aside>
+
+  <section class="panel run-panel" id="runPanel" aria-hidden="true">
+    <div class="panel-header">
+      <h2 id="runName">Run</h2>
+      <div class="meta-chip" id="runMeta"></div>
+      <div class="gate-badge" id="gateBadge"></div>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-label">Mean slop</div><div class="kpi-value" id="kpiMeanSlop">—</div></div>
+      <div class="kpi"><div class="kpi-label">Max slop</div><div class="kpi-value" id="kpiMaxSlop">—</div></div>
+      <div class="kpi"><div class="kpi-label">Turns</div><div class="kpi-value" id="kpiTurns">0</div></div>
+      <div class="kpi"><div class="kpi-label">CI gate</div><div class="kpi-value" id="kpiGate">—</div></div>
+    </div>
+
+    <div class="tabbar">
+      <button class="tab active" data-screen="turns">Per-turn</button>
+      <button class="tab" data-screen="trend">Trend</button>
+    </div>
+
+    <div id="screen-turns" class="screen">
+      <table id="turnsTable">
+        <thead>
+          <tr><th>Turn</th><th>Role</th><th>Verbosity</th><th>Redundancy</th><th>Step Repetition</th><th>Claim Density</th><th>Code Yield</th><th>Slop</th><th>Step Signature</th></tr>
+        </thead>
+        <tbody id="turnsBody"></tbody>
+      </table>
+    </div>
+
+    <div id="screen-trend" class="screen hidden">
+      <div class="chart-wrap"><canvas id="trendChart" width="700" height="240"></canvas></div>
+      <div class="meta-chip">Slop score per turn (darker = higher). Aggregate threshold breached if any bar exceeds gate.</div>
+    </div>
+
+    <div id="runDetail" style="margin-top:24px"></div>
+  </section>
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>

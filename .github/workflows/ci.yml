@@ -162,6 +162,12 @@ jobs:
           npm ci
           npm test
 
+      - name: Agent Job Durability & Resume
+        working-directory: agent-job-durability-resume
+        run: |
+          npm ci
+          npm test
+
       - name: SIS Epidemic Threshold
         working-directory: experiments/sis-epidemic-threshold
         run: |

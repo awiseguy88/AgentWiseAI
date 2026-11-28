@@ -1,0 +1,22 @@
+{
+  "merged": {
+    "task_id": "task-merged-1",
+    "repo": "owner/fixture-repo",
+    "pr_number": 10,
+    "model": "claude-sonnet-4-20250514",
+    "expected_total_usd": 18.90,
+    "expected_by_model": { "claude-sonnet-4-20250514": 18.90 },
+    "expected_by_turn": { "1": 10.50, "2": 8.40 }
+  },
+  "failed": {
+    "task_id": "task-fail-1",
+    "repo": "owner/fixture-repo",
+    "model": "gpt-4o-2024-11-20",
+    "expected_total_usd": 12.50,
+    "expected_total_spend_usd": 31.40,
+    "expected_accepted_spend_usd": 18.90,
+    "expected_failed_spend_usd": 12.50,
+    "expected_merged_count": 1,
+    "expected_cost_per_accepted_usd": 18.90
+  }
+}

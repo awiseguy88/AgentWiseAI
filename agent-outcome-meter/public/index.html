@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Outcome Meter</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="brand">
+        <div class="logo">AOM</div>
+        <div>
+          <h1>Agent Outcome Meter</h1>
+          <p class="subtitle">Cost per merged pull request, attributed per model and turn</p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <span class="pill"><span class="dot" /> Self-hosted</span>
+        <span class="pill">GitHub Agent · Issue #148</span>
+      </div>
+    </header>
+
+    <section class="stats" id="stats" aria-label="Spend summary">
+      <div class="card"><div class="stat-label">Total spend</div><div class="stat-value" id="stat-total">—</div><div class="stat-delta neutral" id="stat-total-events"></div></div>
+      <div class="card"><div class="stat-label">Accepted spend</div><div class="stat-value" id="stat-accepted">—</div><div class="stat-delta neutral" id="stat-accepted-hint"></div></div>
+      <div class="card"><div class="stat-label">Cost per accepted outcome</div><div class="stat-value" id="stat-cpo">—</div><div class="stat-delta neutral" id="stat-cpo-hint"></div></div>
+      <div class="card"><div class="stat-label">Merged PRs</div><div class="stat-value" id="stat-merged">—</div><div class="stat-delta neutral" id="stat-failed"></div></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Cost per merged pull request</h2>
+        <span class="panel-meta">Breakdown by model and turn</span>
+      </div>
+      <div id="merged-list" class="merged-list">Loading…</div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2>Recent runs</h2>
+        <span class="panel-meta">Attributed usage events</span>
+      </div>
+      <div id="runs-table" class="runs-table">Loading…</div>
+    </section>
+
+    <footer class="footer">
+      Agent Outcome Meter · self-hosted · MIT License · <a href="https://aaronwiseai.com/">AaronWiseAI</a>
+    </footer>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

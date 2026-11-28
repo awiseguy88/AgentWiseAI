@@ -1,0 +1,17 @@
+[
+  {
+    "event": "pull_request",
+    "payload": {
+      "action": "closed",
+      "pull_request": { "number": 10, "merged": true },
+      "repository": { "full_name": "owner/fixture-repo" }
+    }
+  },
+  {
+    "event": "check_run",
+    "payload": {
+      "check_run": { "external_id": "task-fail-1", "conclusion": "failure" },
+      "repository": { "full_name": "owner/fixture-repo" }
+    }
+  }
+]

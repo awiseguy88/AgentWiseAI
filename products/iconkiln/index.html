@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IconKiln — browser-only app-icon and favicon pack generator. Rasterize one source image into a multi-resolution .ico, per-size PNGs, and a complete favicon/apple-touch/android-chrome ZIP with site.webmanifest. No uploads, no network calls after load." />
+  <title>IconKiln — App Icon &amp; Favicon Pack Generator</title>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-secondary: #f4f6fa;
+      --surface: #ffffff;
+      --fg: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --accent: #7c3aed;
+      --accent-strong: #6d28d9;
+      --accent-soft: #f3ecfe;
+      --warn: #b45309;
+      --warn-bg: #fffbeb;
+      --warn-border: #fde68a;
+      --ok: #15803d;
+      --ok-bg: #f0fdf4;
+      --danger: #b91c1c;
+      --shadow: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+      --radius: 12px;
+    }
+    :root[data-theme='dark'] {
+      --bg: #0b1220;
+      --bg-secondary: #111c2e;
+      --surface: #131f33;
+      --fg: #e7edf5;
+      --muted: #93a4b8;
+      --border: #263449;
+      --accent: #a78bfa;
+      --accent-strong: #8b5cf6;
+      --accent-soft: #1e1a33;
+      --warn: #fcd34d;
+      --warn-bg: #2a2312;
+      --warn-border: #4a3d1a;
+      --ok: #4ade80;
+      --ok-bg: #0f2a19;
+      --danger: #f87171;
+      --shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent-strong); }
+    .container { max-width: 1240px; margin: 0 auto; padding: 0 20px 48px; }
+    .app-header {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 14px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo {
+      width: 42px; height: 42px; flex: none; border-radius: 12px;
+      background: linear-gradient(135deg, #7c3aed, #db2777);
+      display: grid; place-items: center; box-shadow: var(--shadow);
+    }
+    .logo svg { width: 24px; height: 24px; display: block; }
+    .brand h1 { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; margin: 0; line-height: 1.1; }
+    .brand .tag { font-size: 12px; color: var(--muted); margin: 1px 0 0; }
+    .nav { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; }
+    .nav a {
+      text-decoration: none; color: var(--fg); font-size: 13.5px; font-weight: 600;
+      padding: 7px 12px; border-radius: 8px; border: 1px solid transparent;
+    }
+    .nav a:hover { background: var(--bg-secondary); }
+    .nav a.active { background: var(--accent-soft); color: var(--accent-strong); }
+    .theme-toggle {
+      font-family: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+      border: 1px solid var(--border); background: var(--bg); color: var(--fg);
+      border-radius: 8px; padding: 7px 12px;
+    }
+    main { padding-top: 24px; }
+    .view { display: none; }
+    .view.active { display: block; }
+    h2.page-title { font-size: 22px; font-weight: 800; margin: 0 0 4px; letter-spacing: -0.02em; }
+    .page-sub { color: var(--muted); font-size: 14px; margin: 0 0 20px; max-width: 70ch; }
+    .panel {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow);
+    }
+    .panel + .panel { margin-top: 16px; }
+    .panel h3 { margin: 0 0 12px; font-size: 15px; font-weight: 700; }
+    .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: flex-end; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field > label, .field-label { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    input[type='text'], input[type='color'], select {
+      background: var(--bg); color: var(--fg); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 10px; font-size: 14px; font-family: inherit; min-width: 120px;
+    }
+    input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 0; }
+    .btn {
+      font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer;
+      border: 1px solid var(--border); background: var(--bg); color: var(--fg);
+      border-radius: 8px; padding: 9px 15px; transition: background 0.12s, border-color 0.12s, opacity 0.12s;
+    }
+    .btn:hover { border-color: var(--accent); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); }
+    .btn.ghost { background: transparent; }
+    .btn.small { padding: 6px 10px; font-size: 12.5px; }
+    .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    .segmented { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .segmented button {
+      border: none; background: var(--bg); color: var(--fg); font: inherit; font-size: 13px; font-weight: 600;
+      padding: 8px 14px; cursor: pointer;
+    }
+    .segmented button.active { background: var(--accent-soft); color: var(--accent-strong); }
+    .chip-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      border: 1px solid var(--border); background: var(--bg); color: var(--fg);
+      border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 700; cursor: pointer;
+      font-family: inherit;
+    }
+    .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .dropzone {
+      border: 2px dashed var(--border); border-radius: var(--radius);
+      background: var(--surface); padding: 40px 20px; text-align: center;
+      cursor: pointer; transition: border-color 0.15s, background 0.15s;
+    }
+    .dropzone:hover, .dropzone.dragging { border-color: var(--accent); background: var(--accent-soft); }
+    .dropzone .dz-icon { width: 48px; height: 48px; margin: 0 auto 12px; opacity: 0.85; }
+    .dropzone h3 { margin: 0 0 6px; font-size: 16px; }
+    .dropzone p { margin: 0; color: var(--muted); font-size: 13px; }
+    .message { border-radius: 8px; padding: 9px 12px; font-size: 13px; margin-top: 12px; display: none; }
+    .message.show { display: block; }
+    .message.error { background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn); }
+    .message.ok { background: var(--ok-bg); border: 1px solid var(--border); color: var(--ok); }
+    .source-card { display: flex; gap: 14px; align-items: center; margin-top: 4px; }
+    .source-thumb {
+      width: 72px; height: 72px; flex: none; border-radius: 10px; border: 1px solid var(--border);
+      object-fit: contain; background-color: #fff;
+      background-image: linear-gradient(45deg, #d0d5dd 25%, transparent 25%), linear-gradient(-45deg, #d0d5dd 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d0d5dd 75%), linear-gradient(-45deg, transparent 75%, #d0d5dd 75%);
+      background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    }
+    .source-meta { font-size: 13px; }
+    .source-meta .name { font-weight: 700; }
+    .source-meta .sub { color: var(--muted); font-size: 12.5px; }
+    .preview-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 14px; margin-top: 8px; }
+    .tile {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column;
+    }
+    .tile-checker {
+      position: relative; display: grid; place-items: center; padding: 14px; min-height: 132px;
+      background-color: #fff;
+      background-image: linear-gradient(45deg, #d0d5dd 25%, transparent 25%), linear-gradient(-45deg, #d0d5dd 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #d0d5dd 75%), linear-gradient(-45deg, transparent 75%, #d0d5dd 75%);
+      background-size: 16px 16px; background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+    }
+    :root[data-theme='dark'] .tile-checker, :root[data-theme='dark'] .source-thumb {
+      background-image: linear-gradient(45deg, #2a3443 25%, transparent 25%), linear-gradient(-45deg, #2a3443 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #2a3443 75%), linear-gradient(-45deg, transparent 75%, #2a3443 75%);
+    }
+    .tile-checker canvas, .tile-checker img { display: block; max-width: 100%; max-height: 116px; }
+    .tile-info { padding: 8px 10px 10px; }
+    .tile-name { font-size: 12.5px; font-weight: 700; word-break: break-all; }
+    .tile-meta { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+    .tile-actions { display: flex; gap: 6px; padding: 0 10px 10px; }
+    .tile-actions .btn { flex: 1; }
+    .muted { color: var(--muted); }
+    .small { font-size: 12.5px; }
+    .hint { font-size: 12.5px; color: var(--warn); margin-top: 6px; }
+    .hidden { display: none !important; }
+    .file-list { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 4px; }
+    .file-list li { font-size: 13px; display: flex; justify-content: space-between; gap: 10px; padding: 4px 0; border-bottom: 1px dashed var(--border); }
+    .file-list li .sz { color: var(--muted); }
+    pre.code {
+      background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 8px;
+      padding: 12px; font-size: 12px; overflow: auto; max-height: 320px; margin: 8px 0 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    .doc { max-width: 80ch; }
+    .doc h3 { margin: 22px 0 8px; font-size: 16px; }
+    .doc p, .doc li { font-size: 14px; }
+    .doc table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 13px; }
+    .doc th, .doc td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; }
+    .doc code { background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 5px; padding: 1px 5px; font-size: 12.5px; }
+    .toast-area { margin-top: 16px; }
+    .empty-note { color: var(--muted); font-size: 13.5px; padding: 8px 0; }
+    footer.app-footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    @media (max-width: 720px) {
+      .container { padding: 0 14px 40px; }
+      .app-header { gap: 10px; }
+      .brand h1 { font-size: 18px; }
+      .nav a { padding: 6px 9px; font-size: 13px; }
+      .row { gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="app-header" id="app-header"></header>
+    <main id="app">
+      <section class="view" id="view-generate"></section>
+      <section class="view" id="view-pack"></section>
+      <section class="view" id="view-guide"></section>
+      <section class="view" id="view-about"></section>
+    </main>
+    <footer class="app-footer" id="app-footer"></footer>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

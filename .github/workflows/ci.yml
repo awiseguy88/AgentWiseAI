@@ -167,3 +167,9 @@ jobs:
         run: |
           python -m pip install --quiet numpy networkx
           python test_smoke.py
+
+      - name: Lyapunov Symmetric-Maximizer Counterexample
+        working-directory: experiments/lyapunov-symmetric-maximizer-order7
+        run: |
+          python -m pip install --quiet numpy scipy
+          python test_smoke.py

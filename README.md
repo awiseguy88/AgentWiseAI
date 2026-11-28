@@ -60,6 +60,14 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Agent Decision Triage | `agent-decision-triage/` | Local Node.js/TypeScript web app plus CLI/webhook bridge for triaging decisions from parallel coding agents with a prioritized numbered inbox UI, deduplication, batch resolve, and SQLite-backed audit. | Open [PR #67](https://github.com/awiseguy88/AgentWiseAI/pull/67) |
 New tools are added by the GitHub Agent in their own subfolders. The agent keeps this index updated as part of every build.
 
+## Engineering Experiments
+
+| Experiment | Folder | What it does | Status |
+|---|---|---|---|
+| Symmetric-Maximizer Conjecture Counterexample (Lyapunov Operators, Order 7) | [`experiments/lyapunov-symmetric-maximizer-order7/`](experiments/lyapunov-symmetric-maximizer-order7/) | Exact-integer/rational verification of the Kressner & Vandereycken (2026, arXiv:2608.20875) order-7 counterexample to the symmetric-maximizer conjecture: ‖K‖_F² = 53836, ‖L_A(K)‖_F² = 64387950, symmetric max eigenvalue ≈ 1195.593985 < 1196 < skew ≈ 1196.025224, exact certificate M_S ≻ 0 with all LDLᵀ pivots ≥ 82. | Complete (Issue #171) |
+| SIS Epidemic Threshold — Finite-Size Correction | [`experiments/sis-epidemic-threshold/`](experiments/sis-epidemic-threshold/) | Gillespie SIS simulation on random 3-regular graphs measuring the effective epidemic threshold τ_c^eff(N). | Complete |
+| Braess Paradox — Demand Threshold | [`experiments/braess-paradox-demand-threshold/`](experiments/braess-paradox-demand-threshold/) | Sensitivity analysis of the Braess paradox demand threshold under various cost/demand conditions. | Complete |
+
 ## About AaronWiseAI
 
 Built by [AaronWiseAI](https://aaronwiseai.com/).

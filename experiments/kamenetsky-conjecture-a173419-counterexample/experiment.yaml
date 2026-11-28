@@ -1,0 +1,87 @@
+experiment: kamenetsky-conjecture-a173419-counterexample
+title: "Experiment: Counterexample to Kamenetsky's Conjecture on OEIS A173419 (a(3359) = 7 < 8 = a(3358))"
+name: Counterexample to Kamenetsky's Conjecture on OEIS A173419
+slug: kamenetsky-conjecture-a173419-counterexample
+issue: 167
+source: arxiv:2609.28512
+workflow: verification
+createdAt: 2026-11-22T23:55:29.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  For OEIS A173419 (shortest addition/subtraction/multiplication chain from x_0 = 1),
+  a(3359) = 7 AND a(3358) = 8, hence a(3359) < a(3358). Therefore Kamenetsky's
+  conjecture "a(p) >= a(p-1) for every prime p" is false, with p = 3359 the
+  smallest counterexample below 5000.
+
+baseline:
+  description: |
+    Kamenetsky's conjecture holds for every prime p < 1800 per the OEIS A173419
+    b-file (verified through p = 1799, a(1799) = 8). Reference control: exhaustive
+    enumeration recomputes a(1)..a(108) and matches the published OEIS values
+    exactly (e.g., a(1) = 0, a(2) = 1, a(3) = 2, ..., a(108) = 5).
+  value: "holds for all primes p < 1800"
+
+metric:
+  primary:
+    - name: "a(3359)"
+      definition: "Least number of operations (+, -, *) from x_0 = 1 yielding 3359; dimensionless integer operation count."
+    - name: "a(3358)"
+      definition: "Least number of operations (+, -, *) from x_0 = 1 yielding 3358; dimensionless integer operation count."
+  secondary:
+    - name: "max unreachable depth for 3359"
+      definition: "Greatest depth d such that no chain of length <= d yields 3359 (expect 6 -> a(3359) >= 7)."
+    - name: "max unreachable depth for 3358"
+      definition: "Greatest depth d such that no chain of length <= d yields 3358 (expect 7 -> a(3358) >= 8)."
+    - name: "explicit chain length for 3359"
+      definition: "Length of validated explicit chain 1,2,4,16,15,225,3375,3359 (expect 7 operations -> a(3359) <= 7)."
+    - name: "explicit chain length for 3358"
+      definition: "Length of validated explicit length-8 chain for 3358 (expect 8 operations -> a(3358) <= 8)."
+    - name: "OEIS agreement"
+      definition: "Number of n in 1..108 for which recomputed a(n) matches the published OEIS b-file (expect 108/108)."
+
+units:
+  operations: "dimensionless integer operation count"
+  depth: "dimensionless integer chain depth"
+
+thresholds:
+  pass_conditions:
+    - "a(3359) = 7: no valid chain of length <= 6 yields 3359 AND explicit length-7 chain valid (a(3359) <= 7)"
+    - "a(3358) = 8: no valid chain of length <= 7 yields 3358 AND explicit length-8 chain valid (a(3358) <= 8)"
+    - "a(3359) < a(3358): conjecture falsified at p = 3359"
+  fail_conditions:
+    - "a(3359) >= 8 OR a(3358) <= 7 (conjecture holds for this case)"
+  inconclusive_conditions:
+    - "Enumeration incomplete to required depth, or a(1)..a(108) OEIS agreement check fails (precision/search bug)"
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "Standard OEIS A173419 definition: x_0 = 1; each x_k obtained from two earlier entries by +, -, or *; a(n) is the least m with x_m = n."
+  - "Operation chains may reuse earlier entries (0 <= i, j < k). Only positive results are kept."
+  - "Exhaustive enumeration over all chains up to a fixed depth is exact and finite."
+  - "Python 3, standard library only; no floating point (all arithmetic on Python integers)."
+  - "Explicit chains establish upper bounds; exhaustive enumeration establishes lower bounds."
+
+stop_condition:
+  - "Complete exhaustive search to depth 6 confirming 3359 unreachable (a(3359) >= 7) AND to depth 7 confirming 3358 unreachable (a(3358) >= 8), with explicit chains giving a(3359) <= 7 and a(3358) <= 8."
+  - "Stop early if enumeration rules out either lower bound, or if the baseline a(1)..a(108) OEIS agreement check fails."
+  - "Expected runtime under 2 minutes on a single core."
+
+tools:
+  - "Python 3 (standard library only)"
+expected_runtime: "< 2 minutes on a single core"
+reproduction_command: "python3 simulate.py"
+smoke_test: "python3 test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - simulate.py
+  - test_smoke.py
+  - results/reachable_per_depth.txt
+  - results/a1_108.csv
+  - results/bounds_summary.json
+  - report.md
+
+result_label: mixed (calculated for explicit chain validation; simulated for exhaustive enumeration)
+verdict: supported

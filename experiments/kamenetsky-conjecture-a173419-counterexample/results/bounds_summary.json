@@ -1,0 +1,56 @@
+{
+  "experiment": "kamenetsky-conjecture-a173419-counterexample",
+  "max_depth": 8,
+  "chain_validation": {
+    "chain_3359": {
+      "chain": [
+        1,
+        2,
+        4,
+        16,
+        15,
+        225,
+        3375,
+        3359
+      ],
+      "operations": 7,
+      "valid": true,
+      "reason": null,
+      "label": "calculated"
+    },
+    "chain_3358": {
+      "chain": [
+        1,
+        2,
+        4,
+        16,
+        15,
+        17,
+        225,
+        3375,
+        3358
+      ],
+      "operations": 8,
+      "valid": true,
+      "reason": null,
+      "label": "calculated"
+    }
+  },
+  "exhaustive_bounds": {
+    "a_3359_upper_bound_explicit_chain_length": 7,
+    "a_3359_not_reachable_at_depth_le_6": true,
+    "a_3358_not_reachable_at_depth_le_7": true,
+    "a_3358_min_depth_enumeration": 8,
+    "a_3359_min_depth_enumeration": 7
+  },
+  "oeis_control": {
+    "checked": "a(1)..a(108)",
+    "matches_oeis_exactly": true,
+    "mismatches": []
+  },
+  "verdict": "supported",
+  "a_3359": 7,
+  "a_3358": 8,
+  "conjecture_falsified": true,
+  "threshold_pass": true
+}

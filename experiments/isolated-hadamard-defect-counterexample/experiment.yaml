@@ -1,0 +1,93 @@
+experiment: isolated-hadamard-defect-counterexample
+title: "Experiment: Isolated Complex Hadamard Matrix with Nonzero Defect (BH(13,6), d(H)=1 refutes BOP Conjecture 1.8)"
+name: Isolated Complex Hadamard Matrix with Nonzero Defect — Counterexample
+slug: isolated-hadamard-defect-counterexample
+issue: 169
+source: "Hall, S., & Nicoara, R. (2026), arXiv:2611.20136"
+workflow: engineering-experiment
+createdAt: 2026-11-23T00:57:51.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  For the explicit 13×13 matrix H ∈ BH(13,6) given in Section 4 of
+  Hall & Nicoara (2026): (a) H is Hadamard (HH* = 13I, entries are
+  order-6 roots of unity); (b) d(H) = dim_R 𝒯_H = 1 (nonzero defect);
+  (c) dim_C[P,Q] = 143 < 144 so the span condition fails; (d) the
+  second-order obstruction O_H(R0) ≠ 0 on the generator R0 of the
+  1-dimensional 𝒯_H, supporting sequential isolation (Prop. 3.2). Hence H
+  is an isolated Hadamard matrix with nonzero defect, falsifying
+  "isolation ⇒ defect zero."
+
+baseline:
+  description: |
+    Conjecture under test: isolation ⇒ d(H) = 0 (equivalently isolation ⇔
+    span condition dim_C[P,Q] = (n−1)^2). Reference control: run the same
+    defect/span pipeline on the Fourier matrix F_13 (known isolated,
+    d = 0) and confirm dim_C[P,Q] = (n−1)^2 and d(F_13) = 0, validating
+    the computation before trusting the H d(H)=1 result.
+  value: 0
+
+metric:
+  primary:
+    name: "isHadamard / defectOne / spanFails / secondOrderBlocks"
+    definition: |
+      Booleans for H (expected all TRUE):
+        - isHadamard: HH* = 13I within tolerance and all entries unimodular
+          order-6 roots of unity.
+        - defectOne: dim_R 𝒯_H = 1, i.e. d(H) = 1.
+        - spanFails: dim_C[P,Q] = 143 < 144 = (n−1)^2.
+        - secondOrderBlocks: O_H(R0) ≠ 0 on the generator R0 of 𝒯_H.
+      Supporting integers: d(H)=1, dim[P,Q]=143, (n−1)^2=144,
+      O_H(R0) = −168/169.
+  secondary:
+    name: "Fourier-matrix control d(F_13)=0"
+    definition: "Same pipeline on F_13 must give d=0 and dim_C[P,Q]=144."
+
+units:
+  n: "matrix order (dimensionless)"
+  d_H: "defect dimension (dimensionless)"
+  dim_PQ: "commutator-span dimension (dimensionless)"
+  O_H: "second-order obstruction (dimensionless)"
+
+thresholds:
+  pass_conditions:
+    - "HH* = 13I confirmed AND d(H) = 1 AND dim_C[P,Q] = 143 < 144 AND O_H(R0) ≠ 0 AND Fourier control d(F_13) = 0."
+  fail_conditions:
+    - "d(H) = 0 OR dim_C[P,Q] = 144 (contradicts paper) OR HH* ≠ 13I (transcription bug) OR O_H(R0) = 0 (isolation not established by this method)."
+  inconclusive_conditions:
+    - "Nullspace/SVD tolerance cannot resolve dim 𝒯_H, or matrix transcription ambiguous."
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "H entries are 6th roots of unity (BH(13,6)), unimodular; Hadamard = orthogonal rows (HH* = nI)."
+  - "Defect d(H) = dim_R 𝒯_H where 𝒯_H is the real solution space of the linearized Hadamard equations (dephased: first row/column fixed to 0)."
+  - "𝒯_H computed via the general first-order deformation system: X_ij = i H_ij r_ij (r real), equations Σ_j H_kj conj(H_lj)(r_kj − r_lj) = 0 for k < l, restricted to dephased unknowns (i,j ≥ 2)."
+  - "dim_C[P,Q] = rank of that real linear system (complexification), so d(H) = (n−1)^2 − dim_C[P,Q] (Eq. 1.3)."
+  - "Isolation established by the paper's sequential second-order method (Prop. 3.2), numerically spot-checked by O_H(R0) ≠ 0 on the 1-d generator R0 (given explicitly in Section 4)."
+  - "O_H(R) = Tr(A^3)/n^4 − (∑ R_ij^3)/n^2 with A = (R∘H)H*."
+  - "Arithmetic: complex128 floating point with tight tolerance; cross-checked against exact integer/cyclotomic values from the paper."
+
+stop_condition:
+  - "Complete once (a) HH* = 13I and unimodular order-6 entries confirmed, (b) dim_R 𝒯_H = 1, (c) dim_C[P,Q] = 143 < 144, (d) O_H(R0) ≠ 0, (e) Fourier control d = 0 passes → supported (calculated)."
+  - "Stop early if d(H) = 0 or dim_C[P,Q] = 144 (contradicts paper → unsupported), or HH* ≠ 13I (transcription bug → inconclusive)."
+
+tools:
+  - "Python 3.12+"
+  - "NumPy (complex linear algebra, SVD)"
+expected_runtime: "< 1 minute single core"
+reproduction_command: "python3 simulate.py"
+ci_command: "python3 test_smoke.py"
+smoke_test: "python3 test_smoke.py"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - simulate.py
+  - test_smoke.py
+  - results/invariants.json
+  - results/H_matrix.txt
+  - results/control_table.txt
+  - report.md
+
+result_label: calculated
+verdict: supported

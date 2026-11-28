@@ -1,0 +1,5 @@
+Control / sample          d(H)   dim_C[P,Q]   HH*=nI
+H in BH(13,6) (Section4)     1          143   True
+Fourier F_13 (control)        0          144   True
+expected (paper)            1     143          True
+expected (control)          0     144          True

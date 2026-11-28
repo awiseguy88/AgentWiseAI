@@ -1,0 +1,40 @@
+{
+  "n": 13,
+  "source": "Hall & Nicoara (2026), arXiv:2611.20136",
+  "H": {
+    "isHadamard": true,
+    "maxdev_HHstar": 3.552713678800501e-15,
+    "unimodular": true,
+    "order6_roots": true,
+    "d_H": 1,
+    "dim_C_PQ": 143,
+    "n_minus_1_squared": 144,
+    "spanFails": true,
+    "O_H_R0": {
+      "real": -0.9940828402366897,
+      "imag": -2.1489814494260237e-16
+    },
+    "O_H_expected": -0.9940828402366864,
+    "Tr_A3": {
+      "real": -538434.0000000001,
+      "imag": -6.137705917705667e-12
+    },
+    "sum_R_cubes": -3018.0,
+    "secondOrderBlocks": true
+  },
+  "Fourier_control": {
+    "isHadamard": true,
+    "maxdev_HHstar": 1.400757135783796e-14,
+    "d_F": 0,
+    "dim_C_PQ": 144
+  },
+  "booleans": {
+    "isHadamard": true,
+    "defectOne": true,
+    "spanFails": true,
+    "secondOrderBlocks": true
+  },
+  "control_ok": true,
+  "verdict": "supported",
+  "result_label": "calculated"
+}

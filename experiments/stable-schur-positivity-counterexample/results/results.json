@@ -1,0 +1,77 @@
+{
+  "minors": {
+    "J1": [
+      38,
+      1083,
+      28728,
+      202176,
+      1119744
+    ],
+    "J2": [
+      38,
+      1083,
+      28728,
+      202176,
+      1119744
+    ],
+    "J3": [
+      38,
+      288,
+      8208,
+      202176,
+      1119744
+    ],
+    "J4": [
+      38,
+      288,
+      8208,
+      46656,
+      1119744
+    ],
+    "J5": [
+      8,
+      288,
+      1728,
+      46656,
+      1119744
+    ]
+  },
+  "minors_match_expected": true,
+  "monomial_coefficients": {
+    "(5,)": 1728,
+    "(4, 1)": 19440,
+    "(3, 2)": 66555,
+    "(3, 1, 1)": 140910,
+    "(2, 2, 1)": 250440,
+    "(2, 1, 1, 1)": 547405,
+    "(1, 1, 1, 1, 1)": 1182860
+  },
+  "monomial_match_expected": true,
+  "schur_coefficients": {
+    "(5,)": 1728,
+    "(4, 1)": 17712,
+    "(3, 2)": 47115,
+    "(3, 1, 1)": 56643,
+    "(2, 2, 1)": 62415,
+    "(2, 1, 1, 1)": 56437,
+    "(1, 1, 1, 1, 1)": -2972
+  },
+  "schur_match_expected": true,
+  "kostka_independent_match": true,
+  "schur_independent_match": true,
+  "s_1_5": -2972,
+  "closed_form_identity": -2972,
+  "identity_ok": true,
+  "baseline_h5_schur": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "baseline_ok": true,
+  "verdict": "supported",
+  "result_label": "calculated"
+}

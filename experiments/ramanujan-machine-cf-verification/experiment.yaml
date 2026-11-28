@@ -1,0 +1,88 @@
+experiment: ramanujan-machine-cf-verification
+title: "Experiment: Ramanujan Machine Continued-Fraction Conjecture Verification"
+name: Ramanujan Machine CF Verification
+slug: ramanujan-machine-cf-verification
+issue: 165
+source: issue #165 (awiseguy88/AgentWiseAI)
+workflow: discovery
+createdAt: 2026-11-22T22:56:25.000Z
+
+# Signed hypothesis (frozen before running)
+hypothesis: |
+  The DFR-discovered polynomial continued fraction for ζ(2) given by
+  72/(72·ζ(2) - 115) = 2 - 1²/(25 - 1²/(16 - 2²/(33 - 3²/(52 - ...))))
+  with tail term n²/(n² + (n+1)² + 20) for n ≥ 2 converges to the claimed
+  value as truncation depth increases. At depth N = 200, the convergent
+  agrees with ζ(2) = π²/6 to at least 10 decimal digits, and the absolute
+  error decreases monotonically with depth.
+
+  As a validated control, Apéry's proven continued fraction for ζ(3) (Eq. 1
+  of Elimelech et al. 2023):
+  6/ζ(3) = 5 - 1⁶/(117 - 2⁶/(535 - 3⁶/(17(n³+(n+1)³) - 12(2n+1) - ...)))
+  must reproduce ζ(3) to at least 12 decimal digits at depth N = 200,
+  confirming the evaluation method and arbitrary-precision setup.
+
+baseline: |
+  Apéry's proven continued fraction for ζ(3) (Elimelech et al. Eq. 1).
+  a₀ = 5; for k ≥ 1: aₖ = 17(k³ + (k+1)³) - 12(2k+1); bₖ = -k⁶.
+  6/ζ(3) = a₀ + b₁/(a₁ + b₂/(a₂ + ...)).
+  This is a mathematically proven formula; convergence to ζ(3) is guaranteed.
+
+metric:
+  primary:
+    name: "absolute_error"
+    definition: |
+      |approx_N - true_constant| at truncation depth N, where approx_N is
+      the N-th convergent of the CF evaluated with arbitrary-precision
+      arithmetic (mpmath, 80 decimal digits).
+  secondary:
+    name: "agreeing_digits"
+    definition: |
+      Number of correct decimal digits of approx_N vs. true_constant,
+      computed as floor(-log10(absolute_error)) for error > 0, else large.
+
+units:
+  absolute_error: "dimensionless"
+  agreeing_digits: "digits (dimensionless)"
+  depth_N: "truncation level (dimensionless)"
+
+thresholds:
+  pass_conditions:
+    - "Baseline Apéry CF: absolute error ≤ 1e-12 (≥ 12 correct digits) at N = 200."
+    - "Primary DFR ζ(2) CF: absolute error ≤ 1e-10 (≥ 10 correct digits) at N = 200 AND error decreases monotonically with N (each depth error ≤ previous depth error)."
+  fail_conditions:
+    - "Baseline Apéry CF error > 1e-12 at N = 200 (control fails → evaluation setup invalid)."
+    - "Primary DFR ζ(2) CF error > 1e-10 at N = 200 OR error plateaus/increases for 20 consecutive depths."
+  inconclusive_conditions:
+    - "mpmath precision insufficient (unexpected at 80 digits) or numerical instability detected."
+  verdict_mapping: "supported / unsupported / inconclusive"
+
+assumptions:
+  - "Arbitrary-precision arithmetic (mpmath, 80 decimal digits) removes floating-point error as a confounder."
+  - "The paper's transcribed polynomial coefficients are correct per Appendix C.2 / Table 3 α=5 (tail aₙ = n²+(n+1)²+20) and the initial terms 25, 16 as stated in the issue."
+  - "Truncation depth N = 200 is sufficient to exhibit the claimed convergence."
+  - "The DFR CF for ζ(2) uses numerators bₙ = -n² (degree 1) rather than -n⁴ (degree 2) from the infinite family in Table 3, matching the explicit issue transcription."
+
+stop_condition:
+  - "Stop at depth N = 200."
+  - "Stop early if the primary CF error stops decreasing for 20 consecutive depths (plateau detected)."
+
+tools:
+  - "Python 3.10+"
+  - "mpmath (arbitrary-precision arithmetic)"
+expected_runtime: "< 10 seconds on a single CPU"
+
+artifacts:
+  - sources.md
+  - experiment.yaml
+  - simulate.py
+  - test_smoke.py
+  - results/ramanujan_cf_results.csv
+  - results/summary.json
+  - report.md
+  - run command: python experiments/ramanujan-machine-cf-verification/simulate.py
+  - smoke test: python experiments/ramanujan-machine-cf-verification/test_smoke.py
+
+result_label: calculated
+
+verdict: supported

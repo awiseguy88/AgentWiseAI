@@ -9,6 +9,7 @@ This repository collects focused open-source tools that help AI engineers and ag
 | Tool | Folder | What it does | Status |
 | --- | --- | --- | --- |
 | MCP Lemonade Server | [`mcp-lemonade-server/`](mcp-lemonade-server/) | MCP server for local Lemonade image generation and social-post preparation. | Existing |
+| Ramanujan Machine CF Verification | [`experiments/ramanujan-machine-cf-verification/`](experiments/ramanujan-machine-cf-verification/) | Engineering experiment verifying a DFR-discovered ζ(2) continued fraction against Apéry's ζ(3) CF with arbitrary-precision arithmetic (issue #165); verdict supported. | In repo |
 | MCP Fault Injector | [`mcp-fault-injector/`](mcp-fault-injector/) | Local CLI proxy that injects configurable MCP faults (latency, timeouts, invalid JSON, missing fields, truncation) and reports which faults cause silent wrong answers vs clean failures. | Merged in [PR #46](https://github.com/awiseguy88/AgentWiseAI/pull/46) |
 | DSH Reddit Suite | [`dsh-reddit-suite/`](dsh-reddit-suite/) | Host plugin bundle for the DeepSeek Harness (DSH) for Reddit via session cookie and/or OAuth. | Existing |
 | Tool Launcher | [`tool-launcher/`](tool-launcher/) | Lists built tools in the workspace, reads their READMEs, and launches them. | Merged in [PR #6](https://github.com/awiseguy88/AgentWiseAI/pull/6) |

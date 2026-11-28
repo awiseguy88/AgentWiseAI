@@ -1,0 +1,40 @@
+{
+  "experiment": "ramanujan-machine-cf-verification",
+  "issue": 165,
+  "max_depth": 200,
+  "mpmath_dps": 80,
+  "result_label": "calculated",
+  "verdict": "supported",
+  "baseline_apery_zeta3_control_ok": true,
+  "primary_dfr_zeta2_ok": true,
+  "summaries": [
+    {
+      "cf": "appery-zeta3",
+      "true_constant": "1.202056903159594285399738161511449990765",
+      "max_depth_tested": 200,
+      "stopped_early": false,
+      "final_depth": 200,
+      "final_approx": "1.202056903159594285399738161511449990765",
+      "final_absolute_error": "0.0",
+      "final_agreeing_digits": 80,
+      "monotonically_decreasing": true,
+      "required_digits": 12,
+      "meets_digit_threshold": true,
+      "result_label": "calculated"
+    },
+    {
+      "cf": "dfr-zeta2",
+      "true_constant": "1.644934066848226436472415166646025189219",
+      "max_depth_tested": 200,
+      "stopped_early": false,
+      "final_depth": 200,
+      "final_approx": "1.644934066848226436472391318159152113887",
+      "final_absolute_error": "2.384848687307533192706813386090329834278e-23",
+      "final_agreeing_digits": 22,
+      "monotonically_decreasing": true,
+      "required_digits": 10,
+      "meets_digit_threshold": true,
+      "result_label": "calculated"
+    }
+  ]
+}
